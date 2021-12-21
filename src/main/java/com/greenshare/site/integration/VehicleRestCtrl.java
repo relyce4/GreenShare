@@ -7,10 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.greenshare.site.entities.Vehicle;
 import com.greenshare.site.service.VehicleService;
 
+@RestController
+@RequestMapping("api/vehicles")
 public class VehicleRestCtrl {
 
 	@Autowired

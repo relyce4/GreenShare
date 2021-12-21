@@ -9,5 +9,5 @@ import com.greenshare.site.entities.User;
 
 public interface UserDAO extends JpaRepository<User, Integer> {
 
-	List<User> findByUsername(String username);
+	List<User> findByEmail(String email);
 }

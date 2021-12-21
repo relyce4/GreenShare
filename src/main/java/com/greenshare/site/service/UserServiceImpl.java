@@ -16,43 +16,35 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void addUser(User a) {
-		// TODO Auto-generated method stub
 		this.repo.save(a);
 	}
 
 	@Override
 	public void deleteUser(User a) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void deleteUser(int id) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void updateUser(User a) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public List<User> getUsers() {
-		// TODO Auto-generated method stub
 		return this.repo.findAll();
 	}
 
 	@Override
-	public List<User> getUserByUsername(String username) {
-		// TODO Auto-generated method stub
-		return this.repo.findByUsername(username);
+	public List<User> getUserByEmail(String email) {
+		return this.repo.findByEmail(email);
 	}
 
 	@Override
 	public User getUserById(int id) {
-		// TODO Auto-generated method stub
 		return this.repo.findById(id).get();
 	}
 

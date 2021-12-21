@@ -14,7 +14,7 @@ import com.greenshare.site.entities.User;
 import com.greenshare.site.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api/users")
 public class UserRestCtrl {
 
 	@Autowired
@@ -30,12 +30,11 @@ public class UserRestCtrl {
 		return this.service.getUserById(id);
 	}
 	
-	@GetMapping("/{regione}")
-	public List<User> getAllByUsername(@PathVariable String username) {
-		return this.service.getUserByUsername(username);
+	@GetMapping("/{email}")
+	public List<User> getAllByEmail(@PathVariable String email) {
+		return this.service.getUserByEmail(email);
 	}
 
-	
 	@PostMapping(consumes = "application/json")
 	public void addOne(@RequestBody User a) {
 		this.service.addUser(a);

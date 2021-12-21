@@ -24,7 +24,7 @@ public class VehicleRestCtrl {
 	
 	@GetMapping
 	public List<Vehicle> getAll() {
-		return this.service.getVehicles();	
+		return this.service.getVehicles();
 	}
 	
 	@GetMapping("/{id}")

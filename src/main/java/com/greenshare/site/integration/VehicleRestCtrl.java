@@ -46,7 +46,4 @@ public class VehicleRestCtrl {
 	public void deleteVehicleById(@PathVariable int id) {
 		this.service.deleteVehicleById(id);
 	}
-	
-	
-	
 }

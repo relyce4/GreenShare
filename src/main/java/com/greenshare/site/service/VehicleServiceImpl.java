@@ -5,15 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.greenshare.site.dal.VehicleDAO;
 import com.greenshare.site.entities.Vehicle;
+import com.greenshare.site.repo.VehicleDAO;
 
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
 	@Autowired
 	private VehicleDAO repo;
-	
 	
 	@Override
 	public void addVehicle(Vehicle a) {

@@ -32,9 +32,9 @@ public class UserRestCtrl {
 		return this.service.getUserById(id);
 	}
 	
-	@GetMapping("/{email}")
-	public List<User> getByEmail(@PathVariable String email) {
-		return this.service.getUserByEmail(email);
+	@GetMapping("/{username}")
+	public User getByUsername(@PathVariable String username) {
+		return this.service.getUserByUsername(username);
 	}
 
 	@PostMapping(consumes = "application/json")

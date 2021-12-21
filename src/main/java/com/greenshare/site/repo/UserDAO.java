@@ -1,13 +1,11 @@
-package com.greenshare.site.dal;
-
-import java.util.List;
+package com.greenshare.site.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.greenshare.site.entities.User;
-import com.greenshare.site.entities.User;
 
+@Repository
 public interface UserDAO extends JpaRepository<User, Integer> {
-
-	List<User> findByEmail(String email);
+	User findByUsername(String username);
 }

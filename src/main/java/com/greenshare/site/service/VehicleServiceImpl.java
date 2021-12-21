@@ -17,37 +17,26 @@ public class VehicleServiceImpl implements VehicleService {
 	
 	@Override
 	public void addVehicle(Vehicle a) {
-		// TODO Auto-generated method stub
 		this.repo.save(a);
 	}
 
 	@Override
-	public void deleteVehicle(Vehicle a) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void deleteVehicle(int id) {
-		// TODO Auto-generated method stub
-
+	public void deleteVehicleById(int id) {
+		this.repo.deleteById(id);
 	}
 
 	@Override
 	public void updateVehicle(Vehicle a) {
-		// TODO Auto-generated method stub
-
+		this.repo.save(a);
 	}
 
 	@Override
 	public List<Vehicle> getVehicles() {
-		// TODO Auto-generated method stub
 		return this.repo.findAll();
 	}
 
 	@Override
 	public Vehicle getVehicleById(int id) {
-		// TODO Auto-generated method stub
 		return this.repo.findById(id).get();
 	}
 

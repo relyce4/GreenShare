@@ -7,8 +7,7 @@ import com.greenshare.site.entities.Vehicle;
 public interface VehicleService {
 
 	void addVehicle(Vehicle a);
-	void deleteVehicle(Vehicle a);
-	void deleteVehicle(int id);
+	void deleteVehicleById(int id);
 	void updateVehicle(Vehicle a);
 	List<Vehicle> getVehicles();
 	Vehicle getVehicleById(int id);

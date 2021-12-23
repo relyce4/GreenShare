@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+	<!-- Google Fonts Roboto -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+	<!-- MDB -->
+	<link rel="stylesheet" href="css/mdb.min.css" />
+
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<header id="mainHeader">
+		<nav class="navbar fixed-top shadow-3-strong navbar-expand-lg navbar-light bg-light">
+			<!-- Container wrapper -->
+			<div class="container">
+				<!-- Navbar brand -->
+				<a class="navbar-brand" href="/">
+					<img src="immagini/logo3.png" class="me-2" height="32" alt="Greenshare Logo" loading="lazy"
+						style="margin-top: -1px" />
+					<span class="text-success">Green</span>Share
+				</a>
+
+				<!-- Toggle button -->
+				<button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas" data-mdb-target="#offcanvasRight"
+					aria-controls="offcanvasRight" aria-expanded="false" aria-label="Toggle navigation">
+					<i class="fas fa-bars"></i>
+				</button>
+
+
+				<!-- Collapsible wrapper -->
+				<div class="collapse navbar-collapse" id="navbarButtonsExample">
+					<!-- Left links -->
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					</ul>
+					<!-- Left links -->
+
+					<div class="d-flex align-items-center">
+						<button type="button" class="btn btn-link text-success px-3 me-2">
+							Login
+						</button>
+						<button type="button" class="btn btn-success me-3">
+							Registrati
+						</button>
+						<ul class="navbar-nav">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle hidden-arrow" href="#" role="button" data-mdb-toggle="dropdown"
+									aria-expanded="false">
+									<i class="fas fa-user text-dark"></i>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+									<li>
+										<a class="dropdown-item" href="#">Il mio profilo</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Logout</a>
+									</li>
+								</ul>
+							</li>
+							<!-- Notification dropdown -->
+						</ul>
+					</div>
+					<!-- Collapsible wrapper -->
+				</div>
+				<!-- Container wrapper -->
+		</nav>
+		<!-- Fine Navbar -->
+	</header>
+
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+	<div class="offcanvas-header">
+		<h5 id="offcanvasRightLabel" class="text-light">Menù</h5>
+		<button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<button type="button" class="btn btn-link text-success">
+		Login
+		</button><br>
+		<button type="button" class="btn btn-link text-success">
+		Registrati
+		</button>
+	</div>
+	<div class="py-2 d-flex justify-content-between align-items-center">
+		<button type="button" class="btn btn-success ms-4">
+		Prenota Ora
+		</button>
+		<div>
+			<!-- Right -->
+				<a href="https://www.facebook.com/carsharingasti" class="me-4 text-reset zoom2">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="https://twitter.com/carsharingpa" class="me-4 text-reset zoom2">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="https://www.instagram.com/carsharingasti/" class="me-4 text-reset zoom2">
+					<i class="fab fa-instagram"></i>
+				</a>
+			<!-- Right -->
+		</div>
+	</div>
+</div>
+<!-- Fine Offcanvas --> 
+
+	<!-- Hero -->
+	<section class="hero d-flex justify-content-center align-items-center">
+		<div class="hero-text">
+			<h1 class="display-1"><span class="motto">Consume Less <br>Share Better</span></h1>
+		</div>
+	</section>
+	<!-- Fine Hero -->
+
+	<section id="statistics" class="text-center">
+		<h2 class="my-4 h1">Riepilogo consumi</h2>
+		<div class="container-fluid">
+			<div class="row d-flex align-items-center">
+				<div class="col-lg-4">
+					<div class="articleImage">
+						<canvas id="myChart"></canvas>
+					</div>
+				</div>
+
+				<div class="col-lg-8">
+					<div class="container">
+						<div class="row">
+							<div class="col-4 px-md-5">
+								<div class="card" id="carCard">
+									<div class="card-body">
+										<p>Auto Elettrica</p>
+										<img class="card-img-top img-fluid" src="immagini/toyota_yaris.png" alt="" />
+										<p class="card-text">DESCRIZIONE</p>
+										<a href="#" class="btn btn-success">Prenota!</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-4 px-md-5">
+								<div class="card" id="scooterCard">
+									<div class="card-body">
+										<p>Monopattino Elettrico</p>
+										<img class="card-img-top img-fluid" src="immagini/ford_focus_ecoboost.png" alt="" />
+										<p class="card-text">DESCRIZIONE</p>
+										<a href="#" class="btn btn-success">Prenota!</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-4 px-md-5">
+								<div class="card" id="bikeCard">
+									<div class="card-body">
+										<p>Bicicletta</p>
+										<img class="card-img-top img-fluid" src="immagini/toyota_yaris.png" alt="" />
+										<p class="card-text">DESCRIZIONE</p>
+										<a href="#" class="btn btn-success">Prenota!</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CAROUSEL -->
+	<div class="slider shadow-0">
+		<div class="slide-track">
+			<div class="slide">
+				<img src="immagini/logo-hyunday-final.png" height="100" width="250" alt="" />
+			</div>
+			<div class="slide">
+				<img src="immagini/logo-kia-final.png" height="100" width="250" alt="" />
+			</div>
+			<div class="slide">
+				<img src="immagini/logo-lexus-final.png" height="100" width="250" alt="" />
+			</div>
+			<div class="slide">
+				<img src="immagini/logo-hyunday-final.png" height="100" width="250" alt="" />
+			</div>
+			<div class="slide">
+				<img src="immagini/logo-kia-final.png" height="100" width="250" alt="" />
+			</div>
+			<div class="slide">
+				<img src="immagini/logo-lexus-final.png" height="100" width="250" alt="" />
+			</div>
+		</div>
+	</div>
+	<!-- FINE CAROUSEL -->
+
+	<footer class="text-center text-lg-start bg-success text-muted">
+		<!-- Section: Social media -->
+		<section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom text-white">
+			<!-- Left -->
+			<div class="me-5 d-none d-lg-block">
+				<span>Get connected with us on social networks:</span>
+			</div>
+			<!-- Left -->
+
+			<!-- Right -->
+			<div class="">
+
+				<a href="https://www.facebook.com/carsharingasti" class="me-4 text-reset zoom2">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="https://twitter.com/carsharingpa" class="me-4 text-reset zoom2">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="http://dieselserviceasti.it/car-sharing/" class="me-4 text-reset  zoom2">
+					<i class="fab fa-google"></i>
+				</a>
+				<a href="https://www.instagram.com/carsharingasti/" class="me-4 text-reset zoom2">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="https://www.linkedin.com/company/astimobilerobotics/" class="me-4 text-reset zoom2">
+					<i class="fab fa-linkedin"></i>
+				</a>
+			</div>
+			<!-- Right -->
+		</section>
+		<!-- Section: Social media -->
+
+		<!-- Section: Links  -->
+		<section class="text-white">
+			<div class="container text-center text-md-start mt-5">
+				<!-- Grid row -->
+				<div class="row mt-3">
+					<!-- Grid column -->
+					<div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+						<!-- Content -->
+						<h6 class="text-uppercase fw-bold mb-4">
+							<i class="fas fa-gem me-3"></i>GreenShare
+						</h6>
+						<p>
+							GreenShare è un azienda che si occupa di Vehicle Sharing con rispetto per l'ambiente, infatti puntiamo molto
+							sui mezzi elettrici ed ibridi a basso consumo di emissioni di CO2. L'azienda vanta più di 210 sedi in
+							tutta Italia e oltre 23Milioni di utenti.
+						</p>
+					</div>
+					<!-- Grid column -->
+
+					<!-- Grid column -->
+					<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+						<!-- Links -->
+
+						<h6 class="text-uppercase fw-bold mb-4">
+							Prodotti
+						</h6>
+						<p class="zoom2">
+							<a href="#!" class="text-reset">Auto elettriche</a>
+						</p>
+						<p class="zoom2">
+							<a href="#!" class="text-reset">Auto</a>
+						</p>
+						<p class="zoom2">
+							<a href="#!" class="text-reset">Monopattini</a>
+						</p>
+						<p class="zoom2">
+							<a href="#!" class="text-reset">Biciclette</a>
+						</p>
+
+					</div>
+
+
+					<!-- Grid column -->
+					<div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+						<!-- Links -->
+						<h6 class="text-uppercase fw-bold mb-4">
+							Contatti
+						</h6>
+						<p><i class="fas fa-home me-3"></i> Sede principale: Torino, TO 10141,IT</p>
+						<p>
+							<i class="fas fa-envelope me-3"></i> GreenShareSrl@azienda.com
+						</p>
+						<p><i class="fas fa-phone me-3"></i> + 011 234 5678</p>
+						<p><i class="fas fa-print me-3"></i> + 011 344 5679</p>
+					</div>
+					<!-- Grid column -->
+				</div>
+				<!-- Grid row -->
+			</div>
+		</section>
+		<!-- Section: Links  -->
+
+		<!-- Copyright -->
+		<div class="text-center text-white p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+			© 2021 Copyright
+			<a class="text-reset fw-bold" href="https://mdbootstrap.com/">GreenShare.com</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+	<!-- Imported scripts -->
+	<script type="text/javascript" src="js/mdb.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
+		integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
+	<!-- Custom scripts -->
+	<script type="text/javascript"></script>
+	<script>
+		var myChart;
+
+		const defaultData = {
+			labels: [
+				'Risparmio CO2',
+				'Praticità',
+				'Riciclabilità',
+				'Convenienza al Km',
+				'Sicurezza'
+			],
+			datasets: [{
+				label: 'Auto Elettrica',
+				data: [0, 0, 0, 0, 0],
+				backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(75, 192, 192)',
+					'rgb(255, 205, 86)',
+					'rgb(201, 203, 207)',
+					'rgb(54, 162, 235)'
+				]
+			}]
+		};
+		const defaultConfig = {
+			type: 'polarArea',
+			data: defaultData,
+			options: {}
+		};
+
+		myChart = new Chart(
+			document.getElementById('myChart'),
+			defaultConfig
+		);
+
+		const carData = {
+			labels: [
+				'Risparmio CO2',
+				'Praticità',
+				'Riciclabilità',
+				'Convenienza al Km',
+				'Sicurezza'
+			],
+			datasets: [{
+				label: 'Auto Elettrica',
+				data: [5, 10, 3, 5, 10],
+				backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(75, 192, 192)',
+					'rgb(255, 205, 86)',
+					'rgb(201, 203, 207)',
+					'rgb(54, 162, 235)'
+				]
+			}]
+		};
+		const carConfig = {
+			type: 'polarArea',
+			data: carData,
+			options: {}
+		};
+
+		carCard.onclick = function () {
+			if (myChart) {
+				myChart.destroy();
+			}
+			myChart = new Chart(
+				document.getElementById('myChart'),
+				carConfig
+			);
+		}
+
+		const scooterData = {
+			labels: [
+				'Risparmio CO2',
+				'Praticità',
+				'Riciclabilità',
+				'Convenienza al Km',
+				'Sicurezza'
+			],
+			datasets: [{
+				label: 'Monopattino Elettrico',
+				data: [8, 7, 7, 8, 3],
+				backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(75, 192, 192)',
+					'rgb(255, 205, 86)',
+					'rgb(201, 203, 207)',
+					'rgb(54, 162, 235)'
+				]
+			}]
+		};
+		const scooterConfig = {
+			type: 'polarArea',
+			data: scooterData,
+			options: {}
+		};
+		scooterCard.onclick = function () {
+			if (myChart) {
+				myChart.destroy();
+			}
+			myChart = new Chart(
+				document.getElementById('myChart'),
+				scooterConfig
+			);
+		}
+
+		const bikeData = {
+			labels: [
+				'Risparmio CO2',
+				'Praticità',
+				'Riciclabilità',
+				'Convenienza al Km',
+				'Sicurezza'
+			],
+			datasets: [{
+				label: 'Monopattino Elettrico',
+				data: [10, 8, 10, 10, 5],
+				backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(75, 192, 192)',
+					'rgb(255, 205, 86)',
+					'rgb(201, 203, 207)',
+					'rgb(54, 162, 235)'
+				]
+			}]
+		};
+		const bikeConfig = {
+			type: 'polarArea',
+			data: bikeData,
+			options: {}
+		};
+		bikeCard.onclick = function () {
+			if (myChart) {
+				myChart.destroy();
+			}
+			myChart = new Chart(
+				document.getElementById('myChart'),
+				bikeConfig
+			);
+		}
+
+	</script>
+</body>
+
+</html>

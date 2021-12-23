@@ -1,0 +1,134 @@
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.offcanvas-header {
+    background-color: #00913b;
+    box-shadow: 0 10px 6px -6px gray;
+}
+
+.offcanvas {
+    max-width: 20rem;
+}
+
+.hero {
+    height: 100vh;
+    text-align: center;
+    background-image: url(/immagini/hero2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#heroImg {
+    width: 100%;
+}
+
+.card {
+    cursor: pointer;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.21);
+}
+
+.card:hover {
+    box-shadow: 0px 4px 10px 5px lightgray;
+}
+
+.card img{
+    height: 10rem;
+    width: 15rem;
+}
+
+.card-body {
+    height: 25rem;
+}
+
+.display-1 {
+    line-height: 7rem;
+    color: black;
+}
+
+.heroText {
+    position: absolute;
+    color: white;
+    
+    top:0;
+    left:0;
+
+    width:100%; /*occupa tutto lo spazio del genitore, in altezza e larghezza*/
+    height: 100%;
+}
+
+
+nav {
+    height: 4rem;
+}
+
+.slogan {
+    font-size: 5rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+   }
+    100% {
+        transform: translateX(calc(-250px * 3));
+   }
+}
+.slider {
+    background: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 960px;
+}
+.slider::before, .slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+}
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+.slider::before {
+    left: 0;
+    top: 0;
+}
+.slider .slide-track {
+    animation: scroll 20s linear infinite;
+    display: flex;
+    width: calc(250px * 6);
+}
+.slider .slide {
+    height: 100px;
+    width: 250px;
+}
+
+.navDiv {
+    background-image: url('immagini/nav_map.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 13rem;
+    /* transform: scale(1.3); */
+    background-size: 101%;
+}
+
+a.zoom2 {
+    display: inline-block;
+    text-align: center;
+    transition: 0.8s ease;
+}
+
+a.zoom2:hover {
+    display: inline-block;
+    transform: scale(1.5);
+}

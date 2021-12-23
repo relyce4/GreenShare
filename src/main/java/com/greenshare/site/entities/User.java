@@ -1,8 +1,8 @@
 package com.greenshare.site.entities;
 
-import java.sql.Date;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +20,7 @@ public class User implements UserDetails {
 	private Long id;
 	private String username;
 	private String password;
-	private String email;
-	private Date creationDate;
+	private Date creationDate = new java.util.Date();
 	private String role="ROLE_USER";
 	private Boolean enabled=true;
 
@@ -66,14 +65,6 @@ public class User implements UserDetails {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Date getCreationDate() {

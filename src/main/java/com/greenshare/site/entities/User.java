@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@SuppressWarnings("serial")
 @Entity
 public class User implements UserDetails {
 	@Id
@@ -21,8 +22,8 @@ public class User implements UserDetails {
 	private String username;
 	private String password;
 	private Date creationDate = new java.util.Date();
-	private String role="ROLE_USER";
-	private Boolean enabled=true;
+	private String role = "ROLE_USER";
+	private Boolean enabled = true;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

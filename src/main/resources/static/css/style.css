@@ -4,7 +4,7 @@ body {
 
 .offcanvas-header {
     background-color: #00913b;
-    box-shadow: 0 10px 6px -6px gray;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.07),0 1px 2px 0 rgba(0,0,0,.05);
 }
 
 .offcanvas {
@@ -131,4 +131,19 @@ a.zoom2 {
 a.zoom2:hover {
     display: inline-block;
     transform: scale(1.5);
+}
+
+#myChart {
+    width: 20px !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

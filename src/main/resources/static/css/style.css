@@ -14,7 +14,7 @@ body {
 .hero {
     height: 100vh;
     text-align: center;
-    background-image: url(/immagini/hero2.jpg);
+    background-image: url('/immagini/hero2.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -58,15 +58,14 @@ body {
     height: 100%;
 }
 
-
-nav {
-    height: 4rem;
-}
-
 .slogan {
     font-size: 5rem;
     font-style: italic;
     font-weight: bold;
+}
+
+nav {
+    height: 4rem;
 }
 
 @keyframes scroll {
@@ -114,7 +113,7 @@ nav {
 }
 
 .navDiv {
-    background-image: url('immagini/nav_map.png');
+    background-image: url('/immagini/nav_map.png');
     background-position: center center;
     background-repeat: no-repeat;
     max-width: 13rem;
@@ -185,7 +184,6 @@ a.zoom2:hover {
         padding: .5em;
         margin: .5em;
         font-size: 1em;
-        font-weight: bold;
         transition: all .5s;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -234,7 +232,7 @@ a.zoom2:hover {
         filter: hue-rotate(0deg);
         color: #FFF;
         text-decoration: none;
-        font-weight: bold;
+        /* font-weight: bold; */
       }
 
     /*ROTATE*/
@@ -243,7 +241,7 @@ a.zoom2:hover {
         transform: rotate(360deg);
     }
     .rot-135:hover {
-        filter: hue-rotate(50deg);
+        filter: hue-rotate(90deg);
         color: #FFF;
     }
     .rot-90:hover {
@@ -251,5 +249,31 @@ a.zoom2:hover {
     }
     /*END ROTATE*/
 
+    .btn {
+        font-size: 0.8em;
+    }
+
 /* Button */
+
+/* Shape Divider */
+.custom-shape-divider-top-1640724106 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1640724106 svg {
+    position: relative;
+    display: block;
+    width: calc(106% + 1.3px);
+    height: 184px;
+}
+
+.custom-shape-divider-top-1640724106 .shape-fill {
+    fill: #FFFFFF;
+}
+/* Shape Divider */
 

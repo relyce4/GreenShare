@@ -11,8 +11,14 @@ public class HomeCtrl {
 		return "homepage";
 	}
 	
-	@RequestMapping("admin")
+	@RequestMapping("login")
 	public String admin() {
-		return "";
+		return "login-form";
 	}
+	
+	@RequestMapping("map")
+	public String mappa() {
+		return "map";
+	}
+
 }

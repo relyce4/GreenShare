@@ -1,0 +1,34 @@
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+/* .navDiv {
+    background-image: url('immagini/nav_map.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 13rem;
+    transform: scale(1.3);
+    background-size: 101%;
+} */
+
+a.zoom2 {
+    display: inline-block;
+    text-align: center;
+    transition: 0.8s ease;
+}
+
+a.zoom2:hover {
+    display: inline-block;
+    transform: scale(1.5);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

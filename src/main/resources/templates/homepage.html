@@ -1,117 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Document</title>
+	<title>Greenshare - Home</title>
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-	<!-- Google Fonts Roboto -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-	<!-- MDB -->
-	<link rel="stylesheet" href="css/mdb.min.css" />
+	<link th:replace="fragments/links">
 
-	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/homepage.css" />
 </head>
 
 <body>
-	<header id="mainHeader">
-		<nav class="navbar fixed-top shadow-3-strong navbar-expand-lg navbar-light bg-light">
-			<!-- Container wrapper -->
-			<div class="container">
-				<!-- Navbar brand -->
-				<a class="navbar-brand" href="/">
-					<img src="immagini/logo3.png" class="me-2" height="32" alt="Greenshare Logo" loading="lazy"
-						style="margin-top: -1px" />
-					<span class="text-success">Green</span>Share
-				</a>
+	<div th:replace="fragments/navbar"></div>
 
-				<!-- Toggle button -->
-				<button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas"
-					data-mdb-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<i class="fas fa-bars"></i>
-				</button>
-
-
-				<!-- Collapsible wrapper -->
-				<div class="collapse navbar-collapse" id="navbarButtonsExample">
-					<!-- Left links -->
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					</ul>
-					<!-- Left links -->
-
-					<div class="d-flex align-items-center">
-						<button type="button" class="btn btn-link text-success px-3 me-2">
-							Login
-						</button>
-						<button type="button" class="btn btn-success me-3">
-							Registrati
-						</button>
-						<ul class="navbar-nav">
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle hidden-arrow" href="#" role="button"
-									data-mdb-toggle="dropdown" aria-expanded="false">
-									<i class="fas fa-user text-dark"></i>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-									<li>
-										<a class="dropdown-item" href="#">Il mio profilo</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="#">Logout</a>
-									</li>
-								</ul>
-							</li>
-							<!-- Notification dropdown -->
-						</ul>
-					</div>
-					<!-- Collapsible wrapper -->
-				</div>
-				<!-- Container wrapper -->
-			</div>
-		</nav>
-		<!-- Fine Navbar -->
-	</header>
-
-	<!-- Offcanvas -->
-	<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-		<div class="offcanvas-header">
-			<h5 id="offcanvasRightLabel" class="text-light">Menù</h5>
-			<button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
-		</div>
-		<div class="offcanvas-body">
-			<button type="button" class="btn btn-link text-success">
-				Login
-			</button><br>
-			<button type="button" class="btn btn-link text-success">
-				Registrati
-			</button>
-		</div>
-		<div class="py-2 d-flex justify-content-between align-items-center">
-			<button type="button" class="btn btn-success ms-4">
-				Prenota Ora
-			</button>
-			<div>
-				<!-- Right -->
-				<a href="https://www.facebook.com/carsharingasti" class="me-4 text-reset zoom2">
-					<i class="fab fa-facebook-f"></i>
-				</a>
-				<a href="https://twitter.com/carsharingpa" class="me-4 text-reset zoom2">
-					<i class="fab fa-twitter"></i>
-				</a>
-				<a href="https://www.instagram.com/carsharingasti/" class="me-4 text-reset zoom2">
-					<i class="fab fa-instagram"></i>
-				</a>
-				<!-- Right -->
-			</div>
-		</div>
+	<!-- Shape Divider -->
+	<div class="custom-shape-divider-top-1640724106">
+		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+			<path
+				d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+				opacity=".25" class="shape-fill"></path>
+			<path
+				d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+				opacity=".5" class="shape-fill"></path>
+			<path
+				d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+				class="shape-fill"></path>
+		</svg>
 	</div>
-	<!-- Fine Offcanvas -->
+	<!-- Fine Shape Divider -->
 
 	<!-- Hero -->
 	<section class="hero d-flex justify-content-center align-items-center">
@@ -121,56 +39,103 @@
 	</section>
 	<!-- Fine Hero -->
 
+	<!-- Card -->
 	<section id="statistics" class="text-center">
 		<h2 class="my-4 h1">Riepilogo consumi</h2>
 		<div class="container-fluid">
-			<div class="row d-flex align-items-center">
-				<div class="col-lg-4">
-					<div class="articleImage">
-						<canvas id="myChart"></canvas>
-					</div>
-				</div>
+			<div class="row align-items-center">
 
 				<div class="col-lg-8">
 					<div class="container">
 						<div class="row">
-							<div class="col-xxxl-4 px-md-5">
+							<div class="col-md-4 px-md-2">
 								<div class="card" id="carCard">
 									<div class="card-body">
 										<p>Auto Elettrica</p>
 										<img class="card-img-top img-fluid" src="immagini/toyota_yaris.png" alt="" />
 										<p class="card-text">DESCRIZIONE</p>
-										<a href="#" class="btn btn-success">Prenota!</a>
+										<div class="ctn">
+											<a class="button2 b-green rot-135">Prenota!</a>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xxxl-4 px-md-5">
+							<div class="col-md-4 px-md-2">
 								<div class="card" id="scooterCard">
 									<div class="card-body">
 										<p>Monopattino Elettrico</p>
-										<img class="card-img-top img-fluid" src="immagini/ford_focus_ecoboost.png"
+										<img class="card-img-top img-fluid"
+											src="https://ebikemag.com/wp-content/uploads/2019/11/Aerlang-H6-monopattino-elettrico.jpg"
 											alt="" />
 										<p class="card-text">DESCRIZIONE</p>
-										<a href="#" class="btn btn-success">Prenota!</a>
+										<div class="ctn">
+											<a class="button2 b-green rot-135">Prenota!</a>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xxxl-4 px-md-5">
+							<div class="col-md-4 px-md-2">
 								<div class="card" id="bikeCard">
 									<div class="card-body">
 										<p>Bicicletta</p>
-										<img class="card-img-top img-fluid" src="immagini/toyota_yaris.png" alt="" />
+										<img class="card-img-top img-fluid"
+											src="https://images-ext-1.discordapp.net/external/ggj0KXLbSl4WQOE6sfUoEVobJEqFIrIOfLWRnrSUo3U/%3Frik%3D8jHR6lzROJ7u5A%26riu%3Dhttp%253a%252f%252fupsport.it%252fwp-content%252fuploads%252f2015%252f06%252fBici-Elettrica.jpg%26ehk%3DGu2tZjOYDuwLT6akcT5SI0Kve6rQXFWHipWvPj4nA6Y%253d%26risl%3D%26pid%3DImgRaw%26r%3D0/https/th.bing.com/th/id/R.b8b280d191425b49b1a1722133e71db7?width=781&height=586"
+											alt="" />
 										<p class="card-text">DESCRIZIONE</p>
-										<a href="#" class="btn btn-success">Prenota!</a>
+										<div class="ctn">
+											<a class="button2 b-green rot-135">Prenota!</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+				<div class="col-lg-4" id="contChart">
+					<div class="articleImage d-flex justify-content-center">
+						<canvas id="myChart"></canvas>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>
+	<!-- Card -->
+
+	<!--DESCRIZIONE USO-->
+	<div class="d-flex justify-content-center py-3">
+		<div class="contenitore-descrizione m-4" id="divIstruzioni">
+			<div class="row text-center my-3">
+				<h1><b>CAR SHARING MADE EASY</b></h1>
+			</div>
+
+			<div class="row text-center">
+				<div class="col-4 px-5">
+					<p>REGISTRATI</p>
+					<i class="fas  fa-sign-in-alt fa-5x mb-2"></i>
+					<p>Registrati velocemente premendo il tasto</p>
+				</div>
+				<div class="col-4 px-5">
+					<p>SCEGLI</p>
+					<i class="far fa-hand-pointer fa-5x mb-2"></i>
+					<p>Scegli il mezzo più vicino a te</p>
+				</div>
+				<div class="col-4 px-5">
+					<p>PRENOTA</p>
+					<i class="fas fa-bookmark fa-5x mb-2"></i>
+					<p>Prenota e parti subito</p>
+				</div>
+			</div>
+
+			<div class="row text-center">
+				<div class="ctn my-3">
+					<a class="button2 b-green rot-135">Non hai un account?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- FINE DESCRIZIONE USO-->
 
 	<!-- CAROUSEL -->
 	<div class="slider shadow-0">
@@ -302,7 +267,7 @@
 	</footer>
 
 	<!-- Imported scripts -->
-	<script type="text/javascript" src="js/mdb.min.js"></script>
+	<div th:replace="fragments/scripts"></div>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
 		integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
 	<!-- Custom scripts -->

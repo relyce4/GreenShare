@@ -1,0 +1,98 @@
+<div th:fragment="navbar">
+    <header id="mainHeader">
+        <nav class="navbar fixed-top shadow-3-strong navbar-expand-lg navbar-light bg-light">
+            <!-- Container wrapper -->
+            <div class="container">
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="/">
+                    <img src="immagini/logo3.png" class="me-2" height="32" alt="Greenshare Logo" loading="lazy"
+                        style="margin-top: -1px" />
+                    <span class="text-success">Green</span>Share
+                </a>
+    
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas"
+                    data-mdb-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+    
+    
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                    <!-- Left links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    </ul>
+                    <!-- Left links -->
+    
+                    <div class="d-flex align-items-center">
+                        <div class="ctn">
+                            <a class="btn btn-link text-success" href="login-form.html">
+                                Login
+                            </a>
+                        </div>
+                        <div class="ctn">
+                            <a class="button2 b-green rot-135" href="login-form.html">
+                                Registrati
+                            </a>
+                        </div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle hidden-arrow" href="#" role="button"
+                                    data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user text-dark"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Il mio profilo</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Notification dropdown -->
+                        </ul>
+                    </div>
+                    <!-- Collapsible wrapper -->
+                </div>
+                <!-- Container wrapper -->
+        </nav>
+        <!-- Fine Navbar -->
+    </header>
+    
+        <!-- Offcanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel" class="text-light">Menù</h5>
+                <button type="button" class="btn-close text-reset" data-mdb-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <button type="button" class="btn btn-link text-success">
+                    Login
+                </button><br>
+                <button type="button" class="btn btn-link text-success">
+                    Registrati
+                </button>
+            </div>
+            <div class="py-2 d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-success ms-4">
+                    Prenota Ora
+                </button>
+                <div>
+                    <!-- Right -->
+                    <a href="https://www.facebook.com/carsharingasti" class="me-4 text-reset zoom2">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/carsharingpa" class="me-4 text-reset zoom2">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/carsharingasti/" class="me-4 text-reset zoom2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <!-- Right -->
+                </div>
+            </div>
+        </div>
+        <!-- Fine Offcanvas -->
+</div>

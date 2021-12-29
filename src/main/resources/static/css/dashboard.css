@@ -35,14 +35,18 @@ input:focus {
 	border-color: #00b74a;
 }
 
+.input-sign {
+	position: absolute;
+}
+
 .accordion-body {
 	position: relative;
 }
 
-#creationDate {
+/* #creationDate {
 	position: absolute;
 	padding-right: 0.5rem;
 	right: 0;
 	color: gray;
 	font-style: italic;
-}
+} */

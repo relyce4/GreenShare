@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 		User user = repo.findByUsername(username);
 		
 		if(user == null) {
-			throw new UsernameNotFoundException("User " + username + " not found!");
+			throw new UsernameNotFoundException("Utente " + username + " non trovato");
 		}
 
 		return user;

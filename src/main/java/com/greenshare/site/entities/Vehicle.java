@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Vehicle {
 	@Id
@@ -21,6 +23,7 @@ public class Vehicle {
 	private int battery;
 	private int maxAutonomy;
 	private int pricePerMinute;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date creationDate = new java.util.Date();
 	@OneToOne
 	@JoinColumn(name = "id_user")

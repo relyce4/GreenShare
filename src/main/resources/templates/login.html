@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>GreenShare - Registrazione</title>
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+	<!-- Google Fonts Roboto -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<!-- Google Fonts Playfair Display -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap"
+		rel="stylesheet">
+	<!-- MDB -->
+	<link rel="stylesheet" href="css/mdb.min.css" />
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/login-form.css">
+
+</head>
+
+<body>
+
+
+	<!-- Form -->
+	<div class="container">
+		<section id="formHolder">
+
+			<div class="row">
+
+				<!-- Brand Box -->
+				<div class="col-md-6 brand">
+
+					<div class="heading">
+						<div class="row">
+							<h2><a class="text-success">Green</a>Share</h2>
+						</div>
+						<p>
+							Consume Less<br>
+							Share More
+						</p>
+					</div>
+
+					<div class="success-msg">
+						<p>Bene! Sei uno dei nostri membri ora!</p>
+						<a href="#" class="profile">Il Mio Profilo</a>
+					</div>
+				</div>
+
+
+				<!-- Form Box -->
+				<div class="col-sm-6 form">
+
+					<!-- Login Form -->
+					<div class="login form-peice">
+						<form class="login-form" action="/login" method="POST">
+							<span class="text-danger" th:if="${wrongCredentials}">Credenziali errate</span>
+							<div class="form-group">
+								<label for="username">Indirizzo Email</label>
+								<input type="email" name="username" id="username" class="email" required>
+							</div>
+
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" name="password" id="password" class="password" required>
+							</div>
+
+							<div class="CTA">
+								<button type="submit" class="btn btn-success me-4">Login</button>
+								<a href="/register" class="switch">Non ho un account</a>
+							</div>
+						</form>
+					</div><!-- End Login Form -->
+				</div>
+			</div>
+
+		</section>
+
+	</div>
+	<!-- Form -->
+
+	<!-- Imports -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+	<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+	<script src="js/mdb.min.js"></script>
+
+	<script>
+		/*global $, document, window, setTimeout, navigator, console, location*/
+		$(document).ready(function () {
+			$("input").val("");
+
+			'use strict';
+
+			var usernameError = true,
+				emailError = true,
+				passwordError = true,
+				passConfirm = true;
+
+			// Detect browser for css purpose
+			if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+				$('.form form label').addClass('fontSwitch');
+			}
+
+			// Label effect
+			$('input').focus(function () {
+				$(this).siblings('label').addClass('active');
+			});
+
+			// Form validation
+			$('input').blur(function () {
+
+				// User Name
+				// if ($(this).hasClass('name')) {
+				// 	if ($(this).val().length === 0) {
+				// 		$(this).siblings('span.error').text('Please type your full name').fadeIn().parent('.form-group').addClass('hasError');
+				// 		usernameError = true;
+				// 	} else if ($(this).val().length > 1 && $(this).val().length <= 6) {
+				// 		$(this).siblings('span.error').text('Please type at least 6 characters').fadeIn().parent('.form-group').addClass('hasError');
+				// 		usernameError = true;
+				// 	} else {
+				// 		$(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+				// 		usernameError = false;
+				// 	}
+				// }
+
+				// Email
+				// if ($(this).hasClass('email')) {
+				// 	if ($(this).val().length == '') {
+				// 		$(this).siblings('span.error').text('Please type your email address').fadeIn().parent('.form-group').addClass('hasError');
+				// 		emailError = true;
+				// 	} else {
+				// 		$(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+				// 		emailError = false;
+				// 	}
+				// }
+
+				// PassWord
+				// if ($(this).hasClass('password')) {
+				// 	if ($(this).val().length < 8) {
+				// 		$(this).siblings('span.error').text('Please type at least 8 charcters').fadeIn().parent('.form-group').addClass('hasError');
+				// 		passwordError = true;
+				// 	} else {
+				// 		$(this).siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+				// 		passwordError = false;
+				// 	}
+				// }
+
+				// PassWord confirmation
+				// if ($('.pass').val() !== $('.passConfirm').val()) {
+				// 	$('.passConfirm').siblings('.error').text('Passwords don\'t match').fadeIn().parent('.form-group').addClass('hasError');
+				// 	passConfirm = false;
+				// } else {
+				// 	$('.passConfirm').siblings('.error').text('').fadeOut().parent('.form-group').removeClass('hasError');
+				// 	passConfirm = false;
+				// }
+
+				// label effect
+				if ($(this).val().length > 0) {
+					$(this).siblings('label').addClass('active');
+				} else {
+					$(this).siblings('label').removeClass('active');
+				}
+
+			});
+
+
+			// form switch
+			// $('a.switch').click(function (e) {
+			// 	$(this).toggleClass('active');
+			// 	e.preventDefault();
+
+			// 	if ($('a.switch').hasClass('active')) {
+			// 		$(this).parents('.form-peice').addClass('switched').siblings('.form-peice').removeClass('switched');
+			// 	} else {
+			// 		$(this).parents('.form-peice').removeClass('switched').siblings('.form-peice').addClass('switched');
+			// 	}
+			// });
+
+
+			// Form submit
+			// $('form.signup-form').submit(function (event) {
+			// 	event.preventDefault();
+
+			// 	if (usernameError == true || emailError == true || passwordError == true || passConfirm == true) {
+			// 		$('.name, .email, .pass, .passConfirm').blur();
+			// 	} else {
+			// 		$('.signup, .login').addClass('switched');
+
+			// 		setTimeout(function () { $('.signup, .login').hide(); }, 700);
+			// 		setTimeout(function () { $('.brand').addClass('active'); }, 300);
+			// 		setTimeout(function () { $('.heading').addClass('active'); }, 600);
+			// 		setTimeout(function () { $('.success-msg p').addClass('active'); }, 900);
+			// 		setTimeout(function () { $('.success-msg a').addClass('active'); }, 1050);
+			// 		setTimeout(function () { $('.form').hide(); }, 700);
+			// 	}
+			// });
+
+			// Reload page
+			$('a.profile').on('click', function () {
+				location.reload(true);
+			});
+
+
+		});
+
+
+	</script>
+
+	<!-- Custom scripts -->
+	<script></script>
+
+</body>
+
+</html>

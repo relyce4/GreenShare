@@ -27,29 +27,29 @@ public class SecurityCtrl {
 	@GetMapping("/login")
 	public String loginForm(@RequestParam(required = false) String error, Model model) {
 		if("true".equals(error)) {
-			model.addAttribute("message", true);
+			model.addAttribute("wrongCredentials", true);
 		}
 		
-		return "login-registration";
+		return "login";
 	}
 	
 	@GetMapping("/register")
 	public String registrazioneForm(RegistrationForm form, Model model) {
-		return "registration-form";
+		return "register";
 	}
 	
 	@PostMapping("/register")
 	public String registrazione(@Valid RegistrationForm form, BindingResult error, Model model) {
 		
 		if(error.hasErrors()) {
-			return "registration-form";
+			return "register";
 		}
 		
 		User esiste = userService.getUserByUsername(form.getUsername());
 		if(esiste != null) {
 			error.addError(new FieldError("username","username", "Email già in uso"));
 			
-			return "registration-form";
+			return "register";
 		}
 		
 		User user = form.toUser(passwordEncoder);

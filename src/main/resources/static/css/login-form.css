@@ -189,7 +189,8 @@ section#formHolder {
       position: absolute;
       bottom: -20px;
       right: 0;
-      display: none; }
+      /* display: none; */
+     }
     .form form input[type=password] {
       color: #f95959; }
     .form form .CTA {

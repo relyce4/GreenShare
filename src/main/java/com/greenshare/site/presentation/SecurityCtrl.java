@@ -30,7 +30,7 @@ public class SecurityCtrl {
 			model.addAttribute("message", true);
 		}
 		
-		return "login-form";
+		return "login-registration";
 	}
 	
 	@GetMapping("/register")

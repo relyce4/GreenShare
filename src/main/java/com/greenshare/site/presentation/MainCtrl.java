@@ -23,6 +23,16 @@ public class MainCtrl {
 	@Autowired
 	VehicleService vehicleService;
 	
+	@ModelAttribute
+	public void addAttributes(Model model) {
+		Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (user != "anonymousUser") {
+			User loggedUser = (User) user;
+			model.addAttribute("loggedUser", loggedUser);
+		}
+	}
+
 	@GetMapping
 	public String home() {
 		return "homepage";
@@ -31,9 +41,7 @@ public class MainCtrl {
 	@GetMapping("dashboard")
 	public String dashboard(HttpServletRequest request, Model model) {
 		List<Vehicle> vehicles = vehicleService.getVehicles();
-		User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		model.addAttribute("loggedUser", loggedUser);
+
 		model.addAttribute("vehicles", vehicles);
 		model.addAttribute("vehicleModel", new Vehicle());
 		return "dashboard";

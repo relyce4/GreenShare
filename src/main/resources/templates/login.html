@@ -5,35 +5,21 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta http-equiv="x-ua-compatible" content="ie=edge" />
-	<title>GreenShare - Registrazione</title>
+	<title>GreenShare - Login</title>
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-	<!-- Google Fonts Roboto -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<!-- Google Fonts Playfair Display -->
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600;1,700&display=swap"
-		rel="stylesheet">
-	<!-- MDB -->
-	<link rel="stylesheet" href="css/mdb.min.css" />
-	<!-- Custom CSS -->
+	<link th:replace="fragments/links">
+
 	<link rel="stylesheet" href="css/login-form.css">
-
 </head>
 
-<body>
-
+<body class="body-background">
+	<div th:replace="fragments/navbar"></div>
 
 	<!-- Form -->
 	<div class="container">
 		<section id="formHolder">
 
 			<div class="row">
-
 				<!-- Brand Box -->
 				<div class="col-md-6 brand">
 
@@ -45,11 +31,6 @@
 							Consume Less<br>
 							Share More
 						</p>
-					</div>
-
-					<div class="success-msg">
-						<p>Bene! Sei uno dei nostri membri ora!</p>
-						<a href="#" class="profile">Il Mio Profilo</a>
 					</div>
 				</div>
 
@@ -91,6 +72,7 @@
 	<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 	<script src="js/mdb.min.js"></script>
 
+	<!-- Custom scripts -->
 	<script>
 		/*global $, document, window, setTimeout, navigator, console, location*/
 		$(document).ready(function () {
@@ -170,7 +152,6 @@
 
 			});
 
-
 			// form switch
 			// $('a.switch').click(function (e) {
 			// 	$(this).toggleClass('active');
@@ -203,19 +184,13 @@
 			// });
 
 			// Reload page
-			$('a.profile').on('click', function () {
-				location.reload(true);
-			});
-
-
+			// $('a.profile').on('click', function () {
+			// 	location.reload(true);
+			// });
+			
+			$("#username").focus();
 		});
-
-
 	</script>
-
-	<!-- Custom scripts -->
-	<script></script>
-
 </body>
 
 </html>

@@ -11,16 +11,39 @@
     width: 100%;
 }
 
+.heroText {
+    position: absolute;
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.motto {
+    font-family: 'Roboto Mono';
+    font-size: calc(1.625rem + 4.5vw);
+    font-weight: 300;
+    line-height: 7rem;
+    color: black;
+}
+
+@media(min-width:1200px) {
+    .motto {
+      font-size: 5rem
+    }
+  }
+
 .card {
     cursor: pointer;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.21);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .21);
 }
 
 .card:hover {
     box-shadow: 0px 4px 10px 5px lightgray;
 }
 
-.card img{
+.card img {
     height: 10rem;
     width: 15rem;
 }
@@ -29,37 +52,16 @@
     height: 25rem;
 }
 
-.display-1 {
-    line-height: 7rem;
-    color: black;
-}
-
-.heroText {
-    position: absolute;
-    color: white;
-    
-    top:0;
-    left:0;
-
-    width:100%; /*occupa tutto lo spazio del genitore, in altezza e larghezza*/
-    height: 100%;
-}
-
-.slogan {
-    font-size: 5rem;
-    font-style: italic;
-    font-weight: bold;
-}
-
-
 @keyframes scroll {
     0% {
         transform: translateX(0);
-   }
+    }
+
     100% {
         transform: translateX(calc(-250px * 3));
-   }
+    }
 }
+
 .slider {
     background: white;
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
@@ -67,8 +69,9 @@
     margin: auto;
     overflow: hidden;
     position: relative;
-    width: 960px;
+    max-width: 960px;
 }
+
 .slider::before, .slider::after {
     background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
     content: "";
@@ -77,20 +80,24 @@
     width: 200px;
     z-index: 2;
 }
+
 .slider::after {
     right: 0;
     top: 0;
     transform: rotateZ(180deg);
 }
+
 .slider::before {
     left: 0;
     top: 0;
 }
+
 .slider .slide-track {
     animation: scroll 20s linear infinite;
     display: flex;
     width: calc(250px * 6);
 }
+
 .slider .slide {
     height: 100px;
     width: 250px;
@@ -98,6 +105,7 @@
 
 
 @media (max-width: 992px) {
+
     /* REGOLE PER SMARTPHONE */
     #myChart {
         width: 25rem !important;
@@ -105,141 +113,140 @@
     }
 
     #contChart {
-        margin: 2rem;
+        padding: 2rem;
     }
 }
 
-#divIstruzioni {
-    max-width: 60rem;
-    /* justify-content: center; */
+/* Button */
+.button:after {
+    background: #FFF;
 }
 
+.ctn {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
 
-/* Button */
-    /*BODY*/
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
-    .button:after {
-        background: #FFF;
-    }
-    .ctn {
-        display: block;
-        margin: auto;
-        text-align: center;
-    }
+/* Green */
+.b-green, .b-green:before {
+    background: rgba(0, 245, 98, 1);
+    background: -moz-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26, 188, 156, 1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0, 245, 98, 1)), color-stop(100%, rgba(26, 188, 156, 1)));
+    background: -webkit-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26, 188, 156, 1) 100%);
+    background: -o-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26, 188, 156, 1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26, 188, 156, 1) 100%);
+    background: linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26, 188, 156, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#499bea', endColorstr='#1abc9c', GradientType=1);
+}
 
-    /*GREEN*/
-    .b-green, .b-green:before {
-        background: rgba(0, 245, 98, 1);
-        background: -moz-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26,188,156,1) 100%);
-        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(0, 245, 98, 1)), color-stop(100%, rgba(26,188,156,1)));
-        background: -webkit-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26,188,156,1) 100%);
-        background: -o-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26,188,156,1) 100%);
-        background: -ms-linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26,188,156,1) 100%);
-        background: linear-gradient(45deg, rgba(0, 245, 98, 1) 0%, rgba(26,188,156,1) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#1abc9c', GradientType=1 );
-    }
+/* Base Button */
+.button {
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: .5em;
+    margin: .5em;
+    font-size: 1em;
+    /* font-weight: bold; */
+    transition: all .5s;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-    /*BASE BUTTON*/
-    .button {
-        display: inline-block;
-        position: relative;
-        border-radius: 5px;
-        text-decoration: none;
-        padding: .5em;
-        margin: .5em;
-        font-size: 1em;
-        /* font-weight: bold; */
-        transition: all .5s;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    .button:hover {
-        text-shadow: 0px 0px 0px #FFF;
-    }
-    .button:hover:after {
-        left: 100%;
-        top: 100%;
-        bottom: 100%;
-        right: 100%;
-    }
-    .button:before {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-        border-radius: 5px;
-        transition: all .5s;
-    }
-    .button:after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        bottom: 2px;
-        right: 2px;
-        z-index: -1;
-        border-radius: 5px;
-        transition: all .5s;
-    }
+.button:hover {
+    text-shadow: 0px 0px 0px #FFF;
+}
 
-    .button2 {
-        display: inline-block;
-        font-size: 1em;
-        margin: .5em;
-        padding: .5em;
-        border-radius: 5px;
-        transition: all .5s;
-        filter: hue-rotate(0deg);
-        color: #FFF;
-        text-decoration: none;
-        /* font-weight: bold; */
-      }
+.button:hover:after {
+    left: 100%;
+    top: 100%;
+    bottom: 100%;
+    right: 100%;
+}
 
-    /*ROTATE*/
-    .rot-360-noscoop:hover {
-        filter: hue-rotate(360deg);
-        transform: rotate(360deg);
-    }
-    .rot-135:hover {
-        filter: hue-rotate(90deg);
-        color: #FFF;
-    }
-    .rot-90:hover {
-        filter: hue-rotate(90deg);
-    }
-    /*END ROTATE*/
+.button:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 5px;
+    transition: all .5s;
+}
 
-    .btn {
-        font-size: 0.8em;
-    }
+.button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    bottom: 2px;
+    right: 2px;
+    z-index: -1;
+    border-radius: 5px;
+    transition: all .5s;
+}
 
-/* Button */
+.button2 {
+    display: inline-block;
+    font-size: 1em;
+    margin: .5em;
+    padding: .5em;
+    border-radius: 5px;
+    transition: all .5s;
+    filter: hue-rotate(0deg);
+    color: #FFF;
+    text-decoration: none;
+    /* font-weight: bold; */
+}
+
+/* Rotate */
+.rot-360-noscoop:hover {
+    filter: hue-rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.rot-135:hover {
+    filter: hue-rotate(90deg);
+    color: #FFF;
+}
+
+.rot-90:hover {
+    filter: hue-rotate(90deg);
+}
+
+/* End Rotate */
+
+.btn {
+    font-size: 0.8em;
+}
+
+/* End Button */
 
 /* Shape Divider */
-.custom-shape-divider-top-1640724106 {
+.custom-shape-divider-top-1641057743 {
     position: absolute;
-    top: 0;
+    top: 4rem;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
 }
 
-.custom-shape-divider-top-1640724106 svg {
+.custom-shape-divider-top-1641057743 svg {
     position: relative;
     display: block;
-    width: calc(106% + 1.3px);
-    height: 184px;
+    width: calc(100% + 1.3px);
+    height: 68px;
 }
 
-.custom-shape-divider-top-1640724106 .shape-fill {
-    fill: #FFFFFF;
+.custom-shape-divider-top-1641057743 .shape-fill {
+    fill: #FBFBFB;
 }
 /* Shape Divider */

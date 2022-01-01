@@ -1,7 +1,3 @@
-body {
-	background-image: url(/immagini/banner.png);
-}
-
 main {
 	margin-top: 4rem;
 }
@@ -23,10 +19,14 @@ img {
     transform: rotate(-180deg)
 }
 
+#new-accordion-item {
+	display: none;
+}
+
 input {
 	border: 0;
 	margin-right: 0.5rem;
-	border-bottom: 2px solid lightgray;
+	border-bottom: 1px solid lightgray;
 	outline: 0;
 }
 

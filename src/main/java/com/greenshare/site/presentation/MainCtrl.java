@@ -2,8 +2,6 @@ package com.greenshare.site.presentation;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -39,17 +37,28 @@ public class MainCtrl {
 	}
 	
 	@GetMapping("dashboard")
-	public String dashboard(HttpServletRequest request, Model model) {
+	public String dashboard(Model model) {
 		List<Vehicle> vehicles = vehicleService.getVehicles();
 
 		model.addAttribute("vehicles", vehicles);
 		model.addAttribute("vehicleModel", new Vehicle());
+		
 		return "dashboard";
 	}
 	
 	@PostMapping("update/vehicle")
 	public String dashboard(@ModelAttribute Vehicle vehicle, Model model) {
 		vehicleService.updateVehicle(vehicle);
+
 		return "redirect:/dashboard";
+	}
+
+	@GetMapping("map")
+	public String map(Model model) {
+		List<Vehicle> vehicles = vehicleService.getVehicles();
+
+		model.addAttribute("vehicles", vehicles);
+
+		return "map";
 	}
 }

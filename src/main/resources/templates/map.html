@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greenshare - Home</title>
+
+    <link th:replace="fragments/links">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="css/map.css" />
+</head>
+
+<body>
+    <div class="vh-100">
+        <div th:replace="fragments/navbar"></div>
+
+        <main class="position-relative">
+            <div id="map"></div>
+            <div class="position-absolute left-0 top-0 bg-light shadow-3-strong" id="sidebar">
+                <ul class="list-unstyled p-2" id="vehicleList">
+                    <!-- <th:block th:each="vehicle : ${vehicles}" th:object="${vehicle}">
+                        <li class="vehicleLI rounded p-3 mb-2"><img src="/immagini/toyota_yaris.png" alt="">
+                            <p class="fw-bold m-0" th:text="*{description}"></p>
+                            <p class="m-0" th:text="*{currentLocation}"></p>
+                        </li>
+                    </th:block> -->
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer th:replace="fragments/footer"></footer>
+
+    <!-- Imported scripts -->
+    <div th:replace="fragments/scripts"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
+        integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v2.0.0/dist/bundle.js"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom scripts -->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+        var vehicles = /*[[${vehicles}]]*/'';
+        /*]]>*/
+
+        var coordinates;
+        var markers = {};
+
+        $.ajax({
+            url: location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + "centro di torino",
+            success: function (data) {
+                coordinates = L.latLng(data[0].boundingbox[0], data[0].boundingbox[2]);
+            },
+            async: false
+        });
+
+        var map = L.map('map').setView(coordinates, 13);
+
+        var markerIcon = L.icon({
+            iconUrl: 'immagini/marker.svg',
+
+            iconSize: [25, 39],
+            iconAnchor: [12.5, 39],
+            popupAnchor: [0, -39]
+        });
+
+        vehicles.forEach(vehicle => {
+            markers[vehicle.id] = L.marker(vehicle.currentLocation.split(';'), { icon: markerIcon }).addTo(map);
+            markers[vehicle.id].bindPopup(vehicle.description);
+
+            var vehicleLI = $(`
+                <li class="vehicleLI rounded p-3 mb-2">
+                    <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
+                    <p class="m-0">${vehicle.currentLocation}</p>
+                </li>
+            `)
+
+            $(vehicleLI).on("click", function () {
+                map.flyTo(vehicle.currentLocation.split(";"), 14);
+
+                for (const key in markers) {
+                    markers[key].getElement().style.filter = 'contrast(0)';
+                }
+                markers[vehicle.id].getElement().style.filter = 'invert(0)';
+            });
+
+            $(vehicleLI).on("mouseenter", function () {
+                markers[vehicle.id].bounce();
+            });
+
+            $(vehicleLI).on("mouseleave", function () {
+                markers[vehicle.id].stopBouncing();
+            });
+
+            $("#vehicleList").append(vehicleLI);
+        });
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoicmVseWNlNCIsImEiOiJja3h0M2E4ejYyZm41Mm9rb245bTg4cTBwIn0.2Tm-WPxGl7aDaKCiQk088A'
+        }).addTo(map);
+    </script>
+</body>

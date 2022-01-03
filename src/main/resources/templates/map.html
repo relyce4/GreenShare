@@ -68,7 +68,7 @@
         var map = L.map('map').setView(coordinates, 13);
 
         var markerIcon = L.icon({
-            iconUrl: 'immagini/marker.svg',
+            iconUrl: 'immagini/green_marker.png',
 
             iconSize: [25, 39],
             iconAnchor: [12.5, 39],
@@ -90,7 +90,7 @@
                 map.flyTo(vehicle.currentLocation.split(";"), 14);
 
                 for (const key in markers) {
-                    markers[key].getElement().style.filter = 'contrast(0)';
+                    markers[key].getElement().style.filter = 'grayscale()';
                 }
                 markers[vehicle.id].getElement().style.filter = 'invert(0)';
             });

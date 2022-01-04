@@ -32,7 +32,7 @@ public class Vehicle {
 	@JoinColumn(name = "id_user")
 	private User createdBy;
 	@OneToMany(mappedBy = "vehicle")
-    Set<Order> orders;
+    Set<Share> orders;
 
 	
 	public int getId() {

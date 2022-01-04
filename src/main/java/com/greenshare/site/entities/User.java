@@ -27,7 +27,7 @@ public class User implements UserDetails {
 	private String role = "ROLE_USER";
 	private Boolean enabled = true;
 	@OneToMany(mappedBy = "user")
-    Set<Order> orders;
+    Set<Share> orders;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

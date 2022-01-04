@@ -28,6 +28,7 @@ input {
 	margin-right: 0.5rem;
 	border-bottom: 1px solid lightgray;
 	outline: 0;
+	padding: 0 2rem;
 }
 
 input:focus {

@@ -47,50 +47,52 @@
 												<input type="text" class="invisible">
 											</div>
 											<div class="mb-4">
-												<span class="position-absolute">#</span>
-												<input type="number" class="text-center" th:value="${vehicle.id}"
-													placeholder="ID" th:disabled="${true}" />
-											</div>
-											<div class="mb-4">
 												<input class="text-center" type="text" name="description"
-													id="description" placeholder="Descrizione"
+													th:id="'description-' + ${vehicle.id}" placeholder="Descrizione"
 													th:value="${vehicle.description}" />
+											</div>
+											<div class="position-relative mb-4">
+												<input class="text-center" type="number" name="maxAutonomy"
+													th:id="'maxAutonomy-' + ${vehicle.id}" placeholder="Autonomia massima"
+													th:value="${vehicle.maxAutonomy}" />
+												<span class="position-absolute end-0 me-2 user-select-none">km</span>
 											</div>
 										</div>
 										<div class="d-flex justify-content-evenly flex-wrap">
-											<div class="position-relative mb-4">
-												<input class="text-center" type="number" name="maxAutonomy"
-													id="maxAutonomy" placeholder="Autonomia massima"
-													th:value="${vehicle.maxAutonomy}" />
-												<span class="position-absolute end-0 me-2">km</span>
-											</div>
 											<div class="mb-4">
 												<input type="text" class="text-center" name="creationDate"
-													id="creationDate"
+													th:id="'creationDate-' + ${vehicle.id}"
 													th:value="${#dates.format(vehicle.creationDate, 'yyyy-MM-dd HH:mm:ss')}"
 													readonly>
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="number" name="pricePerMinute"
-													id="pricePerMinute" placeholder="Prezzo al minuto"
+													th:id="'pricePerMinute-' + ${vehicle.id}" placeholder="Prezzo al minuto"
 													th:value="${vehicle.pricePerMinute}" />
-												<span class="position-absolute end-0 me-2">€</span>
+												<span class="position-absolute end-0 me-2 user-select-none">€</span>
+											</div>
+											<div class="position-relative mb-4">
+												<input class="text-center" type="number" name="battery" th:id="'battery-' + ${vehicle.id}"
+													placeholder="Livello batteria" th:value="${vehicle.battery}" />
+												<span class="position-absolute end-0 me-2 user-select-none">%</span>
 											</div>
 										</div>
 										<div class="d-flex justify-content-evenly flex-wrap">
-											<div class="position-relative mb-4">
-												<input class="text-center" type="number" name="battery" id="battery"
-													placeholder="Livello batteria" th:value="${vehicle.battery}" />
-												<span class="position-absolute end-0 me-2">%</span>
-											</div>
 											<div class="mb-4">
-												<input class="text-center" type="text" name="type" id="type"
+												<input class="text-center" type="text" name="type" th:id="'type-' + ${vehicle.id}"
 													placeholder="Tipo" th:value="${vehicle.type}" />
 											</div>
 											<div class="mb-4">
+												<input class="text-center" type="text" name="coordinates"
+													th:id="'coordinates-' + ${vehicle.id}" placeholder="Posizione attuale"
+													th:value="${vehicle.coordinates}" />
+											</div>
+											<div class="position-relative mb-4">
 												<input class="text-center" type="text" name="currentLocation"
-													id="currentLocation" placeholder="Posizione attuale"
+													th:id="'currentLocation-' + ${vehicle.id}" placeholder="Posizione attuale"
 													th:value="${vehicle.currentLocation}" />
+												<i th:id="'searchCoordinates-' + ${vehicle.id}"
+													class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer user-select-none"></i>
 											</div>
 										</div>
 										<div class="d-flex justify-content-center flex-wrap">
@@ -138,7 +140,7 @@
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newMaxAutonomy"
 												id="newMaxAutonomy" placeholder="Autonomia massima" />
-											<span class="position-absolute end-0 me-2">km</span>
+											<span class="position-absolute end-0 me-2 user-select-none">km</span>
 										</div>
 										<div class="mb-4">
 											<input type="text" class="text-center" name="newCreationDate"
@@ -147,14 +149,14 @@
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newPricePerMinute"
 												id="newPricePerMinute" placeholder="Prezzo al minuto" />
-											<span class="position-absolute end-0 me-2">€</span>
+											<span class="position-absolute end-0 me-2 user-select-none">€</span>
 										</div>
 									</div>
 									<div class="d-flex justify-content-evenly flex-wrap">
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newBattery" id="newBattery"
 												placeholder="Livello batteria" />
-											<span class="position-absolute end-0 me-2">%</span>
+											<span class="position-absolute end-0 me-2 user-select-none">%</span>
 										</div>
 										<div class="mb-4">
 											<input class="text-center" type="text" name="newType" id="newType"
@@ -230,7 +232,7 @@
 			$("#btnAddVehicle").on("click", function () {
 				$("#new-accordion-item").slideToggle(400, function () {
 					var y = $('#new-accordion-item').offset().top - window.innerHeight / 2.5;
-					window.scrollTo({top: y});
+					window.scrollTo({ top: y });
 
 					$("[data-mdb-target='#flush-collapse-new']").click();
 					$("#new-accordion-item").toggleClass("display-none");
@@ -262,6 +264,16 @@
 						});
 					});
 				});
+			});
+			
+			$(".searchCoordinates").on("click", function () {
+				var vehicleId = this.id.split("-")[1];
+				var currentLocation = $("#currentLocation-" + vehicleId).val();
+				if (currentLocation != "") {
+					var coordinates = searchCoordinates(currentLocation);
+					$("#coordinates-" + vehicleId).val(coordinates);
+					console.log('#coordinates-' + vehicleId)
+				}
 			});
 		});
 	</script>

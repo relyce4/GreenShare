@@ -1,3 +1,7 @@
+:root {
+    scroll-behavior: smooth;
+}
+
 main {
     transform: translateY(4rem);
 }
@@ -13,24 +17,32 @@ main {
     overflow-y: auto;
 }
 
-.vehicleLI {
-    border: 1px solid lightgray;
-    transition: all 500ms;
-    user-select: none;
+input {
+	border: 0;
+	outline: 0;
 }
 
-.vehicleLI:hover {
-    border-color: #00b74a;
-    box-shadow: 0px 0px 50px 1px rgba(0,0,0,0.3);
+.vehicleLI {
     cursor: pointer;
+}
+
+.vehicleLI, input {
+    border: 1px solid lightgray;
+    user-select: none;
+    transition: box-shadow 500ms;
+}
+
+.vehicleLI:hover, input:hover {
+    border-color: #00b74a;
+    box-shadow: 0px 0px 30px 1px rgba(0,0,0,0.1);
+}
+
+.vehicleLI.active {
+    border: 2px solid #00b74a;
 }
 
 .vehicleLI .vehicleDescription img {
     width: 32px;
     vertical-align: middle;
     margin-right: 0.5rem;
-}
-
-.leaflet-marker-icon {
-    filter: grayscale();
 }

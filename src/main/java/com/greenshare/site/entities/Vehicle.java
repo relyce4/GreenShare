@@ -18,6 +18,7 @@ public class Vehicle {
 	private int id;
 	private String type;
 	private String description;
+	private String coordinates;
 	private String currentLocation;
 	private String imageUrl;
 	private int battery;
@@ -46,6 +47,12 @@ public class Vehicle {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getCoordinates() {
+		return coordinates;
+	}
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
 	}
 	public String getCurrentLocation() {
 		return currentLocation;

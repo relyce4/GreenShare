@@ -2,6 +2,10 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .body-background {
   background-image: url(/immagini/banner.png);
   background-position: center center;

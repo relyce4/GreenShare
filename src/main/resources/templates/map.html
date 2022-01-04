@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Greenshare - Home</title>
+    <title>Greenshare - Mappa</title>
 
     <link th:replace="fragments/links">
 
@@ -21,14 +21,14 @@
 
         <main class="position-relative">
             <div id="map"></div>
-            <div class="position-absolute left-0 top-0 bg-light shadow-3-strong" id="sidebar">
-                <ul class="list-unstyled p-2" id="vehicleList">
-                    <!-- <th:block th:each="vehicle : ${vehicles}" th:object="${vehicle}">
-                        <li class="vehicleLI rounded p-3 mb-2"><img src="/immagini/toyota_yaris.png" alt="">
-                            <p class="fw-bold m-0" th:text="*{description}"></p>
-                            <p class="m-0" th:text="*{currentLocation}"></p>
-                        </li>
-                    </th:block> -->
+            <div class="position-absolute left-0 top-0 bg-light shadow-3-strong text-center p-2" id="sidebar">
+                <div class="mb-2">
+                    <input type="search" class="rounded w-75 p-1" name="search" id="search" placeholder="Cerca">
+                    <button class="btn btn-success shadow-0">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <ul class="list-unstyled" id="vehicleList">
                 </ul>
             </div>
         </main>
@@ -43,56 +43,70 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/gh/hosuaby/Leaflet.SmoothMarkerBouncing@v2.0.0/dist/bundle.js"
-        crossorigin="anonymous"></script>
+    <script src="js/bouncingMarkers.js"></script>
+    <script src="js/jquery.scrollintoview.min.js"></script>
 
     <!-- Custom scripts -->
     <script th:inline="javascript">
 
+        function clickMarker(markers, id) {
+            markers[id].on("click", function () {
+                $("#vehicle-" + id).scrollintoview();
+                $("#vehicle-" + id).click();
+            });
+        }
+
         /*<![CDATA[*/
         var vehicles = /*[[${vehicles}]]*/'';
         /*]]>*/
-
-        var coordinates;
+        
+        var latLng = searchCoordinates("centro di torino").split(";");
+        var coordinates = L.latLng(latLng[0], latLng[1]);
         var markers = {};
-
-        $.ajax({
-            url: location.protocol + '//nominatim.openstreetmap.org/search?format=json&q=' + "centro di torino",
-            success: function (data) {
-                coordinates = L.latLng(data[0].boundingbox[0], data[0].boundingbox[2]);
-            },
-            async: false
-        });
 
         var map = L.map('map').setView(coordinates, 13);
 
-        var markerIcon = L.icon({
-            iconUrl: 'immagini/green_marker.png',
+        var MarkerIcon = L.Icon.extend({
+            options: {
+                iconSize: [25, 39],
+                iconAnchor: [12.5, 39],
+                popupAnchor: [0, -39]
+            }
+        });
 
-            iconSize: [25, 39],
-            iconAnchor: [12.5, 39],
-            popupAnchor: [0, -39]
+        var grayMarker = new MarkerIcon({
+            iconUrl: 'immagini/gray_marker.png',
+        });
+
+        var greenMarker = new MarkerIcon({
+            iconUrl: 'immagini/green_marker.png',
         });
 
         vehicles.forEach(vehicle => {
-            markers[vehicle.id] = L.marker(vehicle.currentLocation.split(';'), { icon: markerIcon }).addTo(map);
-            markers[vehicle.id].bindPopup(vehicle.description);
-
             var vehicleLI = $(`
-                <li class="vehicleLI rounded p-3 mb-2">
+                <li class="vehicleLI rounded p-3 mb-2" id="vehicle-${vehicle.id}">
                     <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
                     <p class="m-0">${vehicle.currentLocation}</p>
                 </li>
             `)
 
-            $(vehicleLI).on("click", function () {
-                map.flyTo(vehicle.currentLocation.split(";"), 14);
+            markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: grayMarker }).addTo(map);
+            clickMarker(markers, vehicle.id);
+
+            $(vehicleLI).on("click", function (e) {
+                map.flyTo(vehicle.coordinates.split(";"), 14);
+                $(".vehicleLI.active").removeClass("active");
+                $(vehicleLI).addClass("active");
 
                 for (const key in markers) {
-                    markers[key].getElement().style.filter = 'grayscale()';
+                    var coordinates = markers[key]._latlng;
+                    map.removeLayer(markers[key]);
+                    markers[key] = L.marker(coordinates, { icon: grayMarker }).addTo(map);
+                    clickMarker(markers, key);
                 }
-                markers[vehicle.id].getElement().style.filter = 'invert(0)';
+                map.removeLayer(markers[vehicle.id]);
+                markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: greenMarker }).addTo(map);
+                clickMarker(markers, vehicle.id);
             });
 
             $(vehicleLI).on("mouseenter", function () {

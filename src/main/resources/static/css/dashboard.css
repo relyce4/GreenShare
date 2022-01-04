@@ -44,6 +44,14 @@ input:focus {
 	position: relative;
 }
 
+.spinner {
+	display: none;
+	width: 2rem;
+	position: absolute;
+	right: 0;
+	top: -0.5rem;
+}
+
 /* #creationDate {
 	position: absolute;
 	padding-right: 0.5rem;

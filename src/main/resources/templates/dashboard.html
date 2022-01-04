@@ -53,8 +53,8 @@
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="number" name="maxAutonomy"
-													th:id="'maxAutonomy-' + ${vehicle.id}" placeholder="Autonomia massima"
-													th:value="${vehicle.maxAutonomy}" />
+													th:id="'maxAutonomy-' + ${vehicle.id}"
+													placeholder="Autonomia massima" th:value="${vehicle.maxAutonomy}" />
 												<span class="position-absolute end-0 me-2 user-select-none">km</span>
 											</div>
 										</div>
@@ -67,32 +67,37 @@
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="number" name="pricePerMinute"
-													th:id="'pricePerMinute-' + ${vehicle.id}" placeholder="Prezzo al minuto"
+													th:id="'pricePerMinute-' + ${vehicle.id}"
+													placeholder="Prezzo al minuto"
 													th:value="${vehicle.pricePerMinute}" />
 												<span class="position-absolute end-0 me-2 user-select-none">€</span>
 											</div>
 											<div class="position-relative mb-4">
-												<input class="text-center" type="number" name="battery" th:id="'battery-' + ${vehicle.id}"
-													placeholder="Livello batteria" th:value="${vehicle.battery}" />
+												<input class="text-center" type="number" name="battery"
+													th:id="'battery-' + ${vehicle.id}" placeholder="Livello batteria"
+													th:value="${vehicle.battery}" />
 												<span class="position-absolute end-0 me-2 user-select-none">%</span>
 											</div>
 										</div>
 										<div class="d-flex justify-content-evenly flex-wrap">
 											<div class="mb-4">
-												<input class="text-center" type="text" name="type" th:id="'type-' + ${vehicle.id}"
-													placeholder="Tipo" th:value="${vehicle.type}" />
+												<input class="text-center" type="text" name="type"
+													th:id="'type-' + ${vehicle.id}" placeholder="Tipo"
+													th:value="${vehicle.type}" />
 											</div>
-											<div class="mb-4">
+											<div class="position-relative mb-4">
 												<input class="text-center" type="text" name="coordinates"
-													th:id="'coordinates-' + ${vehicle.id}" placeholder="Posizione attuale"
+													th:id="'coordinates-' + ${vehicle.id}" placeholder="Coordinate"
 													th:value="${vehicle.coordinates}" />
+												<img class="spinner" src="immagini/spinner.gif" alt="">
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="text" name="currentLocation"
-													th:id="'currentLocation-' + ${vehicle.id}" placeholder="Posizione attuale"
+													th:id="'currentLocation-' + ${vehicle.id}"
+													placeholder="Posizione attuale"
 													th:value="${vehicle.currentLocation}" />
 												<i th:id="'searchCoordinates-' + ${vehicle.id}"
-													class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer user-select-none"></i>
+													class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer-cursor user-select-none"></i>
 											</div>
 										</div>
 										<div class="d-flex justify-content-center flex-wrap">
@@ -128,20 +133,16 @@
 											<input type="text" class="invisible">
 										</div>
 										<div class="mb-4">
-											<span class="position-absolute">#</span>
-											<input type="number" class="text-center" placeholder="ID" disabled />
-										</div>
-										<div class="mb-4">
 											<input class="text-center" type="text" name="newDescription"
 												id="newDescription" placeholder="Descrizione" />
 										</div>
-									</div>
-									<div class="d-flex justify-content-evenly flex-wrap">
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newMaxAutonomy"
 												id="newMaxAutonomy" placeholder="Autonomia massima" />
 											<span class="position-absolute end-0 me-2 user-select-none">km</span>
 										</div>
+									</div>
+									<div class="d-flex justify-content-evenly flex-wrap">
 										<div class="mb-4">
 											<input type="text" class="text-center" name="newCreationDate"
 												id="newCreationDate" value="yyyy-MM-dd" disabled>
@@ -151,20 +152,27 @@
 												id="newPricePerMinute" placeholder="Prezzo al minuto" />
 											<span class="position-absolute end-0 me-2 user-select-none">€</span>
 										</div>
-									</div>
-									<div class="d-flex justify-content-evenly flex-wrap">
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newBattery" id="newBattery"
 												placeholder="Livello batteria" />
 											<span class="position-absolute end-0 me-2 user-select-none">%</span>
 										</div>
+									</div>
+									<div class="d-flex justify-content-evenly flex-wrap">
 										<div class="mb-4">
 											<input class="text-center" type="text" name="newType" id="newType"
 												placeholder="Tipo" />
 										</div>
-										<div class="mb-4">
+										<div class="position-relative mb-4">
+											<input class="text-center" type="text" name="newCoordinates"
+												id="newCoordinates" placeholder="Coordinate" />
+											<img class="spinner" src="immagini/spinner.gif" alt="">
+										</div>
+										<div class="position-relative mb-4">
 											<input class="text-center" type="text" name="newCurrentLocation"
 												id="newCurrentLocation" placeholder="Posizione attuale" />
+											<i id="newSearchCoordinates"
+												class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer-cursor user-select-none"></i>
 										</div>
 									</div>
 									<div class="d-flex justify-content-center">
@@ -214,6 +222,12 @@
 		var loggedUser = /*[[${loggedUser}]]*/'';
 		/*]]>*/
 
+		$(document).bind('ajaxStart', function () {
+			$(".spinner").show();
+		}).bind('ajaxStop', function () {
+			$(".spinner").hide();
+		});
+
 		$().ready(function () {
 			var vehicleId;
 			$(".btnDeleteVehicle").on("click", function () {
@@ -245,6 +259,7 @@
 							id: null,
 							type: $("#newType").val(),
 							description: $("#newDescription").val(),
+							coordinates: $("#newCoordinates").val(),
 							currentLocation: $("#newCurrentLocation").val(),
 							imageUrl: null,
 							battery: $("#newBattery").val(),
@@ -265,14 +280,23 @@
 					});
 				});
 			});
-			
+
 			$(".searchCoordinates").on("click", function () {
 				var vehicleId = this.id.split("-")[1];
 				var currentLocation = $("#currentLocation-" + vehicleId).val();
 				if (currentLocation != "") {
 					var coordinates = searchCoordinates(currentLocation);
 					$("#coordinates-" + vehicleId).val(coordinates);
-					console.log('#coordinates-' + vehicleId)
+					console.log("#coordinates" - + vehicleId);
+				}
+			});
+
+			$("#newSearchCoordinates").on("click", function () {
+				var currentLocation = $("#newCurrentLocation").val();
+				if (currentLocation != "") {
+					var coordinates = searchCoordinates(currentLocation);
+					$("#newCoordinates").val(coordinates);
+					console.log("#newCoordinates");
 				}
 			});
 		});

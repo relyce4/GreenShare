@@ -3,11 +3,13 @@ package com.greenshare.site.entities;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +26,8 @@ public class User implements UserDetails {
 	private Date creationDate = new java.util.Date();
 	private String role = "ROLE_USER";
 	private Boolean enabled = true;
+	@OneToMany(mappedBy = "user")
+    Set<Order> orders;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

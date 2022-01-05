@@ -1,6 +1,8 @@
 package com.greenshare.site.entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -32,8 +34,7 @@ public class Vehicle {
 	@JoinColumn(name = "id_user")
 	private User createdBy;
 	@OneToMany(mappedBy = "vehicle")
-    Set<Share> orders;
-
+    private Set<Rent> rents = new HashSet<>();
 	
 	public int getId() {
 		return id;

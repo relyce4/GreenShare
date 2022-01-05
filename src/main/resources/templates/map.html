@@ -21,12 +21,39 @@
 
         <main class="position-relative">
             <div id="map"></div>
-            <div class="position-absolute left-0 top-0 bg-light shadow-3-strong text-center p-2" id="sidebar">
-                <div class="mb-2">
-                    <input type="search" class="rounded w-75 p-1" name="search" id="search" placeholder="Cerca">
-                    <button class="btn btn-success shadow-0">
-                        <i class="fas fa-search"></i>
-                    </button>
+            <div class="position-absolute left-0 top-0 bg-light shadow-3-strong p-2" id="sidebar">
+                <div class="my-2 text-center">
+                    <div class="mb-2">
+                        <input type="search" class="rounded w-75 p-1 me-2" id="search" placeholder="Cerca">
+                    </div>
+                    <div class="p-1">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" checked="checked" id="checkAutomobile" />
+                            <label class="form-check-label" for="checkAutomobile">
+                                <i class="fas fa-car"></i>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" checked="checked" id="checkMonopattino" />
+                            <label class="form-check-label" for="checkMonopattino">
+                                <img src="immagini/kick_scooter.png" alt="" style="width: 1rem;">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" checked="checked" id="checkBicicletta" />
+                            <label class="form-check-label" for="checkBicicletta">
+                                <i class="fas fa-bicycle"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="reset" id="btnReset" class="btn btn-sm btn-warning">
+                            Reset
+                        </button>
+                        <button class="btn btn-sm btn-success shadow-0" id="btnSearch">
+                            Applica filtri
+                        </button>
+                    </div>
                 </div>
                 <ul class="list-unstyled" id="vehicleList">
                 </ul>
@@ -35,6 +62,27 @@
     </div>
 
     <footer th:replace="fragments/footer"></footer>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="d-none" data-mdb-toggle="modal" data-mdb-target="#confermModal"
+        id="btnConfermModal">.</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confermModal" tabindex="-1" aria-labelledby="confermModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confermModalLabel">Prenotazione avvenuta con successo</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <button type="button" class="btn btn-success" data-mdb-dismiss="modal">
+                        Ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Imported scripts -->
     <div th:replace="fragments/scripts"></div>
@@ -48,6 +96,7 @@
 
     <!-- Custom scripts -->
     <script th:inline="javascript">
+        'use strict'
 
         function clickMarker(markers, id) {
             markers[id].on("click", function () {
@@ -58,8 +107,10 @@
 
         /*<![CDATA[*/
         var vehicles = /*[[${vehicles}]]*/'';
+        var rents = /*[[${rents}]]*/'';
+        var loggedUser = /*[[${loggedUser}]]*/'';
         /*]]>*/
-        
+
         var latLng = searchCoordinates("centro di torino").split(";");
         var coordinates = L.latLng(latLng[0], latLng[1]);
         var markers = {};
@@ -82,51 +133,155 @@
             iconUrl: 'immagini/green_marker.png',
         });
 
-        vehicles.forEach(vehicle => {
-            var vehicleLI = $(`
-                <li class="vehicleLI rounded p-3 mb-2" id="vehicle-${vehicle.id}">
-                    <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
-                    <p class="m-0">${vehicle.currentLocation}</p>
+        function generateVehicleLI(vehicleList) {
+            $("#vehicleList").html("");
+            if (!$.isEmptyObject(markers)) {
+                for (const key in markers) {
+                    map.removeLayer(markers[key])
+                }
+            }
+
+            if (!$.isEmptyObject(vehicleList)) {
+                vehicleList.forEach(vehicle => {
+                    var vehicleLI = $(`
+                <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${vehicle.id}">
+                    <div>
+                        <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
+                        <p class="m-0">${vehicle.currentLocation}</p>
+                    </div>
+                    <div>
+                        <button class="btnRent btn btn-sm btn-success">Prenota</button>
+                    </div>
                 </li>
             `)
 
-            markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: grayMarker }).addTo(map);
-            clickMarker(markers, vehicle.id);
+                    markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: grayMarker }).addTo(map);
+                    clickMarker(markers, vehicle.id);
 
-            $(vehicleLI).on("click", function (e) {
-                map.flyTo(vehicle.coordinates.split(";"), 14);
-                $(".vehicleLI.active").removeClass("active");
-                $(vehicleLI).addClass("active");
+                    $(vehicleLI).on("click", function (e) {
+                        map.flyTo(vehicle.coordinates.split(";"), 14);
+                        $(".vehicleLI.active").removeClass("active");
+                        $(".btnRent").fadeOut(100);
+                        $(vehicleLI).addClass("active");
+                        $(vehicleLI).find(".btnRent").fadeIn(500);
 
-                for (const key in markers) {
-                    var coordinates = markers[key]._latlng;
-                    map.removeLayer(markers[key]);
-                    markers[key] = L.marker(coordinates, { icon: grayMarker }).addTo(map);
-                    clickMarker(markers, key);
+                        for (const key in markers) {
+                            var coordinates = markers[key]._latlng;
+                            map.removeLayer(markers[key]);
+                            markers[key] = L.marker(coordinates, { icon: grayMarker }).addTo(map);
+                            clickMarker(markers, key);
+                        }
+                        map.removeLayer(markers[vehicle.id]);
+                        markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: greenMarker }).addTo(map);
+                        clickMarker(markers, vehicle.id);
+                    });
+
+                    var timeoutId;
+                    $(vehicleLI).hover(function () {
+                        if (!timeoutId) {
+                            timeoutId = window.setTimeout(function () {
+                                timeoutId = null;
+                                markers[vehicle.id].bounce();
+                            }, 100);
+                        }
+                    },
+                        function () {
+                            if (timeoutId) {
+                                window.clearTimeout(timeoutId);
+                                timeoutId = null;
+                            }
+                            else {
+                                markers[vehicle.id].stopBouncing();
+                            }
+                        });
+
+                    $(vehicleLI).find(".btnRent").on("click", function () {
+                        var rent = {
+                            id: null,
+                            user: loggedUser,
+                            vehicle: vehicle,
+                            startTime: dayjs().format(),
+                            endTime: null
+                        }
+
+                        $.ajax({
+                            url: "api/rents/add",
+                            type: "POST",
+                            contentType: "application/json",
+                            data: JSON.stringify(rent),
+                            success: function (data) {
+                                $("#btnConfermModal").click();
+                            }
+                        });
+                    });
+
+                    $("#vehicleList").append(vehicleLI);
+                });
+            }
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoicmVseWNlNCIsImEiOiJja3h0M2E4ejYyZm41Mm9rb245bTg4cTBwIn0.2Tm-WPxGl7aDaKCiQk088A'
+            }).addTo(map);
+        }
+
+        generateVehicleLI(vehicles);
+
+        const filterVehiclesByText = (vehicleList, searchText) => {
+            return vehicleList.filter(vehicle =>
+                vehicle.description.toLowerCase().includes(searchText.toLowerCase()) ||
+                vehicle.currentLocation.toLowerCase().includes(searchText.toLowerCase()));
+        };
+
+        const filterVehiclesByType = (vehicleList, includeAutomobile, includeMonopattino, includeBicicletta) => {
+            var result = [];
+            if (includeAutomobile) {
+                var filteredList = vehicleList.filter(vehicle => vehicle.type.toLowerCase().includes("automobile"));
+                if (!$.isEmptyObject(filteredList)) {
+                    result.push(...filteredList);
                 }
-                map.removeLayer(markers[vehicle.id]);
-                markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: greenMarker }).addTo(map);
-                clickMarker(markers, vehicle.id);
-            });
+            }
+            if (includeMonopattino) {
+                var filteredList = vehicleList.filter(vehicle => vehicle.type.toLowerCase().includes("monopattino"));
+                if (!$.isEmptyObject(filteredList)) {
+                    result.push(...filteredList);
+                }
+            }
+            if (includeBicicletta) {
+                var filteredList = vehicleList.filter(vehicle => vehicle.type.toLowerCase().includes("bicicletta"));
+                if (!$.isEmptyObject(filteredList)) {
+                    result.push(filteredList);
+                }
+            }
 
-            $(vehicleLI).on("mouseenter", function () {
-                markers[vehicle.id].bounce();
-            });
+            return result;
+        }
 
-            $(vehicleLI).on("mouseleave", function () {
-                markers[vehicle.id].stopBouncing();
-            });
-
-            $("#vehicleList").append(vehicleLI);
+        $("#btnSearch").on("click", function () {
+            var searchText = $("#search").val();
+            if (searchText.trim() != "") {
+                var vehicleList;
+                vehicleList = filterVehiclesByText(vehicles, searchText);
+                vehicleList = filterVehiclesByType(vehicleList, $("#checkAutomobile").is(":checked"), $("#checkMonopattino").is(":checked"), $("#checkBicicletta").is(":checked"));
+                generateVehicleLI(vehicleList);
+            }
         });
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoicmVseWNlNCIsImEiOiJja3h0M2E4ejYyZm41Mm9rb245bTg4cTBwIn0.2Tm-WPxGl7aDaKCiQk088A'
-        }).addTo(map);
+        $("#search").keypress(function (e) {
+            if (e.which == 13) {
+                $("#btnSearch").click();
+            }
+        });
+
+        $("#btnReset").on("click", function () {
+            $("input").val("");
+            $("input[type='checkbox']").prop("checked", "check");
+
+            generateVehicleLI(vehicles);
+        });
     </script>
 </body>

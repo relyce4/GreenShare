@@ -12,43 +12,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greenshare.site.entities.User;
-import com.greenshare.site.service.UserService;
+import com.greenshare.site.entities.Rent;
+import com.greenshare.site.service.RentService;
 
 @RestController
-@RequestMapping("api/users")
-public class UserRestCtrl {
+@RequestMapping("api/rents")
+public class RentRestCtrl {
 
 	@Autowired
-	private UserService service;
+	private RentService service;
 	
 	@GetMapping
-	public List<User> getAll() {
-		return this.service.getUsers();	
+	public List<Rent> getAll() {
+		return this.service.getRents();	
 	}
 	
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable int id) {
-		return this.service.getUserById(id);
-	}
-	
-	@GetMapping("/{username}")
-	public User getByUsername(@PathVariable String username) {
-		return this.service.getUserByUsername(username);
+	public Rent getRentById(@PathVariable int id) {
+		return this.service.getRentById(id);
 	}
 
 	@PostMapping(value = "add", consumes = "application/json")
-	public void addUser(@RequestBody User a) {
-		this.service.addUser(a);
+	public void addRent(@RequestBody Rent rent) {
+		this.service.addRent(rent);
 	}
 
 	@PutMapping(value = "update", consumes = "application/json")
-	public void updateUser (@RequestBody User a) {
-		this.service.updateUser(a);
+	public void updateRent (@RequestBody Rent rent) {
+		this.service.updateRent(rent);
 	}
 	
 	@DeleteMapping(value = "delete/{id}")
-	public void deleteUserById(@PathVariable int id) {
-		this.service.deleteUserById(id);
+	public void deleteRentById(@PathVariable int id) {
+		this.service.deleteRentById(id);
 	}
 }

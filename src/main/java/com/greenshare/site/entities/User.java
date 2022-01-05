@@ -3,6 +3,7 @@ package com.greenshare.site.entities;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -15,21 +16,24 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@SuppressWarnings("serial")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private String username;
 	private String password;
 	private Date creationDate = new java.util.Date();
 	private String role = "ROLE_USER";
 	private Boolean enabled = true;
 	@OneToMany(mappedBy = "user")
-    Set<Share> orders;
+    private Set<Rent> rents = new HashSet<>();
+
 
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return Arrays.asList(new SimpleGrantedAuthority(this.role));
 	}
@@ -64,11 +68,11 @@ public class User implements UserDetails {
 		return this.enabled;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

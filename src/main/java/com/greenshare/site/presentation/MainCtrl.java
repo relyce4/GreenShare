@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.greenshare.site.entities.Rent;
 import com.greenshare.site.entities.User;
 import com.greenshare.site.entities.Vehicle;
+import com.greenshare.site.service.RentService;
 import com.greenshare.site.service.VehicleService;
 
 @Controller
@@ -20,6 +22,9 @@ import com.greenshare.site.service.VehicleService;
 public class MainCtrl {
 	@Autowired
 	VehicleService vehicleService;
+
+	@Autowired
+	RentService rentService;
 	
 	@ModelAttribute
 	public void addAttributes(Model model) {
@@ -56,8 +61,10 @@ public class MainCtrl {
 	@GetMapping("map")
 	public String map(Model model) {
 		List<Vehicle> vehicles = vehicleService.getVehicles();
+		List<Rent> rents = rentService.getRents();
 
 		model.addAttribute("vehicles", vehicles);
+		model.addAttribute("rents", rents);
 
 		return "map";
 	}

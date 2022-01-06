@@ -67,7 +67,7 @@ const carData = {
 const carConfig = {
     type: 'polarArea',
     data: carData,
-    options: {}
+    options: { borderWidth: '1' }
 };
 
 carCard.onclick = function () {
@@ -103,7 +103,7 @@ const scooterData = {
 const scooterConfig = {
     type: 'polarArea',
     data: scooterData,
-    options: {}
+    options: {borderWidth: '1' }
 };
 scooterCard.onclick = function () {
     if (myChart) {
@@ -138,7 +138,7 @@ const bikeData = {
 const bikeConfig = {
     type: 'polarArea',
     data: bikeData,
-    options: {}
+    options: { borderWidth: '1'}
 };
 bikeCard.onclick = function () {
     if (myChart) {

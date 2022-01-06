@@ -63,27 +63,6 @@
 
     <footer th:replace="fragments/footer"></footer>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="d-none" data-mdb-toggle="modal" data-mdb-target="#confermModal"
-        id="btnConfermModal">.</button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="confermModal" tabindex="-1" aria-labelledby="confermModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confermModalLabel">Prenotazione avvenuta con successo</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <button type="button" class="btn btn-success" data-mdb-dismiss="modal">
-                        Ok
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Imported scripts -->
     <div th:replace="fragments/scripts"></div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
@@ -93,6 +72,8 @@
         crossorigin=""></script>
     <script src="js/bouncingMarkers.js"></script>
     <script src="js/jquery.scrollintoview.min.js"></script>
+
+
 
     <!-- Custom scripts -->
     <script th:inline="javascript">
@@ -105,11 +86,43 @@
             });
         }
 
+        function getOngoingRents(rentList) {
+            return rentList.filter(rent => rent.endTime == null);
+        }
+
+        function getOngoingRentsByUser(rentList, userId) {
+            return getOngoingRents(rentList).filter(rent => rent.user.id == userId);
+        }
+
+        function getAvailableVehicles(rentList, vehicleList) {
+            var ongoingRents = getOngoingRents(rentList);
+            return vehicleList.filter(function (vehicle) {
+                return !ongoingRents.find(function (rent) {
+                    return vehicle.id == rent.vehicle.id;
+                });
+            });
+        }
+
+        function getUserVehicles(rentList, userId) {
+            var userOngoingRentList = getOngoingRentsByUser(rentList, userId);
+            var userVehicleList = [];
+            for (const key in userOngoingRentList) {
+                if (userOngoingRentList[key].user.id == userId) {
+                    userVehicleList.push(userOngoingRentList[key].vehicle);
+                }
+            }
+            return userVehicleList;
+        }
+
         /*<![CDATA[*/
         var vehicles = /*[[${vehicles}]]*/'';
         var rents = /*[[${rents}]]*/'';
         var loggedUser = /*[[${loggedUser}]]*/'';
         /*]]>*/
+
+        var availableVehicles = getAvailableVehicles(rents, vehicles);
+        var userVehicles = getUserVehicles(rents, loggedUser.id);
+        var userOngoingRents = getOngoingRentsByUser(rents, loggedUser.id);
 
         var latLng = searchCoordinates("centro di torino").split(";");
         var coordinates = L.latLng(latLng[0], latLng[1]);
@@ -133,7 +146,7 @@
             iconUrl: 'immagini/green_marker.png',
         });
 
-        function generateVehicleLI(vehicleList) {
+        function generateVehicleLI(vehicleList, userOngoingRentList) {
             $("#vehicleList").html("");
             if (!$.isEmptyObject(markers)) {
                 for (const key in markers) {
@@ -141,19 +154,73 @@
                 }
             }
 
+            if (!$.isEmptyObject(userOngoingRentList)) {
+                $("#vehicleList").append(`
+                    <div class="d-flex justify-content-center">
+                        <p class="line-text">
+                            <span>Veicoli prenotati</span>
+                        </p>
+                    </div>
+                `);
+
+                userOngoingRentList.forEach(userOngoingRent => {
+                    var userVehicleLI = $(`
+                        <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${userOngoingRent.vehicle.id}">
+                            <div>
+                                <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${userOngoingRent.vehicle.description}</p>
+                            </div>
+                            <div>
+                                <button class="btnEndRent btn btn-sm btn-danger">Termina</button>
+                            </div>
+                        </li>
+                    `);
+
+                    $(userVehicleLI).find(".btnEndRent").on("click", function () {
+                        var rent = {
+                            id: userOngoingRent.id,
+                            user: userOngoingRent.user,
+                            vehicle: userOngoingRent.vehicle,
+                            startTime: userOngoingRent.startTime,
+                            endTime: dayjs().format()
+                        }
+
+                        $.ajax({
+                            url: "api/rents/update",
+                            type: "PUT",
+                            contentType: "application/json",
+                            data: JSON.stringify(rent),
+                            success: function () {
+                                location.href = "map";
+                            }
+                        });
+                    });
+
+                    $("#vehicleList").append(userVehicleLI);
+                });
+            }
+
+            $("#vehicleList").append(`
+                <div class="d-flex justify-content-center">
+                    <p class="line-text">
+                        <span>Veicoli disponibili</span>
+                    </p>
+                </div>
+            `);
+
             if (!$.isEmptyObject(vehicleList)) {
+
                 vehicleList.forEach(vehicle => {
                     var vehicleLI = $(`
-                <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${vehicle.id}">
-                    <div>
-                        <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
-                        <p class="m-0">${vehicle.currentLocation}</p>
-                    </div>
-                    <div>
-                        <button class="btnRent btn btn-sm btn-success">Prenota</button>
-                    </div>
-                </li>
-            `)
+                        <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${vehicle.id}">
+                            <div>
+                                <p class="vehicleDescription fw-bold m-0"><img src="/immagini/toyota_yaris.png" alt="">${vehicle.description}</p>
+                                <p class="m-0">${vehicle.currentLocation}</p>
+                            </div>
+                            <div>
+                                <button class="btnRent btn btn-sm btn-success">Prenota</button>
+                            </div>
+                        </li>
+                    `);
 
                     markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: grayMarker }).addTo(map);
                     clickMarker(markers, vehicle.id);
@@ -209,14 +276,20 @@
                             type: "POST",
                             contentType: "application/json",
                             data: JSON.stringify(rent),
-                            success: function (data) {
-                                $("#btnConfermModal").click();
+                            success: function () {
+                                location.href = "map";
                             }
                         });
                     });
 
                     $("#vehicleList").append(vehicleLI);
                 });
+            } else {
+                $("#vehicleList").append(`
+                    <div class="text-center">
+                        <p class="text-muted font-italic">Nessun veicolo disponibile</p>
+                    </div>
+                `);
             }
 
             L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -229,15 +302,15 @@
             }).addTo(map);
         }
 
-        generateVehicleLI(vehicles);
+        generateVehicleLI(availableVehicles, userOngoingRents);
 
-        const filterVehiclesByText = (vehicleList, searchText) => {
+        const getVehiclesByText = (vehicleList, searchText) => {
             return vehicleList.filter(vehicle =>
                 vehicle.description.toLowerCase().includes(searchText.toLowerCase()) ||
                 vehicle.currentLocation.toLowerCase().includes(searchText.toLowerCase()));
         };
 
-        const filterVehiclesByType = (vehicleList, includeAutomobile, includeMonopattino, includeBicicletta) => {
+        const getVehiclesByType = (vehicleList, includeAutomobile, includeMonopattino, includeBicicletta) => {
             var result = [];
             if (includeAutomobile) {
                 var filteredList = vehicleList.filter(vehicle => vehicle.type.toLowerCase().includes("automobile"));
@@ -264,10 +337,9 @@
         $("#btnSearch").on("click", function () {
             var searchText = $("#search").val();
             if (searchText.trim() != "") {
-                var vehicleList;
-                vehicleList = filterVehiclesByText(vehicles, searchText);
-                vehicleList = filterVehiclesByType(vehicleList, $("#checkAutomobile").is(":checked"), $("#checkMonopattino").is(":checked"), $("#checkBicicletta").is(":checked"));
-                generateVehicleLI(vehicleList);
+                var vehicleList = getVehiclesByText(availableVehicles, searchText);
+                vehicleList = getVehiclesByType(vehicleList, $("#checkAutomobile").is(":checked"), $("#checkMonopattino").is(":checked"), $("#checkBicicletta").is(":checked"));
+                generateVehicleLI(vehicleList, userOngoingRents);
             }
         });
 
@@ -281,7 +353,7 @@
             $("input").val("");
             $("input[type='checkbox']").prop("checked", "check");
 
-            generateVehicleLI(vehicles);
+            generateVehicleLI(availableVehicles, userOngoingRents);
         });
     </script>
 </body>

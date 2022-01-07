@@ -24,8 +24,8 @@
 							<i class="fas fa-plus"></i> Aggiungi
 						</button>
 					</div>
-					<div class="accordion accordion-flush bg-white rounded shadow-5-strong p-4" id="accordionFlush">
-						<div class="accordion-item" th:each="vehicle,iterStat : ${vehicles}"
+					<div class="accordion accordion-flush bg-white rounded shadow-5-strong p-4 mb-3" id="accordionFlush">
+						<div class="accordion-item" th:each="vehicle,iterStat : ${vehiclePage.content}"
 							th:classappend="${iterStat.last} ? 'border-bottom-0'">
 							<form action="#" th:action="@{update/vehicle}" th:object="${vehicle}" method="post">
 								<h2 class="accordion-header" th:id="'flush-heading-' + ${vehicle.id}">
@@ -184,6 +184,28 @@
 							</div>
 						</div>
 					</div>
+					<nav aria-label="pagination" th:if="${vehiclePage.totalPages > 1}">
+						<ul class="pagination d-flex justify-content-center">
+							<div class="d-flex justify-content-center bg-light p-3 rounded">
+								<li class="page-item" th:unless="${vehiclePage.number + 1 == 1}">
+									<a th:href="@{/dashboard(size=${vehiclePage.size}, page=${vehiclePage.number})}" class="page-link">
+										<i class="fas fa-angle-left"></i>
+									</a>
+								</li>
+								<th:block th:if="${vehiclePage.totalPages > 1}" th:each="pageNumber : ${pageNumbers}">
+									<li class="page-item" th:classappend="${pageNumber==vehiclePage.number + 1} ? active">
+										<a th:href="@{/dashboard(size=${vehiclePage.size}, page=${pageNumber})}"
+											th:text=${pageNumber} class="page-link"></a>
+									</li>
+								</th:block>
+								<li class="page-item" th:unless="${vehiclePage.number + 1 == vehiclePage.totalPages}">
+									<a th:href="@{/dashboard(size=${vehiclePage.size}, page=${vehiclePage.number + 2})}" class="page-link">
+										<i class="fas fa-angle-right"></i>
+									</a>
+								</li>
+							</div>
+						</ul>
+					</nav>
 				</div>
 			</main>
 		</div>

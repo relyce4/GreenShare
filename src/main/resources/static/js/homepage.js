@@ -70,15 +70,15 @@ const carConfig = {
     options: { borderWidth: '1' }
 };
 
-carCard.onclick = function () {
-    if (myChart) {
-        myChart.destroy();
-    }
-    myChart = new Chart(
-        document.getElementById('myChart'),
-        carConfig
-    );
-}
+// carCard.onclick = function () {
+//     if (myChart) {
+//         myChart.destroy();
+//     }
+//     myChart = new Chart(
+//         document.getElementById('myChart'),
+//         carConfig
+//     );
+// }
 
 const scooterData = {
     labels: [

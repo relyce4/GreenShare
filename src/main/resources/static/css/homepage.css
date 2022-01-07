@@ -56,15 +56,6 @@
     box-shadow: 0px 4px 10px 5px lightgray;
 }
 
-.card img {
-    height: 10rem;
-    width: 15rem;
-}
-
-.card-body {
-    height: 25rem;
-}
-
 @keyframes scroll {
     0% {
         transform: translateX(0);

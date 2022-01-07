@@ -34,7 +34,7 @@ const defaultData = {
     }]
 };
 const defaultConfig = {
-    type: 'polarArea',
+    type: 'bar',
     data: defaultData,
     options: {}
 };
@@ -65,7 +65,7 @@ const carData = {
     }]
 };
 const carConfig = {
-    type: 'polarArea',
+    type: 'bar',
     data: carData,
     options: { borderWidth: '1' }
 };
@@ -101,7 +101,7 @@ const scooterData = {
     }]
 };
 const scooterConfig = {
-    type: 'polarArea',
+    type: 'bar',
     data: scooterData,
     options: {borderWidth: '1' }
 };
@@ -136,7 +136,7 @@ const bikeData = {
     }]
 };
 const bikeConfig = {
-    type: 'polarArea',
+    type: 'bar',
     data: bikeData,
     options: { borderWidth: '1'}
 };

@@ -27,7 +27,7 @@ public class Vehicle {
 	private String imageUrl;
 	private int battery;
 	private int maxAutonomy;
-	private int pricePerMinute;
+	private double pricePerMinute;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date creationDate = new java.util.Date();
 	@OneToOne
@@ -84,10 +84,10 @@ public class Vehicle {
 	public void setMaxAutonomy(int maxAutonomy) {
 		this.maxAutonomy = maxAutonomy;
 	}
-	public int getPricePerMinute() {
+	public double getPricePerMinute() {
 		return pricePerMinute;
 	}
-	public void setPricePerMinute(int pricePerMinute) {
+	public void setPricePerMinute(double pricePerMinute) {
 		this.pricePerMinute = pricePerMinute;
 	}
 	public Date getCreationDate() {

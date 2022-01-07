@@ -40,6 +40,10 @@
     }
 }
 
+.chartDiv {
+    /* width: 80%; */
+}
+
 /* FINE HERO  */
 
 /* CARD  */
@@ -172,9 +176,9 @@
 /* FINE TABELLA */
 
 /* DESCRIZIONE USO */
-#contDesc {
+/* #contDesc {
     background-color: #d0d1d1;
-}
+} */
 
 #contDesc p {
     font-size: 1.5rem;

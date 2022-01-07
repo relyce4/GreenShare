@@ -36,9 +36,12 @@ h1 {
 	font-weight: 700;
 }
 
+#formContainer {
+	height: 100vh;
+}
+
 section#formHolder {
-	transform: translateY(4rem);
-	padding: 50px 0;
+	width: 100vw;
 }
 
 .brand {

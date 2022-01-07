@@ -2,61 +2,70 @@
     <header id="mainHeader">
         <nav class="navbar fixed-top shadow-3-strong navbar-expand-lg navbar-light bg-light">
             <!-- Container wrapper -->
-            <div class="container">
+            <div class="container d-flex justify-content-between align-items-center">
                 <!-- Navbar brand -->
-                <a class="navbar-brand" href="/">
-                    <img src="immagini/logo3.png" class="me-2" height="32" alt="Greenshare Logo" loading="lazy"
-                        style="margin-top: -1px" />
-                    <span class="text-success">Green</span>Share
-                </a>
+                <div>
+                    <a class="navbar-brand" href="/">
+                        <img src="/immagini/logo3.png" class="me-2" height="32" alt="Greenshare Logo" loading="lazy"
+                            style="margin-top: -1px" />
+                        <span class="text-success">Green</span>Share
+                    </a>
+                </div>
 
-                <!-- Toggle button -->
-                <button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas"
-                    data-mdb-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <!-- Collapsible wrapper -->
-                <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                    <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    </ul>
-                    <!-- Left links -->
-
-                    <div class="d-flex align-items-center">
-                        <th:block th:unless="${loggedUser != null}">
-                            <div class="ctn">
-                                <a class="btn btn-link text-success" href="/login">
-                                    Login
-                                </a>
-                            </div>
-                            <div class="ctn">
-                                <a class="btn btn-success" href="/register">
-                                    Registrati
-                                </a>
-                            </div>
-                        </th:block>
-                        <ul class="navbar-nav" th:if="${loggedUser != null}">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle hidden-arrow" href="#" role="button"
-                                    data-mdb-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user text-light bg-success rounded-circle p-2"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Il mio profilo</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/logout">Logout</a>
+                <div>
+                    <!-- Collapsible wrapper -->
+                    <div class="collapse navbar-collapse">
+                        <!-- Left links -->
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                        </ul>
+                        <!-- Left links -->
+                        <div class="d-flex align-items-center">
+                            <th:block th:if="${loggedUser != null}">
+                                <a href="map" class="btn btn-link text-success">Mappa</a>
+                                <th:block th:if="${loggedUser.role == 'ROLE_ADMIN'}">
+                                    <a href="dashboard" class="btn btn-link text-success">Dashboard</a>
+                                </th:block>
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle hidden-arrow" href="#" role="button"
+                                            data-mdb-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-user text-light bg-success rounded-circle p-2"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end"
+                                            aria-labelledby="navbarDropdownMenuLink">
+                                            <li>
+                                                <a class="dropdown-item" href="rents">Le mie prenotazioni</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="/logout">Logout</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
-                            </li>
-                        </ul>
+                            </th:block>
+                            <th:block th:unless="${loggedUser != null}">
+                                <div>
+                                    <a class="btn btn-link text-success" href="/login">
+                                        Login
+                                    </a>
+                                </div>
+                                <div>
+                                    <a class="btn btn-success" href="/register">
+                                        Registrati
+                                    </a>
+                                </div>
+                            </th:block>
+                        </div>
+                        <!-- Collapsible wrapper -->
                     </div>
-                    <!-- Collapsible wrapper -->
+                    <!-- Container wrapper -->
+                    <!-- Toggle button -->
+                    <button class="navbar-toggler" type="button" data-mdb-toggle="offcanvas"
+                        data-mdb-target="#offcanvasRight" aria-controls="offcanvasRight" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-                <!-- Container wrapper -->
         </nav>
         <!-- Fine Navbar -->
     </header>
@@ -80,7 +89,15 @@
 
                 <th:block th:if="${loggedUser != null}">
                     <li>
-                        <a href="#" class="btn btn-link text-success d-block">Il mio profilo</a>
+                        <a href="map" class="btn btn-link text-success d-block">Mappa</a>
+                    </li>
+                    <th:block th:if="${loggedUser.role == 'ROLE_ADMIN'}">
+                        <li>
+                            <a href="dashboard" class="btn btn-link text-success d-block">Dashboard</a>
+                        </li>
+                    </th:block>
+                    <li>
+                        <a href="#" class="btn btn-link text-success d-block">I miei ordini</a>
                     </li>
                     <li>
                         <a href="/logout" class="btn btn-link text-success d-block">Logout</a>

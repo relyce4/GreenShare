@@ -42,84 +42,15 @@
 	</section>
 	<!-- Fine Hero -->
 
-	<!-- Separatore -->
-	<div class="custom-shape-divider-top-1641393987">
-		<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-			<path
-				d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-				opacity=".25" class="shape-fill" fill="#E7E4E4" fill-opacity="1"></path>
-			<path
-				d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
-				opacity=".5" class="shape-fill" fill="#E7E4E4" fill-opacity="1"></path>
-			<path
-				d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
-				class="shape-fill" fill="#E7E4E4" fill-opacity="1"></path>
-		</svg>
-	</div>
-	<!-- Fine Separatore -->
-
 	<!-- Card -->
-	<section class="text-center">
-		<h2 class="text-light" id="titParagrafo">Riepilogo consumi</h2>
-		<h3 class="text-light mb-4">Premi una carta per avere i dati sull'inquinamento del mezzo e molto altro.</h3>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="container">
-						<div class="row">
-
-							<div class="col-md-4 py-4 py-md-0">
-								<div class="card" id="carCard">
-									<div class="card-body">
-										<p class="h4">Auto Elettrica</p>
-										<img class="card-img-top img-fluid" src="immagini/toyota_yaris.png" alt="" />
-										<p class="card-text">DESCRIZIONE</p>
-										<div class="ctn">
-											<a class="btn btn-success">Prenota!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-4 py-4 py-md-0">
-								<div class="card" id="scooterCard">
-									<div class="card-body">
-										<p class="h4">Monopattino Elettrico</p>
-										<img class="card-img-top img-fluid pt-2"
-											src="https://ebikemag.com/wp-content/uploads/2019/11/Aerlang-H6-monopattino-elettrico.jpg"
-											alt="" />
-										<p class="card-text">DESCRIZIONE</p>
-										<div class="ctn">
-											<a class="btn btn-success">Prenota!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-4 py-4 py-md-0">
-								<div class="card" id="bikeCard">
-									<div class="card-body">
-										<p class="h4">Bicicletta</p>
-										<img class="card-img-top img-fluid pt-2"
-											src="https://images-ext-1.discordapp.net/external/ggj0KXLbSl4WQOE6sfUoEVobJEqFIrIOfLWRnrSUo3U/%3Frik%3D8jHR6lzROJ7u5A%26riu%3Dhttp%253a%252f%252fupsport.it%252fwp-content%252fuploads%252f2015%252f06%252fBici-Elettrica.jpg%26ehk%3DGu2tZjOYDuwLT6akcT5SI0Kve6rQXFWHipWvPj4nA6Y%253d%26risl%3D%26pid%3DImgRaw%26r%3D0/https/th.bing.com/th/id/R.b8b280d191425b49b1a1722133e71db7?width=781&height=586"
-											alt="" />
-										<p class="card-text">DESCRIZIONE</p>
-										<div class="ctn">
-											<a class="btn btn-success">Prenota!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4" id="contChart">
-					<div class="articleImage d-flex justify-content-center">
-						<canvas id="myChart"></canvas>
-					</div>
-				</div>
+	<section class="row text-center bg-light m-0" id="statsSection">
+		<div class="col-lg-6 d-flex align-items-center p-5">
+			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo blanditiis mollitia fugit, ipsa quidem
+				eligendi commodi labore quo eveniet unde nihil eos et rem quaerat! Iure id quae quia debitis.</p>
+		</div>
+		<div class="col-lg-6 p-5">
+			<div class="chartDiv">
+				<canvas id="myChart"></canvas>
 			</div>
 		</div>
 	</section>
@@ -390,8 +321,8 @@
 	<!-- Fine Tabella -->
 
 	<!-- Descrizione Uso -->
-	<div class="rounded container-fluid py-4" id="contDesc">
-		<div class="text-center text-light">
+	<div class="bg-light container-fluid py-4" id="contDesc">
+		<div class="text-center">
 			<h1><b>CAR SHARING MADE EASY</b></h1>
 		</div>
 
@@ -399,7 +330,7 @@
 			<div class="text-success">
 				<i class="far fa-user fa-8x mb-2 py-4"></i>
 				<div class="text-light">
-					<p class="h5">Registrati<br>premendo qui!</p>
+					<p class="h5">Crea subito<br>il tuo account</p>
 				</div>
 			</div>
 			<div class="text-success">
@@ -418,36 +349,11 @@
 
 		<div class="row text-center">
 			<div class="ctn my-3">
-				<a class="btn btn-success">Non hai un account?</a>
+				<a class="btn btn-success" href="register">Crea un account</a>
 			</div>
 		</div>
 	</div>
 	<!-- Fine Descrizione Uso -->
-
-	<!-- Carousel -->
-	<!-- <div class="slider shadow-0">
-		<div class="slide-track">
-			<div class="slide">
-				<img src="immagini/logo-hyunday-final.png" height="100" width="250" alt="" />
-			</div>
-			<div class="slide">
-				<img src="immagini/logo-kia-final.png" height="100" width="250" alt="" />
-			</div>
-			<div class="slide">
-				<img src="immagini/logo-lexus-final.png" height="100" width="250" alt="" />
-			</div>
-			<div class="slide">
-				<img src="immagini/logo-hyunday-final.png" height="100" width="250" alt="" />
-			</div>
-			<div class="slide">
-				<img src="immagini/logo-kia-final.png" height="100" width="250" alt="" />
-			</div>
-			<div class="slide">
-				<img src="immagini/logo-lexus-final.png" height="100" width="250" alt="" />
-			</div>
-		</div>
-	</div> -->
-	<!-- Fine Carousel -->
 
 	<footer th:replace="fragments/footer"></footer>
 
@@ -455,24 +361,10 @@
 	<div th:replace="fragments/scripts"></div>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
 		integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
+	<script src="js/plugin.filler.js"></script>
 
 	<!-- Custom scripts -->
 	<script src="js/homepage.js"></script>
-
-	<script type="text/javascript">
-		function n(dato) {
-			document.getElementById("operazioni").value += dato;
-		}
-
-		function operazione() {
-			document.getElementById("operazioni").value = eval(document.getElementById("operazioni").value);
-		}
-
-		function cancella() {
-			document.getElementById("operazioni").value = "";
-		}
-	</script>
-
 </body>
 
 </html>

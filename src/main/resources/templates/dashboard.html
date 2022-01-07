@@ -41,7 +41,7 @@
 										<input type="hidden" name="id" id="id" th:value="${vehicle.id}">
 										<div class="d-flex justify-content-evenly flex-wrap">
 											<div class="position-relative mb-4">
-												<img src="/immagini/toyota_yaris.png"
+												<img th:src="${vehicle.imageUrl}"
 													class="position-absolute start-50 translate-middle-x" alt=""
 													width="64px">
 												<input type="text" class="invisible">
@@ -67,7 +67,7 @@
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="number" name="pricePerMinute"
-													th:id="'pricePerMinute-' + ${vehicle.id}"
+													th:id="'pricePerMinute-' + ${vehicle.id}" step="0.01"
 													placeholder="Prezzo al minuto"
 													th:value="${vehicle.pricePerMinute}" />
 												<span class="position-absolute end-0 me-2 user-select-none">€</span>
@@ -149,7 +149,7 @@
 										</div>
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newPricePerMinute"
-												id="newPricePerMinute" placeholder="Prezzo al minuto" />
+												id="newPricePerMinute" step="0.01" placeholder="Prezzo al minuto" />
 											<span class="position-absolute end-0 me-2 user-select-none">€</span>
 										</div>
 										<div class="position-relative mb-4">

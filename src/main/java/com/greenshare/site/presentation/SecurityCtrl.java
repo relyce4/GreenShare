@@ -3,6 +3,9 @@ package com.greenshare.site.presentation;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +33,22 @@ public class SecurityCtrl {
 			model.addAttribute("wrongCredentials", true);
 		}
 		
-		return "login";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "login";
+        }
+ 
+        return "redirect:/";
 	}
 	
 	@GetMapping("/register")
 	public String registrazioneForm(RegistrationForm form, Model model) {
-		return "register";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+            return "register";
+        }
+ 
+        return "redirect:/";
 	}
 	
 	@PostMapping("/register")

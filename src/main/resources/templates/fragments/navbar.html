@@ -2,7 +2,7 @@
     <header id="mainHeader">
         <nav class="navbar fixed-top shadow-3-strong navbar-expand-lg navbar-light bg-light">
             <!-- Container wrapper -->
-            <div class="container d-flex justify-content-between align-items-center">
+            <div class="container d-flex justify-content-between align-items-center position-relative">
                 <!-- Navbar brand -->
                 <div>
                     <a class="navbar-brand" href="/">
@@ -22,7 +22,7 @@
                         <div class="d-flex align-items-center">
                             <th:block th:if="${loggedUser != null}">
                                 <a href="map" class="btn btn-link text-success">Mappa</a>
-                                <th:block th:if="${loggedUser.role == 'ROLE_ADMIN'}">
+                                <th:block th:if="${loggedUser?.role == 'ROLE_ADMIN'}">
                                     <a href="dashboard" class="btn btn-link text-success">Dashboard</a>
                                 </th:block>
                                 <ul class="navbar-nav">
@@ -66,6 +66,7 @@
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
+            </div>
         </nav>
         <!-- Fine Navbar -->
     </header>

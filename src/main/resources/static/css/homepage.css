@@ -7,7 +7,7 @@
 .hero {
     height: 100vh;
     text-align: center;
-    background-image: url('/immagini/hero4.jpg');
+    background-image: url('/immagini/hero.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -40,8 +40,8 @@
     }
 }
 
-.chartDiv {
-    /* width: 80%; */
+.chartImage {
+    max-width: 14rem;
 }
 
 /* FINE HERO  */

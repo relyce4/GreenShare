@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.greenshare.site.entities.Vehicle;
 import com.greenshare.site.service.VehicleService;
@@ -32,14 +34,18 @@ public class VehicleRestCtrl {
 		return this.service.getVehicleById(id);
 	}
 	
-	@PostMapping(value = "add", consumes = "application/json")
-	public void addVehicle(@RequestBody Vehicle a) {
-		this.service.addVehicle(a);
+	@PostMapping("add")
+	public void addVehicle(Vehicle vehicle, @RequestParam(name = "image", required = false) MultipartFile multipartFile) {
+		if (multipartFile == null || multipartFile.isEmpty()) {
+			this.service.addVehicle(vehicle);
+		} else {
+			this.service.addVehicle(vehicle, multipartFile);
+		}
 	}
 	
 	@PutMapping(value = "update", consumes = "application/json")
-	public void updateVehicle (@RequestBody Vehicle a) {
-		this.service.updateVehicle(a);
+	public void updateVehicle (@RequestBody Vehicle vehicle) {
+		this.service.updateVehicle(vehicle);
 	}
 	
 	@DeleteMapping(value = "delete/{id}")

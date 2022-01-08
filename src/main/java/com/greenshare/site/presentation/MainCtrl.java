@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.greenshare.site.entities.Rent;
 import com.greenshare.site.entities.User;
@@ -78,9 +79,19 @@ public class MainCtrl {
 	}
 
 	@PostMapping("update/vehicle")
-	public String dashboard(@ModelAttribute Vehicle vehicle, Model model) {
-		vehicleService.updateVehicle(vehicle);
-
+	public String dashboard(@ModelAttribute Vehicle vehicle, @RequestParam(name = "file", required = false) MultipartFile multipartFile, Model model) {
+		System.out.println(multipartFile.getOriginalFilename());
+		if (multipartFile == null || multipartFile.isEmpty()) {
+			this.vehicleService.addVehicle(vehicle);
+		} else {
+			this.vehicleService.addVehicle(vehicle, multipartFile);
+		}
+		
+		try {
+		    Thread.sleep(1000);
+		} catch (InterruptedException ie) {
+		    Thread.currentThread().interrupt();
+		}
 		return "redirect:/dashboard";
 	}
 

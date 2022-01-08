@@ -28,7 +28,7 @@
 						id="accordionFlush">
 						<div class="accordion-item" th:each="vehicle,iterStat : ${vehiclePage.content}"
 							th:classappend="${iterStat.last} ? 'border-bottom-0'">
-							<form action="#" th:action="@{update/vehicle}" th:object="${vehicle}" method="post">
+							<form action="#" th:action="@{update/vehicle}" th:object="${vehicle}" method="post" enctype="multipart/form-data">
 								<h2 class="accordion-header" th:id="'flush-heading-' + ${vehicle.id}">
 									<button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
 										th:data-mdb-target="'#flush-collapse-' + ${vehicle.id}" aria-expanded="false"
@@ -42,11 +42,16 @@
 										<input type="hidden" name="id" id="id" th:value="${vehicle.id}">
 										<div class="d-flex justify-content-evenly flex-wrap">
 											<div class="position-relative mb-4">
-												<img th:src="${vehicle.imageUrl}"
-													class="position-absolute start-50 translate-middle-x" alt=""
-													width="64px"
-													th:style="${vehicle.type == 'Monopattino'} ? 'margin-top: -12px'">
+												<div class="pointer-cursor">
+													<img th:src="${vehicle.imageUrl}"
+														class="imageUrl position-absolute start-50 translate-middle-x"
+														alt="" width="64px" th:data-vehicle-id="${vehicle.id}"
+														th:style="${vehicle.type == 'Monopattino'} ? 'margin-top: -12px'">
+												</div>
 												<input type="text" class="invisible">
+												<input type="file" class="d-none" name="file"
+													th:id="'imageUrl-' + ${vehicle.id}"
+													accept="image/png, image/jpeg, image/jpg" />
 											</div>
 											<div class="mb-4">
 												<input class="text-center" type="text" name="description"
@@ -71,14 +76,14 @@
 												<input class="text-center" type="number" name="pricePerMinute"
 													th:id="'pricePerMinute-' + ${vehicle.id}" step="0.01"
 													placeholder="Prezzo al minuto"
-													th:value="${vehicle.pricePerMinute}" />
-												<span class="position-absolute end-0 me-2 user-select-none">€</span>
+													th:value="${vehicle.pricePerMinute}" /> <span
+													class="position-absolute end-0 me-2 user-select-none">€</span>
 											</div>
 											<div class="position-relative mb-4">
 												<input class="text-center" type="number" name="battery"
 													th:id="'battery-' + ${vehicle.id}" placeholder="Livello batteria"
-													th:value="${vehicle.battery}" />
-												<span class="position-absolute end-0 me-2 user-select-none">%</span>
+													th:value="${vehicle.battery}" /> <span
+													class="position-absolute end-0 me-2 user-select-none">%</span>
 											</div>
 										</div>
 										<div class="d-flex justify-content-evenly flex-wrap">
@@ -97,19 +102,16 @@
 												<input class="text-center" type="text" name="currentLocation"
 													th:id="'currentLocation-' + ${vehicle.id}"
 													placeholder="Posizione attuale"
-													th:value="${vehicle.currentLocation}" />
-												<i th:id="'searchCoordinates-' + ${vehicle.id}"
+													th:value="${vehicle.currentLocation}" /> <i
+													th:id="'searchCoordinates-' + ${vehicle.id}"
 													class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer-cursor user-select-none"></i>
 											</div>
 										</div>
 										<div class="d-flex justify-content-center flex-wrap">
 											<button type="button" class="btnDeleteVehicle btn btn-danger me-2"
 												data-mdb-toggle="modal" data-mdb-target="#deleteVehicleModal"
-												th:data-vehicle-id="${vehicle.id}">
-												Elimina
-											</button>
-											<button type="submit" class="btn btn-success">
-												Salva
+												th:data-vehicle-id="${vehicle.id}">Elimina</button>
+											<button type="submit" class="btn btn-success">Salva
 											</button>
 										</div>
 									</div>
@@ -120,9 +122,7 @@
 							<h2 class="accordion-header" id="flush-heading-new">
 								<button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse"
 									data-mdb-target="#flush-collapse-new" aria-expanded="false"
-									aria-controls="flush-collapse-new">
-									Nuovo elemento
-								</button>
+									aria-controls="flush-collapse-new">Nuovo elemento</button>
 							</h2>
 							<div id="flush-collapse-new" class="accordion-collapse collapse"
 								aria-labelledby="flush-heading-new" data-mdb-parent="#accordionFlush">
@@ -132,7 +132,7 @@
 											<div class="pointer-cursor">
 												<img src="/immagini/defaultCar.png"
 													class="position-absolute start-50 translate-middle-x defaultImage"
-													alt="" width="48px">
+													alt="" width="64px">
 											</div>
 											<input type="text" class="invisible">
 											<input type="file" class="d-none" name="newImageUrl" id="newImageUrl"
@@ -144,8 +144,8 @@
 										</div>
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newMaxAutonomy"
-												id="newMaxAutonomy" placeholder="Autonomia massima" />
-											<span class="position-absolute end-0 me-2 user-select-none">km</span>
+												id="newMaxAutonomy" placeholder="Autonomia massima" /> <span
+												class="position-absolute end-0 me-2 user-select-none">km</span>
 										</div>
 									</div>
 									<div class="d-flex justify-content-evenly flex-wrap">
@@ -160,8 +160,8 @@
 										</div>
 										<div class="position-relative mb-4">
 											<input class="text-center" type="number" name="newBattery" id="newBattery"
-												placeholder="Livello batteria" />
-											<span class="position-absolute end-0 me-2 user-select-none">%</span>
+												placeholder="Livello batteria" /> <span
+												class="position-absolute end-0 me-2 user-select-none">%</span>
 										</div>
 									</div>
 									<div class="d-flex justify-content-evenly flex-wrap">
@@ -171,20 +171,19 @@
 										</div>
 										<div class="position-relative mb-4">
 											<input class="text-center" type="text" name="newCoordinates"
-												id="newCoordinates" placeholder="Coordinate" />
-											<img class="spinner" src="immagini/spinner.gif" alt="">
+												id="newCoordinates" placeholder="Coordinate" /> <img class="spinner"
+												src="immagini/spinner.gif" alt="">
 										</div>
 										<div class="position-relative mb-4">
 											<input class="text-center" type="text" name="newCurrentLocation"
-												id="newCurrentLocation" placeholder="Posizione attuale" />
-											<i id="newSearchCoordinates"
+												id="newCurrentLocation" placeholder="Posizione attuale" /> <i
+												id="newSearchCoordinates"
 												class="searchCoordinates fas fa-search-location position-absolute end-0 me-2 pointer-cursor user-select-none"></i>
 										</div>
 									</div>
 									<div class="d-flex justify-content-center">
-										<button type="button" class="btn btn-success" id="btnConfermAddVehicle">
-											Aggiungi
-										</button>
+										<button type="button" class="btn btn-success"
+											id="btnConfermAddVehicle">Aggiungi</button>
 									</div>
 								</div>
 							</div>
@@ -195,8 +194,7 @@
 							<div class="d-flex justify-content-center bg-light p-3 rounded">
 								<li class="page-item" th:unless="${vehiclePage.number + 1 == 1}">
 									<a th:href="@{/dashboard(size=${vehiclePage.size}, page=${vehiclePage.number})}"
-										class="page-link">
-										<i class="fas fa-angle-left"></i>
+										class="page-link"> <i class="fas fa-angle-left"></i>
 									</a>
 								</li>
 								<th:block th:if="${vehiclePage.totalPages > 1}" th:each="pageNumber : ${pageNumbers}">
@@ -208,8 +206,7 @@
 								</th:block>
 								<li class="page-item" th:unless="${vehiclePage.number + 1 == vehiclePage.totalPages}">
 									<a th:href="@{/dashboard(size=${vehiclePage.size}, page=${vehiclePage.number + 2})}"
-										class="page-link">
-										<i class="fas fa-angle-right"></i>
+										class="page-link"> <i class="fas fa-angle-right"></i>
 									</a>
 								</li>
 							</div>
@@ -226,16 +223,14 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="deleteVehicleModalLabel">Sei sicuro di voler eliminare il veicolo?
-					</h5>
+					<h5 class="modal-title" id="deleteVehicleModalLabel">Sei
+						sicuro di voler eliminare il veicolo?</h5>
 					<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body text-center">
-					<button type="button" class="btn btn-light" data-mdb-dismiss="modal">
-						Annulla
-					</button>
-					<button type="button" id="btnConfermDeleteVehicle" class="btn btn-danger" data-mdb-dismiss="modal">
-						Conferma
+					<button type="button" class="btn btn-light" data-mdb-dismiss="modal">Annulla</button>
+					<button type="button" id="btnConfermDeleteVehicle" class="btn btn-danger"
+						data-mdb-dismiss="modal">Conferma
 					</button>
 				</div>
 			</div>
@@ -318,7 +313,6 @@
 							maxAutonomy: $("#newMaxAutonomy").val(),
 							pricePerMinute: $("#newPricePerMinute").val(),
 							creationDate: dayjs().format("YYYY-MM-DD HH:mm:ss"),
-							createdBy: null
 						};
 
 						var formData = new FormData();
@@ -327,9 +321,8 @@
 						for (var key in vehicleInput) {
 							formData.append(key, vehicleInput[key]);
 						}
-						
 						formData.append("image", image);
-							
+
 						for (var key of formData.entries()) {
 							console.log(key[0] + ': ' + key[1]);
 						}
@@ -339,9 +332,8 @@
 							body: formData
 						})
 							.then(response => {
-								console.log(response.status);
-							})
-							.catch(er => console.log(er));
+								setTimeout(function () { document.location.href = "dashboard" }, 1000);
+							});
 					});
 				});
 			});
@@ -366,6 +358,13 @@
 			$(".defaultImage").on("click", function () {
 				$("#newImageUrl").click();
 			});
+
+			$(".imageUrl").on("click", function () {
+				var vehicleId = $(this).data("vehicle-id");
+				$("#imageUrl-" + vehicleId).click();
+			});
+
+			
 		});
 	</script>
 </body>

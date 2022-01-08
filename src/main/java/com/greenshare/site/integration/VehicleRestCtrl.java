@@ -35,11 +35,11 @@ public class VehicleRestCtrl {
 	}
 	
 	@PostMapping("add")
-	public void addVehicle(Vehicle vehicle, @RequestParam(name = "image", required = false) MultipartFile multipartfile) {
-		if (multipartfile == null || multipartfile.isEmpty()) {
+	public void addVehicle(Vehicle vehicle, @RequestParam(name = "image", required = false) MultipartFile multipartFile) {
+		if (multipartFile == null || multipartFile.isEmpty()) {
 			this.service.addVehicle(vehicle);
 		} else {
-			this.service.addVehicle(vehicle, multipartfile);
+			this.service.addVehicle(vehicle, multipartFile);
 		}
 	}
 	

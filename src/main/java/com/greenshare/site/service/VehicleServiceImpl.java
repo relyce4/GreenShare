@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -39,7 +40,8 @@ public class VehicleServiceImpl implements VehicleService {
 		 // 6) restituisco il veicolo salvato
 		
 		//1
-		String filename = StringUtils.cleanPath("vehicleImage." + multipartFile.getOriginalFilename().split(".")[1]);
+		String extension = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
+		String filename = StringUtils.cleanPath("vehicleImage." + extension);
 		
 		//2
 		vehicle.setFilename(filename);
@@ -60,6 +62,8 @@ public class VehicleServiceImpl implements VehicleService {
 
 	@Override
 	public void deleteVehicleById(int id) {
+		FileUploadUtil.deleteDir(this.repo.findById(id).get());
+		
 		this.repo.deleteById(id);
 	}
 

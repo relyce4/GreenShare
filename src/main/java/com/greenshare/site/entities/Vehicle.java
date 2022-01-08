@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.greenshare.site.config.CustomProperties;
+
 @Entity
 public class Vehicle {
 	@Id
@@ -24,17 +26,24 @@ public class Vehicle {
 	private String description;
 	private String coordinates;
 	private String currentLocation;
-	private String imageUrl;
+	private String filename;
 	private int battery;
 	private int maxAutonomy;
 	private double pricePerMinute;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date creationDate = new java.util.Date();
-	@OneToOne
-	@JoinColumn(name = "id_user")
-	private User createdBy;
-	@OneToMany(mappedBy = "vehicle")
-    private Set<Rent> rents = new HashSet<>();
+	
+    public String getImageUrl() {
+		// 1) percorso immagine di default se non è stata caricata
+		// 2) percorso immagine caricata
+
+		if (filename == null || filename.equals("")) {
+        	//1
+        	return "/" + CustomProperties.defaultImg;        	
+        }
+        //2
+        return "/" + CustomProperties.baseurl + "/" + id + "/" + filename;
+    }
 	
 	public int getId() {
 		return id;
@@ -66,11 +75,11 @@ public class Vehicle {
 	public void setCurrentLocation(String currentLocation) {
 		this.currentLocation = currentLocation;
 	}
-	public String getImageUrl() {
-		return imageUrl;
+	public String getFilename() {
+		return filename;
 	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	public int getBattery() {
 		return battery;
@@ -95,11 +104,5 @@ public class Vehicle {
 	}
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
-	}
-	public User getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(User createdBy) {
-		this.createdBy = createdBy;
 	}
 }

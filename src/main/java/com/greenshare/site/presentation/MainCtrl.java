@@ -94,4 +94,13 @@ public class MainCtrl {
 
 		return "map";
 	}
+
+	@GetMapping("rents")
+	public String rents(Model model) {
+		List<Rent> rents = rentService.getRents();
+
+		model.addAttribute("rents", rents);
+
+		return "rents";
+	}
 }

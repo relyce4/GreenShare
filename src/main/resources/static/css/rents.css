@@ -1,0 +1,21 @@
+
+#divTable, footer {
+    transform: translateY(5rem);
+}
+
+.card img {
+    height: 11rem;
+    width: 15rem;
+}
+
+.card {
+    max-width: 22rem;
+}
+
+.cardData {
+    float: right;
+    font-size: 0.9rem;
+}
+
+
+

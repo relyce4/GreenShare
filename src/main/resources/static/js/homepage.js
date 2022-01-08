@@ -23,7 +23,7 @@ const defaultData = {
     ],
     datasets: [{
         label: 'Auto Elettrica',
-        data: [0, 0, 0, 0, 0],
+        data: [10, 4, 6, 2, 8],
         backgroundColor: [
             'rgb(255, 99, 132)',
             'rgb(75, 192, 192)',
@@ -36,7 +36,7 @@ const defaultData = {
 const defaultConfig = {
     type: 'bar',
     data: defaultData,
-    options: {}
+    options: { borderWidth: '1' }
 };
 
 myChart = new Chart(

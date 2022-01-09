@@ -11,100 +11,164 @@ document.addEventListener("scroll", function () {
     }
 });
 
-var myChart;
-
-const defaultData = {
+const teslaData = {
     labels: [
-        'Risparmio CO2',
-        'Praticità',
-        'Riciclabilità',
-        'Convenienza al Km',
-        'Sicurezza'
+        'Emissioni CO2 al km',
+        'Costo rifornimento per 100km',
+        'Potenza in kW',
     ],
     datasets: [{
-        label: 'Auto Elettrica',
-        data: [10, 4, 6, 2, 8],
+        label: 'Renault Clio',
+        data: [534, 312, 100],
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
+            'rgb(255, 212, 128)',
+            'rgb(93, 176, 127)',
+            'rgb(247, 116, 139)',
         ]
-    }]
+    }, {
+        label: 'Tesla Model S',
+        data: [100, 100, 600],
+        backgroundColor: [
+            'rgb(255,169,0)',
+            'rgb(0, 183, 74)',
+            'rgb(249, 49, 84)',
+        ]
+    }
+
+]
 };
-const defaultConfig = {
+const teslaConfig = {
     type: 'bar',
-    data: defaultData,
+    data: teslaData,
     options: { borderWidth: '1' }
 };
 
-myChart = new Chart(
+teslaCard.onclick = function () {
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(
+        document.getElementById('myChart'),
+        teslaConfig
+    );
+}
+
+// Carica valore di default
+var myChart = new Chart(
     document.getElementById('myChart'),
-    defaultConfig
+    teslaConfig
 );
 
-const carData = {
+const bmwData = {
     labels: [
-        'Risparmio CO2',
-        'Praticità',
-        'Riciclabilità',
-        'Convenienza al Km',
-        'Sicurezza'
+        'Emissioni CO2 al km',
+        'Costo rifornimento per 100km',
+        'Potenza in kW'
     ],
     datasets: [{
-        label: 'Auto Elettrica',
-        data: [5, 10, 3, 5, 10],
+        label: 'Renault Clio',
+        data: [207, 850, 100],
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
+            'rgb(255, 212, 128)',
+            'rgb(93, 176, 127)',
+            'rgb(247, 116, 139)',
+        ]
+    }, {
+        label: 'BMW i3',
+        data: [100, 100, 162],
+        backgroundColor: [
+            'rgb(255,169,0)',
+            'rgb(0, 183, 74)',
+            'rgb(249, 49, 84)',
         ]
     }]
 };
-const carConfig = {
+const bmwConfig = {
     type: 'bar',
-    data: carData,
+    data: bmwData,
     options: { borderWidth: '1' }
 };
 
-// carCard.onclick = function () {
-//     if (myChart) {
-//         myChart.destroy();
-//     }
-//     myChart = new Chart(
-//         document.getElementById('myChart'),
-//         carConfig
-//     );
-// }
+bmwCard.onclick = function () {
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(
+        document.getElementById('myChart'),
+        bmwConfig
+    );
+}
+
+const fiatData = {
+    labels: [
+        'Emissioni CO2 al km',
+        'Costo rifornimento per 100km',
+        'Potenza in kW'
+    ],
+    datasets: [{
+        label: 'Renault Clio',
+        data: [1000, 947, 100],
+        backgroundColor: [
+            'rgb(255, 212, 128)',
+            'rgb(93, 176, 127)',
+            'rgb(247, 116, 139)',
+        ]
+    }, {
+        label: 'FIAT 500-e',
+        data: [100, 100, 117],
+        backgroundColor: [
+            'rgb(255,169,0)',
+            'rgb(0, 183, 74)',
+            'rgb(249, 49, 84)',
+        ]
+    }]
+};
+const fiatConfig = {
+    type: 'bar',
+    data: fiatData,
+    options: { borderWidth: '1' }
+};
+
+fiatCard.onclick = function () {
+    if (myChart) {
+        myChart.destroy();
+    }
+    myChart = new Chart(
+        document.getElementById('myChart'),
+        fiatConfig
+    );
+}
 
 const scooterData = {
     labels: [
-        'Risparmio CO2',
-        'Praticità',
-        'Riciclabilità',
-        'Convenienza al Km',
-        'Sicurezza'
+        'Emissioni CO2 al km',
+        'Costo rifornimento per 100km',
+        'Potenza in kW'
     ],
     datasets: [{
-        label: 'Monopattino Elettrico',
-        data: [8, 7, 7, 8, 3],
+        label: 'Renault Clio',
+        data: [139, 12.50, 74],
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
+            'rgb(255, 212, 128)',
+            'rgb(93, 176, 127)',
+            'rgb(247, 116, 139)',
+        ]
+    }, {
+        label: 'Monopattino Elettrico',
+        data: [9.1, 0.24, 0.6],
+        backgroundColor: [
+            'rgb(255,169,0)',
+            'rgb(0, 183, 74)',
+            'rgb(249, 49, 84)',
         ]
     }]
 };
 const scooterConfig = {
     type: 'bar',
     data: scooterData,
-    options: {borderWidth: '1' }
+    options: { borderWidth: '1' }
 };
+
 scooterCard.onclick = function () {
     if (myChart) {
         myChart.destroy();
@@ -117,29 +181,35 @@ scooterCard.onclick = function () {
 
 const bikeData = {
     labels: [
-        'Risparmio CO2',
-        'Praticità',
-        'Riciclabilità',
-        'Convenienza al Km',
-        'Sicurezza'
+        'Emissioni CO2 al km',
+        'Costo rifornimento per 100km',
+        'Potenza in kW'
     ],
     datasets: [{
-        label: 'Monopattino Elettrico',
-        data: [10, 8, 10, 10, 5],
+        label: 'Renault Clio',
+        data: [139, 12.50, 74],
         backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(75, 192, 192)',
-            'rgb(255, 205, 86)',
-            'rgb(201, 203, 207)',
-            'rgb(54, 162, 235)'
+            'rgb(255, 212, 128)',
+            'rgb(93, 176, 127)',
+            'rgb(247, 116, 139)',
+        ]
+    }, {
+        label: 'Bicicletta Elettrica',
+        data: [4.55, 0.12, 0.3],
+        backgroundColor: [
+            'rgb(255,169,0)',
+            'rgb(0, 183, 74)',
+            'rgb(249, 49, 84)',
         ]
     }]
 };
+
 const bikeConfig = {
     type: 'bar',
     data: bikeData,
-    options: { borderWidth: '1'}
+    options: { borderWidth: '1' }
 };
+
 bikeCard.onclick = function () {
     if (myChart) {
         myChart.destroy();

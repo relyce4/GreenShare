@@ -44,12 +44,13 @@
 
 	<!-- Card -->
 	<section class="row text-center bg-light m-0" id="statsSection">
-		<h1 class="mt-3">Statistiche veicoli</h1>
+		<h1 class="mt-5">Statistiche veicoli</h1>
 		<div class="col-lg-6 p-md-5 d-flex align-items-center">
 			<div class="container border-bottom border-top">
 				<div class="row text-center">
 					<div class="col-4">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage border border-2 border-success rounded-5" data-mdb-ripple-color="light">
+						<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative border border-2 border-success rounded-5 position-relative" id="teslaCard" data-mdb-ripple-color="light">
+							<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px" alt="">
 							<img src="immagini/Tesla_Model_S.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
@@ -64,7 +65,8 @@
 					</div>
 
 					<div class="col-4">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage" data-mdb-ripple-color="light">
+						<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative" id="bmwCard" data-mdb-ripple-color="light">
+							<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px" alt="">
 							<img src="immagini/bmw-i3.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
@@ -79,7 +81,8 @@
 					</div>
 
 					<div class="col-4">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage" data-mdb-ripple-color="light">
+						<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative" id="fiatCard" data-mdb-ripple-color="light">
+							<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px" alt="">
 							<img src="immagini/FIAT_500.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
@@ -96,7 +99,8 @@
 
 				<div class="row text-center">
 					<div class="col-4 mt-auto">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage" data-mdb-ripple-color="light">
+						<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative" id="bikeCard" data-mdb-ripple-color="light">
+							<img src="immagini/lightning.svg" class="position-absolute end-0 top-0" width="32px" alt="">
 							<img src="immagini/bicicletta.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
@@ -110,7 +114,8 @@
 						</div>
 					</div>
 					<div class="col-4">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage" data-mdb-ripple-color="light">
+						<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative" id="scooterCard" data-mdb-ripple-color="light">
+							<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-4" width="32px" alt="">
 							<img src="immagini/monopattino.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
@@ -124,13 +129,13 @@
 						</div>
 					</div>
 					<div class="col-4 mt-auto">
-						<div class="bg-image hover-zoom p-xxl-4 chartImage" data-mdb-ripple-color="light">
-							<img src="immagini/bmw-i3.png" class="w-100" alt=""/>
+						<div class="bg-image hover-zoom chartImage position-relative" id="renaultCard" data-mdb-ripple-color="light">
+							<img src="immagini/Renault_Clio.png" class="w-100" alt=""/>
 							<a href="#!">
 								<div class="hover-overlay">
 									<div class="mask">
 										<div class="d-flex justify-content-center align-items-center h-100">
-											<p class="text-white fw-bold rounded-5 mb-0 px-1" style="background-color: rgba(0, 0, 0, 0.9)">BMW i3</p>
+											<p class="text-white fw-bold rounded-5 mb-0 px-1" style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
 										</div>
 									</div>
 								</div>
@@ -150,8 +155,8 @@
 	<!-- Fine Card -->
 
 	<!-- Tabella -->
-	<div class="text-center mb-4">
-		<span class="text-light" id="titParagrafo">Listino veicoli</span>
+	<div class="text-center mt-4 mb-8">
+		<p class="text-light mb-5" id="titParagrafo">Listino veicoli</p>
 
 		<div class="d-flex justify-content-evenly flex-wrap">
 			<div class="py-4 py-lg-0">
@@ -415,7 +420,7 @@
 
 	<!-- Descrizione Uso -->
 	<div class="bg-light container-fluid py-4" id="contDesc">
-		<div class="text-center">
+		<div class="text-center my-4">
 			<h1><b>CAR SHARING MADE EASY</b></h1>
 		</div>
 

@@ -34,17 +34,25 @@
     color: black;
 }
 
+.motto {
+    color: white;
+    text-shadow: 2px 2px #979cb0;
+}
+
 @media(min-width:1200px) {
     .motto {
         font-size: 5rem
     }
 }
+/* FINE HERO  */
 
 .chartImage {
     max-width: 14rem;
 }
 
-/* FINE HERO  */
+.activeChartIcon {
+    border: 1px solid #00b74a;
+}
 
 /* CARD  */
 .card {

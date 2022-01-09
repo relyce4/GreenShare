@@ -80,7 +80,6 @@ public class MainCtrl {
 
 	@PostMapping("update/vehicle")
 	public String dashboard(@ModelAttribute Vehicle vehicle, @RequestParam(name = "file", required = false) MultipartFile multipartFile, Model model) {
-		System.out.println(multipartFile.getOriginalFilename());
 		if (multipartFile == null || multipartFile.isEmpty()) {
 			this.vehicleService.addVehicle(vehicle);
 		} else {

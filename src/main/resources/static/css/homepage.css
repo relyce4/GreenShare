@@ -36,14 +36,14 @@
 
 .motto {
     color: black;
-    text-shadow: 4px 4px 2px #ffffff;
+    /* text-shadow: 4px 4px 2px #ffffff; */
 }
 
 div:first-child .motto::first-letter {
     color: #b44e33;
 }
 
-div:last-child .motto::first-letter {
+div:last-child .motto::first-letter, div:last-child .blur-background::first-letter {
     color: #2c6370;
 }
 
@@ -52,6 +52,13 @@ div:last-child .motto::first-letter {
         font-size: 5rem
     }
 }
+
+.blur-background {
+    background-color: #ffffffbb;
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+}
+
 /* FINE HERO  */
 
 .chartImage {

@@ -1,4 +1,4 @@
-#titParagrafo {
+#cardsHeader {
     font-weight: 700;
     font-size: 3rem;
 }
@@ -35,8 +35,16 @@
 }
 
 .motto {
-    color: white;
-    text-shadow: 2px 2px #979cb0;
+    color: black;
+    /* text-shadow: 4px 4px 2px #ffffff; */
+}
+
+div:first-child .motto::first-letter {
+    color: #b44e33;
+}
+
+div:last-child .motto::first-letter, div:last-child .blur-background::first-letter {
+    color: #2c6370;
 }
 
 @media(min-width:1200px) {
@@ -44,6 +52,13 @@
         font-size: 5rem
     }
 }
+
+.blur-background {
+    background-color: #ffffffbb;
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+}
+
 /* FINE HERO  */
 
 .chartImage {
@@ -52,6 +67,10 @@
 
 .activeChartIcon {
     border: 1px solid #00b74a;
+}
+
+#renaultCard1, #renaultCard3 {
+    opacity: 0;
 }
 
 /* CARD  */

@@ -86,34 +86,6 @@
             });
         }
 
-        function getOngoingRents(rentList) {
-            return rentList.filter(rent => rent.endTime == null);
-        }
-
-        function getOngoingRentsByUser(rentList, userId) {
-            return getOngoingRents(rentList).filter(rent => rent.user.id == userId);
-        }
-
-        function getAvailableVehicles(rentList, vehicleList) {
-            var ongoingRents = getOngoingRents(rentList);
-            return vehicleList.filter(function (vehicle) {
-                return !ongoingRents.find(function (rent) {
-                    return vehicle.id == rent.vehicle.id;
-                });
-            });
-        }
-
-        function getUserVehicles(rentList, userId) {
-            var userOngoingRentList = getOngoingRentsByUser(rentList, userId);
-            var userVehicleList = [];
-            for (const key in userOngoingRentList) {
-                if (userOngoingRentList[key].user.id == userId) {
-                    userVehicleList.push(userOngoingRentList[key].vehicle);
-                }
-            }
-            return userVehicleList;
-        }
-
         /*<![CDATA[*/
         var vehicles = /*[[${vehicles}]]*/'';
         var rents = /*[[${rents}]]*/'';

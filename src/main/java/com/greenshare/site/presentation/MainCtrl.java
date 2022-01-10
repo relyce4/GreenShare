@@ -46,8 +46,10 @@ public class MainCtrl {
 	@GetMapping
 	public String home(Model model) {
 		List<Vehicle> vehicles = vehicleService.getVehicles();
+		List<Rent> rents = rentService.getRents();
 
 		model.addAttribute("vehicles", vehicles);
+		model.addAttribute("rents", rents);
 
 		return "homepage";
 	}

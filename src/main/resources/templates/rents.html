@@ -2,27 +2,28 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Greenshare - Rents</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greenshare - Rents</title>
 
-	<link th:replace="fragments/links">
+    <link th:replace="fragments/links">
 
-	<link rel="stylesheet" href="/css/rents.css"/>
+    <link rel="stylesheet" href="/css/rents.css" />
 </head>
+
 <body class="body-background">
 
     <div class="min-vh-100">
         <div th:replace="fragments/navbar"></div>
-        <div class="py-3" id="divTable">
+        <main class="py-3">
 
             <div class="text-center">
                 <h3 class="text-light mb-4">I miei ordini</h3>
             </div>
 
             <!-- Card -->
-            <div class="container">
+            <div class="container" id="ordersContainer">
                 <div class="row">
                     <div class="col-12 col-lg-4">
                         <div class="card h-100 mx-auto">
@@ -30,10 +31,33 @@
                                 ID Ordine: <span class="cardData"><b>#46872385</b></span>
                             </div>
                             <div class="text-center">
-                                <img
-                                src="immagini/Tesla_Model_S.png"
-                                class="card-img-top"
-                                />
+                                <img src="immagini/Tesla_Model_S.png" class="card-img-top" alt="" />
+                            </div>
+                            <div class="card-body py-2">
+                                <div class="card-text">
+                                    <ul class="list-unstyled">
+                                        <li><b>Tipo Veicolo:</b><span class="cardData">Automobile</span></li>
+                                        <li><b>Modello:</b> <span class="cardData">Tesla Model S</span></li>
+                                        <li><b>Costo Servizio:</b> <span class="cardData">5,30$</span></li>
+                                        <li><b>Kilometri percorsi:</b> <span class="cardData">12km</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small><br>
+                                <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card h-100 mx-auto">
+                            <div class="card-header">
+                                ID Ordine: <span class="cardData"><b>#46872385</b></span>
+                            </div>
+                            <div class="text-center">
+                                <img src="immagini/FIAT_500.png" class="card-img-top" />
                             </div>
                             <div class="card-body py-2">
                                 <p class="card-text">
@@ -46,78 +70,82 @@
                                 </p>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000 17:45</small><br>
-                                <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000 17:45</small>
+                                <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small><br>
+                                <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-4">
-                    <div class="card h-100 mx-auto">
-                        <div class="card-header">
-                            ID Ordine: <span class="cardData"><b>#46872385</b></span>
+                        <div class="card h-100 mx-auto">
+                            <div class="card-header">
+                                ID Ordine: <span class="cardData"><b>#46872385</b></span>
+                            </div>
+                            <div class="text-center">
+                                <img src="immagini/bmw-i3.png" class="card-img-top" />
+                            </div>
+                            <div class="card-body py-2">
+                                <p class="card-text">
+                                <ul class="list-unstyled">
+                                    <li><b>Tipo Veicolo:</b><span class="cardData">Automobile</span></li>
+                                    <li><b>Modello:</b> <span class="cardData">Tesla Model S</span></li>
+                                    <li><b>Costo Servizio:</b> <span class="cardData">5,30$</span></li>
+                                    <li><b>Kilometri percorsi:</b> <span class="cardData">12km</span></li>
+                                </ul>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small><br>
+                                <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000
+                                    17:45</small>
+                            </div>
                         </div>
-                        <div class="text-center">
-                            <img
-                            src="immagini/FIAT_500.png"
-                            class="card-img-top"
-                            />
-                        </div>
-                        <div class="card-body py-2">
-                        <p class="card-text">
-                            <ul class="list-unstyled">
-                                <li><b>Tipo Veicolo:</b><span class="cardData">Automobile</span></li>
-                                <li><b>Modello:</b> <span class="cardData">Tesla Model S</span></li>
-                                <li><b>Costo Servizio:</b> <span class="cardData">5,30$</span></li>
-                                <li><b>Kilometri percorsi:</b> <span class="cardData">12km</span></li>
-                            </ul>
-                        </p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000 17:45</small><br>
-                            <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000 17:45</small>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                    <div class="card h-100 mx-auto">
-                        <div class="card-header">
-                            ID Ordine: <span class="cardData"><b>#46872385</b></span>
-                        </div>
-                        <div class="text-center">
-                            <img
-                            src="immagini/bmw-i3.png"
-                            class="card-img-top"
-                            />
-                        </div>
-                        <div class="card-body py-2">
-                        <p class="card-text">
-                            <ul class="list-unstyled">
-                                <li><b>Tipo Veicolo:</b><span class="cardData">Automobile</span></li>
-                                <li><b>Modello:</b> <span class="cardData">Tesla Model S</span></li>
-                                <li><b>Costo Servizio:</b> <span class="cardData">5,30$</span></li>
-                                <li><b>Kilometri percorsi:</b> <span class="cardData">12km</span></li>
-                            </ul>
-                        </p>
-                        </div>
-                        <div class="card-footer">
-                        <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000 17:45</small><br>
-                        <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000 17:45</small>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
             <!-- Fine Card -->
-        </div>
+        </main>
     </div>
 
     <footer th:replace="fragments/footer"></footer>
     <div th:replace="fragments/scripts"></div>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"
-		integrity="sha256-D2tkh/3EROq+XuDEmgxOLW1oNxf0rLNlOwsPIUX+co4=" crossorigin="anonymous"></script>
-	<script src="js/plugin.filler.js"></script>
 
-	<!-- Custom scripts -->
-	<script src="js/homepage.js"></script>
+    <!-- Custom scripts -->
+    <script th:inline="javascript">
+        'use strict'
+
+        var orderEl = $(`
+            <div class="col-12 col-lg-4">
+                <div class="card h-100 mx-auto">
+                    <div class="card-header">
+                        ID Ordine: <span class="cardData"><b>#46872385</b></span>
+                    </div>
+                    <div class="text-center">
+                        <img src="immagini/Tesla_Model_S.png" class="card-img-top" alt="" />
+                    </div>
+                    <div class="card-body py-2">
+                        <div class="card-text">
+                            <ul class="list-unstyled">
+                                <li><b>Tipo Veicolo:</b><span class="cardData">Automobile</span></li>
+                                <li><b>Modello:</b> <span class="cardData">Tesla Model S</span></li>
+                                <li><b>Costo Servizio:</b> <span class="cardData">5,30$</span></li>
+                                <li><b>Kilometri percorsi:</b> <span class="cardData">12km</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Inizio Servizio: </small><small class="float-end">12/07/2000
+                            17:45</small><br>
+                        <small class="text-muted">Fine Servizio: </small><small class="float-end">12/07/2000
+                            17:45</small>
+                    </div>
+                </div>
+            </div>
+        `);
+
+    </script>
 </body>
+
 </html>

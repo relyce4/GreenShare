@@ -48,7 +48,7 @@
 														alt="" width="64px" th:data-vehicle-id="${vehicle.id}"
 														th:style="${vehicle.type == 'Monopattino'} ? 'margin-top: -12px'">
 												</div>
-												<input type="text" class="invisible">
+												<input type="text" name="filename" th:value="${vehicle.filename}" class="invisible">
 												<input type="file" class="d-none" name="file"
 													th:id="'imageUrl-' + ${vehicle.id}"
 													accept="image/png, image/jpeg, image/jpg" />

@@ -30,13 +30,7 @@
     font-family: 'Roboto Mono';
     font-size: calc(1.625rem + 4.5vw);
     font-weight: 300;
-    line-height: 7rem;
     color: black;
-}
-
-.motto {
-    color: black;
-    /* text-shadow: 4px 4px 2px #ffffff; */
 }
 
 div:first-child .motto::first-letter {

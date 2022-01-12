@@ -66,10 +66,6 @@ div:last-child .motto::first-letter, div:last-child .blur-background::first-lett
     opacity: 1;
 }
 
-/* #renaultCard1, #renaultCard3 {
-    opacity: 0;
-} */
-
 /* CARD  */
 .card {
     cursor: pointer;

@@ -16,20 +16,13 @@ import com.greenshare.site.entities.Vehicle;
 
 public class FileUploadUtil {
 	public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException {
-		// 1) converte percorso stringa in un path
-		// 2) crea cartella se non esiste dove salvare l'immagine
-		// 3) sovrascrive file se già presente con stesso nome
-
-		// 1
 		Path uploadPath = Paths.get(uploadDir);
 
 		if (!Files.exists(uploadPath)) {
-			// 2
-			Files.createDirectories(uploadPath); // throws IOException
+			Files.createDirectories(uploadPath);
 		}
 		try (InputStream inputStream = multipartFile.getInputStream()) {
-			Path filePath = uploadPath.resolve(fileName); // percorso file completo
-			// 3
+			Path filePath = uploadPath.resolve(fileName);
 			Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException ioe) {
 			throw new IOException("Impossibile salvare immagine: " + fileName, ioe);

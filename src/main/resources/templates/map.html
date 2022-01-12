@@ -140,7 +140,7 @@
                         <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${userOngoingRent.vehicle.id}">
                             <div>
                                 <p class="vehicleDescription fw-bold m-0"><img src="${userOngoingRent.vehicle.imageUrl}" alt="">${userOngoingRent.vehicle.description}</p>
-                                <p class="m-0">Prezzo attuale: ${(userOngoingRent.vehicle.pricePerMinute * dayjs().diff(dayjs(userOngoingRent.startTime), 'minute')).toFixed(2)}€</p>
+                                <p class="m-0 currentPrice">Prezzo attuale: ${(userOngoingRent.vehicle.pricePerMinute * dayjs().diff(dayjs(userOngoingRent.startTime), 'minute')).toFixed(2)}€</p>
                             </div>
                             <div>
                                 <button class="btnEndRent btn btn-sm btn-danger">Termina</button>
@@ -168,6 +168,11 @@
                         });
                     });
 
+                    setInterval(function () {
+                        $(userVehicleLI).find(".currentPrice").html(`
+                        ${(userOngoingRent.vehicle.pricePerMinute * dayjs().diff(dayjs(userOngoingRent.startTime), 'minute')).toFixed(2)}€`);
+                    }, 30000);
+
                     $("#vehicleList").append(userVehicleLI);
                 });
             }
@@ -183,7 +188,6 @@
             if (!$.isEmptyObject(vehicleList)) {
 
                 vehicleList.forEach(vehicle => {
-                    console.log(vehicle.currentLocation)
                     var vehicleLI = $(`
                         <li class="vehicleLI position-relative d-flex justify-content-between align-items-end rounded p-3 mb-2" id="vehicle-${vehicle.id}">
                             <div>

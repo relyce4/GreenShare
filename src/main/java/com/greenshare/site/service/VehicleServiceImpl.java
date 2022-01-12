@@ -32,28 +32,16 @@ public class VehicleServiceImpl implements VehicleService {
 	
 	@Override
 	public void addVehicle(Vehicle vehicle, MultipartFile multipartFile) {
-		 // 1) nome del file o immagine
-		 // 2) setto nome del file prima di salvare il veicolo
-		 // 3) salvo il veicolo
-		 // 4) genero il percorso della cartella dove salvare l'immagine
-		 // 5) classe utility con metodo statico che salva il file
-		 // 6) restituisco il veicolo salvato
-		
-		//1
 		String extension = FilenameUtils.getExtension(multipartFile.getOriginalFilename());
 		String filename = StringUtils.cleanPath("vehicleImage." + extension);
 		
-		//2
 		vehicle.setFilename(filename);
 		
-		//3
 		Vehicle newVehicle = this.repo.save(vehicle);
 
-		//4
 		String uploadDir = CustomProperties.basepath + "/" + newVehicle.getId();
 		 
        try {
-       	//5
 			FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
 		} catch (IOException e) {
 			e.printStackTrace();

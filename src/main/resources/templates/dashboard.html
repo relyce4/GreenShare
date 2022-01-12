@@ -323,10 +323,6 @@
 						}
 						formData.append("image", image);
 
-						for (var key of formData.entries()) {
-							console.log(key[0] + ': ' + key[1]);
-						}
-
 						fetch("api/vehicles/add", {
 							method: 'POST',
 							body: formData

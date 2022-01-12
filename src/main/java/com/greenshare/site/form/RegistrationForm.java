@@ -11,11 +11,11 @@ import com.greenshare.site.entities.User;
 public class RegistrationForm {
 	@Email
 	@NotBlank
-	@Length(min = 5, max=30)
+	@Length(min = 5, max = 30)
 	private String username;
 	
 	@NotBlank
-	@Length(min = 4, max=30)
+	@Length(min = 4, max = 30)
 	private String password;
 	
 	

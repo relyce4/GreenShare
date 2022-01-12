@@ -64,7 +64,6 @@
             `);
         } else {
             userOngoingRents.forEach(rent => {
-                console.log(rent);
                 if (i == 1) {
                     row = $("<div class='row'></div>");
                 }
@@ -84,7 +83,7 @@
                                     <ul class="list-unstyled">
                                         <li><b>Tipo Veicolo</b><span class="cardData">${rent.vehicle.type}</span></li>
                                         <li><b>Modello</b> <span class="cardData">${rent.vehicle.description}</span></li>
-                                        <li><b>Prezzo Attuale</b> <span class="cardData"> ${(rent.vehicle.pricePerMinute * dayjs().diff(dayjs(rent.startTime), 'minute')).toFixed(2)}€</span></li>
+                                        <li><b>Prezzo Attuale</b> <span class="cardData currentPrice"> ${(rent.vehicle.pricePerMinute * dayjs().diff(dayjs(rent.startTime), 'minute')).toFixed(2)}€</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -97,24 +96,24 @@
                 `);
 
                 $(orderEl).find(".btnEndRent").on("click", function () {
-                        var dataRent = {
-                            id: rent.id,
-                            user: rent.user,
-                            vehicle: rent.vehicle,
-                            startTime: rent.startTime,
-                            endTime: dayjs().format()
-                        }
+                    var dataRent = {
+                        id: rent.id,
+                        user: rent.user,
+                        vehicle: rent.vehicle,
+                        startTime: rent.startTime,
+                        endTime: dayjs().format()
+                    }
 
-                        $.ajax({
-                            url: "api/rents/update",
-                            type: "PUT",
-                            contentType: "application/json",
-                            data: JSON.stringify(dataRent),
-                            success: function () {
-                                location.href = "rents";
-                            }
-                        });
+                    $.ajax({
+                        url: "api/rents/update",
+                        type: "PUT",
+                        contentType: "application/json",
+                        data: JSON.stringify(dataRent),
+                        success: function () {
+                            location.href = "rents";
+                        }
                     });
+                });
 
                 $(row).append(orderEl);
 
@@ -125,6 +124,11 @@
                 } else {
                     i++;
                 }
+
+                setInterval(function () {
+                    $(orderEl).find(".currentPrice").html(`
+                    ${(rent.vehicle.pricePerMinute * dayjs().diff(dayjs(rent.startTime), 'minute')).toFixed(2)}€`);
+                }, 30000);
             });
 
             $("#ordersContainer").append(row);
@@ -132,7 +136,7 @@
             // STAMPA ORDINI CONCLUSI
             userCompletedRents.forEach(rent => {
                 var price = (rent.vehicle.pricePerMinute * dayjs(rent.endTime).diff(dayjs(rent.startTime), 'minute')).toFixed(2);
-                
+
                 if (price == 0.0) {
                     price = "Ordine annullato";
                 } else {

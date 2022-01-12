@@ -131,8 +131,14 @@
 
             // STAMPA ORDINI CONCLUSI
             userCompletedRents.forEach(rent => {
-                var price = rent.vehicle.pricePerMinute * dayjs(rent.endTime).diff(dayjs(rent.startTime), 'minute');
+                var price = (rent.vehicle.pricePerMinute * dayjs(rent.endTime).diff(dayjs(rent.startTime), 'minute')).toFixed(2);
                 
+                if (price == 0.0) {
+                    price = "Ordine annullato";
+                } else {
+                    price += "€";
+                }
+
                 if (i == 1) {
                     row = $("<div class='row'></div>");
                 }
@@ -150,7 +156,7 @@
                                     <ul class="list-unstyled">
                                         <li><b>Tipo Veicolo</b><span class="cardData">${rent.vehicle.type}</span></li>
                                         <li><b>Modello</b> <span class="cardData">${rent.vehicle.description}</span></li>
-                                        <li><b>Prezzo Totale</b> <span class="cardData">${price}€</span></li>
+                                        <li><b>Prezzo Totale</b> <span class="cardData">${price}</span></li>
                                     </ul>
                                 </div>
                             </div>

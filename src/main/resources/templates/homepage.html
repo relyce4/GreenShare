@@ -166,7 +166,7 @@
 		<p class="text-light my-5" id="cardsHeader">Listino veicoli</p>
 
 		<div class="d-flex justify-content-evenly flex-wrap">
-			<article class="leaderboard bg-light">
+			<article class="leaderboard bg-light mb-4">
 				<main class="leaderboard__profiles">
 					<p class="fw-bold h4">Biciclette</p>
 					<div class="d-flex justify-content-center">
@@ -183,7 +183,7 @@
 					</div>
 				</main>
 			</article>
-			<article class="leaderboard bg-light">
+			<article class="leaderboard bg-light mb-4">
 				<main class="leaderboard__profiles">
 					<p class="fw-bold h4">Automobili</p>
 					<div class="d-flex justify-content-center">
@@ -200,7 +200,7 @@
 					</div>
 				</main>
 			</article>
-			<article class="leaderboard bg-light">
+			<article class="leaderboard bg-light mb-4">
 				<main class="leaderboard__profiles">
 					<span class="fw-bold h4">Monopattini</span>
 					<div class="d-flex justify-content-center">
@@ -227,20 +227,20 @@
 		<div class="text-center my-4">
 			<h1><b>CAR SHARING MADE EASY</b></h1>
 		</div>
-		<div class="d-flex justify-content-evenly text-center mb-3">
-			<div class="text-success">
+		<div class="d-flex justify-content-evenly flex-wrap text-center mb-3">
+			<div class="text-success mx-5">
 				<i class="far fa-user fa-8x mb-2 py-4"></i>
 				<div class="text-light">
 					<p class="h5">Crea subito<br>il tuo account</p>
 				</div>
 			</div>
-			<div class="text-success">
+			<div class="text-success mx-5">
 				<i class="fas fa-search-location fa-8x mb-2 py-4"></i>
 				<div class="text-light">
 					<p class="h5">Scegli il mezzo<br>più vicino a te</p>
 				</div>
 			</div>
-			<div class="text-success">
+			<div class="text-success mx-5">
 				<i class="far fa-check-circle fa-8x mb-2 py-4"></i>
 				<div class="text-light">
 					<p class="h5">Prenota<br>e parti subito!</p>
@@ -250,7 +250,8 @@
 
 		<div class="row text-center my-4">
 			<div class="ctn my-3">
-				<a class="btn btn-lg btn-success" href="register">Crea un account</a>
+				<a class="btn btn-lg btn-success" href="register" th:if="${loggedUser == null}">Crea un account</a>
+				<a class="btn btn-lg btn-success" href="map" th:if="${loggedUser != null}">Scegli un mezzo</a>
 			</div>
 		</div>
 	</div>

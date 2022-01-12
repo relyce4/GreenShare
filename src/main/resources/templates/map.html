@@ -24,7 +24,7 @@
             <div class="position-absolute left-0 top-0 bg-light shadow-3-strong p-2" id="sidebar">
                 <div class="my-2 text-center">
                     <div class="mb-2">
-                        <input type="search" class="rounded w-75 p-1 me-2" id="search" placeholder="Cerca">
+                        <input type="search" class="rounded w-75 shadow-0 p-1 me-2" id="search" placeholder="Cerca">
                     </div>
                     <div class="p-1">
                         <div class="form-check form-check-inline">
@@ -47,10 +47,10 @@
                         </div>
                     </div>
                     <div>
-                        <button type="reset" id="btnReset" class="btn btn-sm btn-warning">
+                        <button type="reset" id="btnReset" class="btn btn-sm btn-warning mx-2">
                             Reset
                         </button>
-                        <button class="btn btn-sm btn-success shadow-0" id="btnSearch">
+                        <button class="btn btn-sm btn-success" id="btnSearch">
                             Applica filtri
                         </button>
                     </div>
@@ -140,6 +140,7 @@
                         <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${userOngoingRent.vehicle.id}">
                             <div>
                                 <p class="vehicleDescription fw-bold m-0"><img src="${userOngoingRent.vehicle.imageUrl}" alt="">${userOngoingRent.vehicle.description}</p>
+                                <p class="m-0">Prezzo attuale: ${(userOngoingRent.vehicle.pricePerMinute * dayjs().diff(dayjs(userOngoingRent.startTime), 'minute')).toFixed(2)}€</p>
                             </div>
                             <div>
                                 <button class="btnEndRent btn btn-sm btn-danger">Termina</button>
@@ -184,13 +185,14 @@
                 vehicleList.forEach(vehicle => {
                     console.log(vehicle.currentLocation)
                     var vehicleLI = $(`
-                        <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${vehicle.id}">
+                        <li class="vehicleLI position-relative d-flex justify-content-between align-items-end rounded p-3 mb-2" id="vehicle-${vehicle.id}">
                             <div>
                                 <p class="vehicleDescription fw-bold m-0"><img src="${vehicle.imageUrl}" alt="">${vehicle.description}</p>
+                                <p class="position-absolute end-0 top-0 m-3">${vehicle.pricePerMinute} €/m</p>
                                 <p class="m-0">${vehicle.currentLocation}</p>
                                 <div style="display: none" class="otherVehicleInfo">
                                     <p class="m-0">Batteria: ${vehicle.battery}%</p>
-                                    <p class="m-0">Autonomia max: ${vehicle.maxAutonomy}km</p>
+                                    <p class="m-0">Autonomia: ${(vehicle.maxAutonomy * vehicle.battery) / 100}km</p>
                                 </div>
                             </div>
                             <div>
@@ -220,6 +222,7 @@
                         map.removeLayer(markers[vehicle.id]);
                         markers[vehicle.id] = L.marker(vehicle.coordinates.split(";"), { icon: greenMarker }).addTo(map);
                         clickMarker(markers, vehicle.id);
+                        markers[vehicle.id].bounce();
                     });
 
                     var timeoutId;
@@ -315,11 +318,9 @@
 
         $("#btnSearch").on("click", function () {
             var searchText = $("#search").val();
-            if (searchText.trim() != "") {
-                var vehicleList = getVehiclesByText(availableVehicles, searchText);
-                vehicleList = getVehiclesByType(vehicleList, $("#checkAutomobile").is(":checked"), $("#checkMonopattino").is(":checked"), $("#checkBicicletta").is(":checked"));
-                generateVehicleLI(vehicleList, userOngoingRents);
-            }
+            var vehicleList = getVehiclesByText(availableVehicles, searchText);
+            vehicleList = getVehiclesByType(vehicleList, $("#checkAutomobile").is(":checked"), $("#checkMonopattino").is(":checked"), $("#checkBicicletta").is(":checked"));
+            generateVehicleLI(vehicleList, userOngoingRents);
         });
 
         $("#search").keypress(function (e) {

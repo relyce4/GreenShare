@@ -42,8 +42,8 @@
         var loggedUser = /*[[${loggedUser}]]*/'';
         /*]]>*/
 
-        var userRents = getRentsByUser(rents, loggedUser.id);
-        var userOngoingRents = getOngoingRentsByUser(rents, loggedUser.id);
+        var userRents = getRentsByUser(rents, loggedUser.id).reverse();
+        var userOngoingRents = getOngoingRentsByUser(rents, loggedUser.id).reverse();
         if (!$.isEmptyObject(userOngoingRents)) {
             var userCompletedRents = userRents
                 .filter(x => !userOngoingRents.includes(x))
@@ -84,13 +84,13 @@
                                     <ul class="list-unstyled">
                                         <li><b>Tipo Veicolo</b><span class="cardData">${rent.vehicle.type}</span></li>
                                         <li><b>Modello</b> <span class="cardData">${rent.vehicle.description}</span></li>
-                                        <li><b>Stato</b> <span class="cardData">In corso</span></li>
+                                        <li><b>Prezzo Attuale</b> <span class="cardData"> ${(rent.vehicle.pricePerMinute * dayjs().diff(dayjs(rent.startTime), 'minute')).toFixed(2)}€</span></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">Inizio Servizio </small><small class="float-end">${dayjs(rent.startTime).format("DD/MM/YYYY HH:mm")}</small><br>
-                                <small class="text-muted">Fine Servizio </small><small class="float-end"><button class="btnEndRent btn btn-sm btn-danger">Concludi</button></small>
+                                <small class="text-muted">Fine Servizio </small><small class="float-end"><button class="btnEndRent btn btn-sm btn-danger shadow-0">Concludi</button></small>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                                     <ul class="list-unstyled">
                                         <li><b>Tipo Veicolo</b><span class="cardData">${rent.vehicle.type}</span></li>
                                         <li><b>Modello</b> <span class="cardData">${rent.vehicle.description}</span></li>
-                                        <li><b>Costo Servizio</b> <span class="cardData">${price}€</span></li>
+                                        <li><b>Prezzo Totale</b> <span class="cardData">${price}€</span></li>
                                     </ul>
                                 </div>
                             </div>

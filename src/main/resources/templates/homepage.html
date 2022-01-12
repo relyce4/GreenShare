@@ -39,99 +39,112 @@
 		</div>
 		<div class="hero-text text-start w-100 px-3" style="transform: translateY(25%)">
 			<p class="motto"><span class="blur-background px-2">SHARE</span></p>
-			<p class="motto"><span class="invisible">S</span><span class="blur-background d-inline-block px-2">MORE</span></p>
+			<p class="motto"><span class="invisible">S</span><span
+					class="blur-background d-inline-block px-2">MORE</span></p>
 		</div>
 	</section>
 	<!-- Fine Hero -->
 
 	<!-- Card -->
-	<section class="row text-center bg-light m-0" id="statsSection">
-		<h1 class="mt-5">Scopri i vantaggi dell'elettrico</h1>
-		<div class="col-lg-6 p-md-5 mt-5 position-relative">
-			<div class="border-bottom border-top">
-				<div class="container position-relative d-flex justify-content-evenly align-items-center">
-					<div class="bg-image hover-zoom p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
-						id="teslaCard" data-mdb-ripple-color="light">
-						<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px"
-							alt="">
-						<img src="immagini/Tesla_Model_S.png" class="w-100" alt="" />
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">Tesla Model S</p>
+	<section class="row align-items-center text-center bg-light m-0" id="statsSection">
+		<h1 class="mt-5 py-3">I vantaggi dell'elettrico</h1>
+		<p class="h4 fw-normal">Scopri tu stesso i benefici della mobilità green. Seleziona i veicoli per effettuare un
+			confronto</p>
+		<div class="col-lg-6 p-md-5">
+			<div class="">
+				<div class="d-flex">
+					<div class="container position-relative d-flex flex-column justify-content-around align-items-center ps-0"
+						style="font-size: 2.5rem;">
+						<i class="fas fa-bolt text-success"></i>
+						<span class="fw-bold" style="font-size: 1rem">Vs</span>
+						<i class="fas fa-gas-pump" style="color: rgb(195, 57, 37);"></i>
+					</div>
+					<div class="container position-relative d-flex flex-column justify-content-between align-items-center
+						border rounded-5 hover-shadow pointer-cursor me-2 chartDiv activeChart" id="fiatVs">
+						<div class="bg-image p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
+							id="fiatCard">
+							<img src="immagini/fiat_500e.png" class="w-100" alt="" />
+							<div class="hover-overlay">
+								<div class="mask">
+									<div class="d-flex justify-content-center align-items-end h-100">
+										<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
+											style="background-color: rgba(0, 0, 0, 0.9)">Fiat 500-e</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fw-bold">
+							Vs
+						</div>
+						<div class="bg-image p-xxl-4 chartImage position-relative renaultCard" id="renaultCard1">
+							<img src="immagini/renault_clio.png" class="w-100" alt="" />
+							<div class="hover-overlay">
+								<div class="mask">
+									<div class="d-flex justify-content-center align-items-end h-100">
+										<p class="text-white fw-bold rounded-5 mb-1 px-1 user-select-none"
+											style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="bg-image hover-zoom p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
-						id="bmwCard" data-mdb-ripple-color="light">
-						<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px"
-							alt="">
-						<img src="immagini/BMW_i3.png" class="w-100" alt="" />
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">BMW i3</p>
+					<div class="container position-relative d-flex flex-column justify-content-center align-items-center
+						border rounded-5 hover-shadow pointer-cursor me-2 chartDiv" id="bmwVs">
+						<div class="bg-image p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
+							id="bmwCard">
+							<img src="immagini/bmw_i3.png" class="w-100" alt="" />
+							<div class="hover-overlay">
+								<div class="mask">
+									<div class="d-flex justify-content-center align-items-end h-100">
+										<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
+											style="background-color: rgba(0, 0, 0, 0.9)">BMW i3</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fw-bold">
+							Vs
+						</div>
+						<div class="d-flex justify-content-evenly">
+							<div class="bg-image p-xxl-4 chartImage position-relative renaultCard"
+								data-mdb-ripple-color="light" id="renaultCard2">
+								<img src="immagini/renault_clio.png" class="w-100" alt="" />
+								<div class="hover-overlay">
+									<div class="mask">
+										<div class="d-flex justify-content-center align-items-end h-100">
+											<p class="text-white fw-bold rounded-5 mb-1 px-1 user-select-none"
+												style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="bg-image hover-zoom p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
-						id="fiatCard" data-mdb-ripple-color="light">
-						<img src="immagini/lightning.svg" class="position-absolute end-0 top-0 mt-2" width="32px"
-							alt="">
-						<img src="immagini/FIAT_500.png" class="w-100" alt="" />
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">Fiat 500-e</p>
+					<div class="container position-relative d-flex flex-column justify-content-center align-items-center
+						border rounded-5 hover-shadow pointer-cursor me-2 chartDiv" id="teslaVs">
+						<div class="bg-image p-xxl-4 chartImage pointer-cursor position-relative rounded-5"
+							id="teslaCard">
+							<img src="immagini/tesla_model_s.png" class="w-100" alt="" />
+							<div class="hover-overlay">
+								<div class="mask">
+									<div class="d-flex justify-content-center align-items-end h-100">
+										<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
+											style="background-color: rgba(0, 0, 0, 0.9)">Tesla Model S</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="d-flex justify-content-evenly">
-					<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative renaultCard" id="renaultCard1"
-						data-mdb-ripple-color="light">
-						<i class="fas fa-exchange-alt text-success position-absolute top-0 start-50"
-							style="transform: rotate(90deg); font-size: 1.5rem;"></i>
-						<img src="immagini/Renault_Clio.png" class="w-100" alt="" />
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
-								</div>
-							</div>
+						<div class="fw-bold">
+							Vs
 						</div>
-					</div>
-					<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative renaultCard"
-						data-mdb-ripple-color="light" id="renaultCard2">
-						<img src="immagini/Renault_Clio.png" class="w-100" alt="" />
-						<i class="fas fa-exchange-alt text-success position-absolute top-0 start-50"
-							style="transform: rotate(90deg); font-size: 1.5rem;"></i>
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="bg-image hover-zoom p-xxl-4 chartImage position-relative renaultCard"
-						data-mdb-ripple-color="light" id="renaultCard3">
-						<img src="immagini/Renault_Clio.png" class="w-100" alt="" />
-						<i class="fas fa-exchange-alt text-success position-absolute top-0 start-50"
-							style="transform: rotate(90deg); font-size: 1.5rem;"></i>
-						<div class="hover-overlay">
-							<div class="mask">
-								<div class="d-flex justify-content-center align-items-center h-100">
-									<p class="text-white fw-bold rounded-5 mb-0 px-1 user-select-none"
-										style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
+						<div class="bg-image p-xxl-4 chartImage position-relative renaultCard" id="renaultCard1">
+							<img src="immagini/renault_clio.png" class="w-100" alt="" />
+							<div class="hover-overlay">
+								<div class="mask">
+									<div class="d-flex justify-content-center align-items-end h-100">
+										<p class="text-white fw-bold rounded-5 mb-1 px-1 user-select-none"
+											style="background-color: rgba(0, 0, 0, 0.9)">Renault Clio</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -149,79 +162,71 @@
 	<!-- Fine Card -->
 
 	<!-- Tabella -->
-	<div class="text-center mt-4 mb-8">
-		<p class="text-light mb-5" id="cardsHeader">Listino veicoli</p>
+	<div class="text-center mt-4 mb-8 pb-5">
+		<p class="text-light my-5" id="cardsHeader">Listino veicoli</p>
 
 		<div class="d-flex justify-content-evenly flex-wrap">
-			<div class="py-4 py-lg-0">
-				<article class="leaderboard">
-					
-					<main class="leaderboard__profiles">
-						<p class="fw-bold h4">Automobili</p>
-						<div class="d-flex justify-content-center">
-							<div class="px-2">
-								<span class="dot"></span>
-								<span id="availableCars"></span>
-							</div>
-							<div class="px-2">
-								<span class="dot bg-danger"></span>
-								<span id="unavailableCars">34 occupate</span>
-							</div>
+			<article class="leaderboard bg-light">
+				<main class="leaderboard__profiles">
+					<p class="fw-bold h4">Biciclette</p>
+					<div class="d-flex justify-content-center">
+						<div class="px-2">
+							<span class="dot"></span>
+							<span id="availableBikes"></span>
 						</div>
-						<div id="carList">
+						<div class="px-2">
+							<span class="dot bg-danger"></span>
+							<span id="unavailableBikes"></span>
 						</div>
-					</main>
-				</article>
-			</div>
-			<div class="py-4 py-lg-0">
-				<article class="leaderboard">
-					<main class="leaderboard__profiles">
-						<p class="fw-bold h4">Biciclette</p>
-						<div class="d-flex justify-content-center">
-							<div class="px-2">
-								<span class="dot"></span>
-								<span id="availableBikes"></span>
-							</div>
-							<div class="px-2">
-								<span class="dot bg-danger"></span>
-								<span id="unavailableBikes"></span>
-							</div>
+					</div>
+					<div id="bikeList">
+					</div>
+				</main>
+			</article>
+			<article class="leaderboard bg-light">
+				<main class="leaderboard__profiles">
+					<p class="fw-bold h4">Automobili</p>
+					<div class="d-flex justify-content-center">
+						<div class="px-2">
+							<span class="dot"></span>
+							<span id="availableCars"></span>
 						</div>
-						<div id="bikeList">
+						<div class="px-2">
+							<span class="dot bg-danger"></span>
+							<span id="unavailableCars"></span>
 						</div>
-					</main>
-				</article>
-			</div>
-			<div class="py-4 py-lg-0">
-				<article class="leaderboard">
-					<main class="leaderboard__profiles">
-						<span class="fw-bold h4">Monopattini</span>
-						<div class="d-flex justify-content-center">
-							<div class="px-2">
-								<span class="dot"></span>
-								<span id="availableScooters"></span>
-							</div>
-							<div class="px-2">
-								<span class="dot bg-danger"></span>
-								<span id="unavailableScooters"></span>
-							</div>
+					</div>
+					<div id="carList">
+					</div>
+				</main>
+			</article>
+			<article class="leaderboard bg-light">
+				<main class="leaderboard__profiles">
+					<span class="fw-bold h4">Monopattini</span>
+					<div class="d-flex justify-content-center">
+						<div class="px-2">
+							<span class="dot"></span>
+							<span id="availableScooters"></span>
 						</div>
-						<div id="scooterList">
+						<div class="px-2">
+							<span class="dot bg-danger"></span>
+							<span id="unavailableScooters"></span>
 						</div>
-					</main>
-				</article>
-			</div>
+					</div>
+					<div id="scooterList">
+					</div>
+				</main>
+			</article>
 		</div>
-		<a class="btn btn-lg btn-light" href="/map">Mostra altro</a>
+		<a class="btn btn-lg btn-light mt-5" href="/map">Mostra altro</a>
 	</div>
 	<!-- Fine Tabella -->
 
 	<!-- Descrizione Uso -->
-	<div class="bg-light container-fluid py-4" id="contDesc">
+	<div class="bg-light container-fluid py-5" id="contDesc">
 		<div class="text-center my-4">
 			<h1><b>CAR SHARING MADE EASY</b></h1>
 		</div>
-
 		<div class="d-flex justify-content-evenly text-center mb-3">
 			<div class="text-success">
 				<i class="far fa-user fa-8x mb-2 py-4"></i>
@@ -243,7 +248,7 @@
 			</div>
 		</div>
 
-		<div class="row text-center">
+		<div class="row text-center my-4">
 			<div class="ctn my-3">
 				<a class="btn btn-lg btn-success" href="register">Crea un account</a>
 			</div>
@@ -284,17 +289,17 @@
 				label: 'Renault Clio',
 				data: [534, 312, 100],
 				backgroundColor: [
-					'rgb(255, 212, 128)',
-					'rgb(93, 176, 127)',
-					'rgb(247, 116, 139)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)'
 				]
 			}, {
 				label: 'Tesla Model S',
 				data: [100, 100, 600],
 				backgroundColor: [
-					'rgb(255,169,0)',
 					'rgb(0, 183, 74)',
-					'rgb(249, 49, 84)',
+					'rgb(0, 183, 74)',
+					'rgb(0, 183, 74)'
 				]
 			}
 
@@ -306,7 +311,7 @@
 			options: { borderWidth: '1' }
 		};
 
-		teslaCard.onclick = function () {
+		teslaVs.onclick = function () {
 			if (myChart) {
 				myChart.destroy();
 			}
@@ -315,9 +320,8 @@
 				teslaConfig
 			);
 
-			$("#renaultCard2, #renaultCard3").animate({ opacity: 0 }, 500, function () {
-				$("#renaultCard1").animate({ opacity: 100 }, 500);
-			});
+			$(".activeChart").removeClass("activeChart");
+			$(this).addClass("activeChart");
 		}
 
 		const bmwData = {
@@ -330,17 +334,17 @@
 				label: 'Renault Clio',
 				data: [207, 850, 100],
 				backgroundColor: [
-					'rgb(255, 212, 128)',
-					'rgb(93, 176, 127)',
-					'rgb(247, 116, 139)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)'
 				]
 			}, {
 				label: 'BMW i3',
 				data: [100, 100, 162],
 				backgroundColor: [
-					'rgb(255,169,0)',
 					'rgb(0, 183, 74)',
-					'rgb(249, 49, 84)',
+					'rgb(0, 183, 74)',
+					'rgb(0, 183, 74)'
 				]
 			}]
 		};
@@ -350,7 +354,7 @@
 			options: { borderWidth: '1' }
 		};
 
-		bmwCard.onclick = function () {
+		bmwVs.onclick = function () {
 			if (myChart) {
 				myChart.destroy();
 			}
@@ -359,9 +363,8 @@
 				bmwConfig
 			);
 
-			$("#renaultCard1, #renaultCard3").animate({ opacity: 0 }, 500, function () {
-				$("#renaultCard2").animate({ opacity: 100 }, 500);
-			});
+			$(".activeChart").removeClass("activeChart");
+			$(this).addClass("activeChart");
 		}
 
 		const fiatData = {
@@ -374,17 +377,17 @@
 				label: 'Renault Clio',
 				data: [1000, 947, 100],
 				backgroundColor: [
-					'rgb(255, 212, 128)',
-					'rgb(93, 176, 127)',
-					'rgb(247, 116, 139)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)',
+					'rgb(195, 57, 37)'
 				]
 			}, {
 				label: 'FIAT 500-e',
 				data: [100, 100, 117],
 				backgroundColor: [
-					'rgb(255,169,0)',
 					'rgb(0, 183, 74)',
-					'rgb(249, 49, 84)',
+					'rgb(0, 183, 74)',
+					'rgb(0, 183, 74)'
 				]
 			}]
 		};
@@ -394,7 +397,7 @@
 			options: { borderWidth: '1' }
 		};
 
-		fiatCard.onclick = function () {
+		fiatVs.onclick = function () {
 			if (myChart) {
 				myChart.destroy();
 			}
@@ -403,15 +406,14 @@
 				fiatConfig
 			);
 
-			$("#renaultCard1, #renaultCard2").animate({ opacity: 0 }, 500, function () {
-				$("#renaultCard3").animate({ opacity: 100 }, 500);
-			});
+			$(".activeChart").removeClass("activeChart");
+			$(this).addClass("activeChart");
 		}
 
 		// Carica valore di default
 		var myChart = new Chart(
 			document.getElementById('myChart'),
-			bmwConfig
+			fiatConfig
 		);
 
 
@@ -438,7 +440,7 @@
 		iterator.forEach(car => {
 			var carList = $(`
 				<article class="leaderboard__profile my-2">
-					<p class="vehicleDescription fw-bold m-0">
+					<p class="vehicleDescription position-relative fw-bold m-0">
 						<img src="${car.imageUrl}" alt="" class="leaderboard__picture">
 					</p>
 					<span class="leaderboard__name">

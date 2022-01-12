@@ -62,16 +62,20 @@ div:last-child .motto::first-letter, div:last-child .blur-background::first-lett
 /* FINE HERO  */
 
 .chartImage {
-    max-width: 14rem;
+    max-width: 300px;
 }
 
-.activeChartIcon {
-    border: 1px solid #00b74a;
+.activeChart {
+    border: 2px solid #00b74a !important;
 }
 
-#renaultCard1, #renaultCard3 {
+.chartDiv:hover .hover-overlay .mask {
+    opacity: 1;
+}
+
+/* #renaultCard1, #renaultCard3 {
     opacity: 0;
-}
+} */
 
 /* CARD  */
 .card {
@@ -135,9 +139,8 @@ div:last-child .motto::first-letter, div:last-child .blur-background::first-lett
 }
 
 .leaderboard__profiles {
-    background-color: rgb(243, 243, 243);
     border-radius: 12px 12px 12px 12px;
-    padding: 15px 15px 20px;
+    padding: 20px 15px 0 15px;
     display: grid;
     row-gap: 10px;
 }
@@ -148,23 +151,25 @@ div:last-child .motto::first-letter, div:last-child .blur-background::first-lett
     align-items: center;
     padding: 10px 30px 10px 10px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23);
-    cursor: pointer;
+    /* box-shadow: 0 5px 7px -1px rgba(51, 51, 51, 0.23); */
+    border-bottom: 1px solid lightgray;
     transition: transform 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98), box-shadow 0.25s cubic-bezier(0.7, 0.98, 0.86, 0.98);
-    background-color: #fff;
+    background-color: #FBFBFB;
 }
 
-.leaderboard__profile:hover {
+.leaderboard__profile:last-of-type {
+    border: 0;
+}
+
+/* .leaderboard__profile:hover {
     transform: scale(1.05);
     box-shadow: 0 9px 47px 11px rgba(51, 51, 51, 0.18);
-}
+} */
 
 .leaderboard__picture {
     max-width: 100%;
-    width: 60px;
-    border-radius: 50%;
-    box-shadow: 0 0 0 10px #ebeef3, 0 0 0 22px #f3f4f6;
+    width: 150px;
+    padding: 0.5rem 0;
 }
 
 .leaderboard__name {

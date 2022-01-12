@@ -18,7 +18,11 @@ function getOngoingRents(rentList) {
 }
 
 function getRentsByUser(rentList, userId) {
-    return rentList.filter(rent => rent.user.id == userId);
+    if (!$.isEmptyObject(rentList)) {
+        return rentList.filter(rent => rent.user.id == userId);
+    }
+    
+    return null;
 }
 
 function getOngoingRentsByUser(rentList, userId) {
@@ -39,7 +43,7 @@ function getAvailableVehicles(rentList, vehicleList) {
         });
     }
 
-    return null;
+    return vehicleList;
 }
 
 function getUserVehicles(rentList, userId) {

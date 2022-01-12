@@ -182,11 +182,16 @@
             if (!$.isEmptyObject(vehicleList)) {
 
                 vehicleList.forEach(vehicle => {
+                    console.log(vehicle.currentLocation)
                     var vehicleLI = $(`
                         <li class="vehicleLI d-flex justify-content-between align-items-center rounded p-3 mb-2" id="vehicle-${vehicle.id}">
                             <div>
                                 <p class="vehicleDescription fw-bold m-0"><img src="${vehicle.imageUrl}" alt="">${vehicle.description}</p>
                                 <p class="m-0">${vehicle.currentLocation}</p>
+                                <div style="display: none" class="otherVehicleInfo">
+                                    <p class="m-0">Batteria: ${vehicle.battery}%</p>
+                                    <p class="m-0">Autonomia max: ${vehicle.maxAutonomy}km</p>
+                                </div>
                             </div>
                             <div>
                                 <button class="btnRent btn btn-sm btn-success">Prenota</button>
@@ -200,9 +205,11 @@
                     $(vehicleLI).on("click", function (e) {
                         map.flyTo(vehicle.coordinates.split(";"), 14);
                         $(".vehicleLI.active").removeClass("active");
+                        $(".otherVehicleInfo").slideUp(500);
                         $(".btnRent").fadeOut(100);
                         $(vehicleLI).addClass("active");
                         $(vehicleLI).find(".btnRent").fadeIn(500);
+                        $(vehicleLI).find(".otherVehicleInfo").slideDown(500);
 
                         for (const key in markers) {
                             var coordinates = markers[key]._latlng;
@@ -299,7 +306,7 @@
             if (includeBicicletta) {
                 var filteredList = vehicleList.filter(vehicle => vehicle.type.toLowerCase().includes("bicicletta"));
                 if (!$.isEmptyObject(filteredList)) {
-                    result.push(filteredList);
+                    result.push(...filteredList);
                 }
             }
 

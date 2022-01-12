@@ -55,7 +55,6 @@ div:last-child .motto::first-letter, div:last-child .blur-background::first-lett
 
 .blur-background {
     background-color: #ffffffbb;
-    backdrop-filter: blur(15px);
     border-radius: 1rem;
 }
 

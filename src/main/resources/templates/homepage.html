@@ -431,13 +431,11 @@
 		$("#availableCars").text(availableCars.length + " disponibili");
 		$("#unavailableCars").text(carsNumber - availableCars.length + " occupate");
 
-
-		var iterator = availableCars;
 		if (availableCars.length > 5) {
-			iterator = availableCars.splice(5);
+			availableCars.splice(5);
 		}
 
-		iterator.forEach(car => {
+		availableCars.forEach(car => {
 			var carList = $(`
 				<article class="leaderboard__profile my-2">
 					<p class="vehicleDescription position-relative fw-bold m-0">
@@ -463,13 +461,11 @@
 		$("#availableScooters").text(availableScooters.length + " disponibili");
 		$("#unavailableScooters").text(scootersNumber - availableScooters.length + " occupati");
 
-
-		iterator = availableScooters;
 		if (availableScooters.length > 5) {
-			iterator = availableScooters.splice(5);
+			availableScooters.splice(5);
 		}
 
-		iterator.forEach(scooter => {
+		availableScooters.forEach(scooter => {
 			var scooterList = $(`
 				<article class="leaderboard__profile my-2">
 					<p class="vehicleDescription fw-bold m-0">
@@ -495,13 +491,11 @@
 		$("#availableBikes").text(availableBikes.length + " disponibili");
 		$("#unavailableBikes").text(bikesNumber - availableBikes.length + " occupate");
 
-
-		iterator = availableBikes;
 		if (availableBikes.length > 5) {
-			iterator = availableBikes.splice(5);
+			availableBikes.splice(5);
 		}
 
-		iterator.forEach(bike => {
+		availableBikes.forEach(bike => {
 			var bikeList = $(`
 				<article class="leaderboard__profile my-2">
 					<p class="vehicleDescription fw-bold m-0">

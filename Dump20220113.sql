@@ -35,7 +35,7 @@ CREATE TABLE `rent` (
   KEY `FK5lywatsmefl4l9s1kdc32aq66` (`vehicle_id`),
   CONSTRAINT `FK5lywatsmefl4l9s1kdc32aq66` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`),
   CONSTRAINT `FKg3q3j6lq13lh6qkjw2fpj2kdk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `rent` (
 
 LOCK TABLES `rent` WRITE;
 /*!40000 ALTER TABLE `rent` DISABLE KEYS */;
-INSERT INTO `rent` VALUES (57,'2022-01-12 15:07:11.000000','2022-01-12 15:01:09.000000',2,8),(58,'2022-01-12 15:32:46.000000','2022-01-12 15:32:09.000000',2,13),(59,'2022-01-12 15:35:06.000000','2022-01-12 15:33:52.000000',2,12);
+INSERT INTO `rent` VALUES (57,'2022-01-12 15:07:11.000000','2022-01-12 15:01:09.000000',2,8),(58,'2022-01-12 15:32:46.000000','2022-01-12 15:32:09.000000',2,13),(59,'2022-01-12 15:35:06.000000','2022-01-12 15:33:52.000000',2,12),(60,'2022-01-12 16:10:45.000000','2022-01-12 16:09:30.000000',2,8),(61,'2022-01-12 17:34:15.000000','2022-01-12 16:13:14.000000',2,8),(62,'2022-01-12 17:34:16.000000','2022-01-12 16:13:15.000000',2,9),(63,'2022-01-12 18:50:40.000000','2022-01-12 17:50:06.000000',2,8),(64,'2022-01-13 11:27:06.000000','2022-01-13 10:29:30.000000',2,10),(65,'2022-01-13 14:30:41.000000','2022-01-13 12:36:59.000000',1,8),(66,'2022-01-13 12:42:32.000000','2022-01-13 12:42:28.000000',1,9),(67,NULL,'2022-01-13 12:44:21.000000',2,9),(68,'2022-01-13 16:18:45.000000','2022-01-13 14:30:51.000000',1,8),(69,'2022-01-13 14:31:42.000000','2022-01-13 14:31:39.000000',1,10),(70,NULL,'2022-01-13 15:04:06.000000',2,12),(71,'2022-01-13 16:12:37.000000','2022-01-13 16:12:23.000000',1,10);
 /*!40000 ALTER TABLE `rent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +129,7 @@ CREATE TABLE `vehicle` (
   PRIMARY KEY (`id`),
   KEY `FKmx022plpycqvusyr6dq121see` (`id_user`),
   CONSTRAINT `FKmx022plpycqvusyr6dq121see` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +138,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (8,100,'2021-12-29 17:32:20.000000','Via Roma 360, Torino','Fiat 500-e',321,0.48,'Automobile',NULL,'45.0646229;7.6801284','/immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8/vehicleImage.png','vehicleImage.png'),(9,100,'2021-12-31 16:46:08.000000','Via Onorato Vigliani, Torino','BMW i3',359,0.6,'Automobile',NULL,'45.0545417;7.6442598','vehicleImage.png','vehicleImage.png'),(10,100,'2022-01-03 21:42:47.000000','Via Malta, Torino','Tesla Model S',740,1,'Automobile',NULL,'45.0569872;7.6448817','vehicleImage.png','vehicleImage.png'),(12,100,'2022-01-04 22:32:38.000000','Corso Principe Oddone, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0880146;7.6762296','vehicleImage.png','vehicleImage.png'),(13,100,'2022-01-06 20:51:49.000000','Via Nizza, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0176734;7.6615487','vehicleImage.png','vehicleImage.png'),(57,100,'2022-01-11 12:17:56.000000','Via Candiolo, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0154839;7.6496987',NULL,'vehicleImage.png'),(59,100,'2022-01-11 18:14:32.000000','Via Marco Polo, Torino','BMW i3',359,0.6,'Automobile',NULL,'45.0585717;7.6608764',NULL,'vehicleImage.png'),(60,100,'2022-01-11 18:15:24.000000','Via Dego, Torino','Fiat 500-e',321,0.48,'Automobile',NULL,'45.0592626;7.6582175',NULL,'vehicleImage.png'),(61,100,'2022-01-11 18:17:32.000000','Via Vigone, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0656813;7.6461019',NULL,'vehicleImage.png'),(62,100,'2022-01-11 18:18:51.000000','Via Chianocco, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0715218;7.6469805',NULL,'vehicleImage.png'),(63,100,'2022-01-11 18:19:35.000000','Via Pietro Piffetti, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0770192;7.6565341',NULL,'vehicleImage.png'),(64,100,'2022-01-11 18:20:37.000000','Via Carlo Bossi, Torino',' Mi Electric Scooter',30,0.39,'Monopattino',NULL,'45.0806207;7.658317',NULL,'vehicleImage.png'),(65,100,'2022-01-11 18:21:12.000000','Corso Svizzera',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0875588;7.6568213',NULL,'vehicleImage.png'),(66,100,'2022-01-11 18:21:51.000000','Corso Vigevano, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0900982;7.6786634',NULL,'vehicleImage.png'),(67,100,'2022-01-11 18:22:17.000000','Via Monte Rosa, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0926745;7.6966244',NULL,'vehicleImage.png');
+INSERT INTO `vehicle` VALUES (8,15,'2021-12-29 17:32:20.000000','Via Roma 360, Torino','Fiat 500-e',321,0.48,'Automobile',NULL,'45.0646229;7.6801284','/immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8//immagini/upload/8/vehicleImage.png','vehicleImage.png'),(9,54,'2021-12-31 16:46:08.000000','Via Onorato Vigliani, Torino','BMW i3',359,0.61,'Automobile',NULL,'45.0175118;7.6529801','vehicleImage.png','vehicleImage.png'),(10,100,'2022-01-03 21:42:47.000000','Via Malta, Torino','Tesla Model S',740,0.99,'Automobile',NULL,'45.0569872;7.6448817','vehicleImage.png','vehicleImage.png'),(12,89,'2022-01-04 22:32:38.000000','Corso Principe Oddone, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0880146;7.6762296','vehicleImage.png','vehicleImage.png'),(13,78,'2022-01-06 20:51:49.000000','Via Nizza, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0176734;7.6615487','vehicleImage.png','vehicleImage.png'),(57,36,'2022-01-11 12:17:56.000000','Via Candiolo, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0154839;7.6496987',NULL,'vehicleImage.png'),(59,100,'2022-01-11 18:14:32.000000','Via Marco Polo, Torino','BMW i3',359,0.61,'Automobile',NULL,'45.0585717;7.6608764',NULL,'vehicleImage.png'),(60,100,'2022-01-11 18:15:24.000000','Via Dego, Torino','Fiat 500-e',321,0.48,'Automobile',NULL,'45.0592626;7.6582175',NULL,'vehicleImage.png'),(61,100,'2022-01-11 18:17:32.000000','Via Vigone, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0656813;7.6461019',NULL,'vehicleImage.png'),(62,100,'2022-01-11 18:18:51.000000','Via Chianocco, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0715218;7.6469805',NULL,'vehicleImage.png'),(63,100,'2022-01-11 18:19:35.000000','Via Pietro Piffetti, Torino',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0770192;7.6565341',NULL,'vehicleImage.png'),(64,100,'2022-01-11 18:20:37.000000','Via Carlo Bossi, Torino',' Mi Electric Scooter',30,0.39,'Monopattino',NULL,'45.0806207;7.658317',NULL,'vehicleImage.png'),(65,100,'2022-01-11 18:21:12.000000','Corso Svizzera',' Mi Electric Scooter',30,0.29,'Monopattino',NULL,'45.0875588;7.6568213',NULL,'vehicleImage.png'),(66,100,'2022-01-11 18:21:51.000000','Corso Vigevano, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0900982;7.6786634',NULL,'vehicleImage.png'),(67,100,'2022-01-11 18:22:17.000000','Via Monte Rosa, Torino','Ghost Kato',40,0.33,'Bicicletta',NULL,'45.0926745;7.6966244',NULL,'vehicleImage.png'),(68,100,'2022-01-13 14:17:46.000000','Via Marsigli, Torino','Tesla Model S',740,0.99,'Automobile',NULL,'45.0651046;7.6268584',NULL,'vehicleImage.png'),(69,100,'2022-01-13 14:22:45.000000','Via Nicomede Bianchi, Torino','Fiat 500e',321,0.48,'Automobile',NULL,'45.0820672;7.6314069',NULL,'vehicleImage.png'),(70,100,'2022-01-13 16:21:15.000000','Centro di Torino','BMW i3',321,0.56,'Automobile',NULL,'45.0579999;7.6628873',NULL,'vehicleImage.png');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -151,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-12 15:39:36
+-- Dump completed on 2022-01-13 16:24:48

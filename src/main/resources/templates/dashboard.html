@@ -263,7 +263,7 @@
 						type: "DELETE",
 						url: "api/vehicles/delete/" + vehicleId,
 						success: function () {
-							document.location.href = "dashboard";
+							location.reload();
 						}
 					});
 				});
@@ -281,29 +281,6 @@
 					}
 
 					$("#btnConfermAddVehicle").on("click", function () {
-						// var vehicleInput = {
-						// 	id: null,
-						// 	type: $("#newType").val(),
-						// 	description: $("#newDescription").val(),
-						// 	coordinates: $("#newCoordinates").val(),
-						// 	currentLocation: $("#newCurrentLocation").val(),
-						// 	imageUrl: null,
-						// 	battery: $("#newBattery").val(),
-						// 	maxAutonomy: $("#newMaxAutonomy").val(),
-						// 	pricePerMinute: $("#newPricePerMinute").val(),
-						// 	creationDate: dayjs().format(),
-						// 	createdBy: null
-						// };
-						// $.ajax({
-						// 	type: "POST",
-						// 	url: "api/vehicles/add",
-						// 	contentType: "application/json",
-						// 	data: JSON.stringify(vehicleInput),
-						// 	success: function () {
-						// 		document.location.href = "dashboard"
-						// 	}
-						// });
-
 						var vehicleInput = {
 							type: $("#newType").val(),
 							description: $("#newDescription").val(),
@@ -328,7 +305,7 @@
 							body: formData
 						})
 							.then(response => {
-								setTimeout(function () { document.location.href = "dashboard" }, 1000);
+								setTimeout(function () { location.reload(); }, 1000);
 							});
 					});
 				});

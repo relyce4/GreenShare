@@ -20,9 +20,9 @@
                         </ul>
                         <!-- Left links -->
                         <div class="d-flex align-items-center">
-                            <th:block th:if="${loggedUser != null}">
+                            <th:block sec:authorize="isAuthenticated()">
                                 <a href="map" class="btn btn-link text-success">Mappa</a>
-                                <th:block th:if="${loggedUser?.role == 'ROLE_ADMIN'}">
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a href="dashboard" class="btn btn-link text-success">Dashboard</a>
                                 </th:block>
                                 <ul class="navbar-nav">
@@ -43,7 +43,7 @@
                                     </li>
                                 </ul>
                             </th:block>
-                            <th:block th:unless="${loggedUser != null}">
+                            <th:block sec:authorize="!isAuthenticated()">
                                 <div>
                                     <a class="btn btn-link text-success" href="/login">
                                         Login
@@ -79,7 +79,7 @@
         </div>
         <div class="offcanvas-body">
             <ul class="list-unstyled">
-                <th:block th:unless="${loggedUser != null}">
+                <th:block sec:authorize="isAuthenticated()">
                     <li>
                         <a href="/login" class="btn btn-link text-success d-block">Login</a>
                     </li>
@@ -88,13 +88,13 @@
                     </li>
                 </th:block>
 
-                <th:block th:if="${loggedUser != null}">
+                <th:block sec:authorize="isAuthenticated()">
                     <li>
-                        <a href="map" class="btn btn-link text-success d-block">Mappa</a>
+                        <a href="/map" class="btn btn-link text-success d-block">Mappa</a>
                     </li>
-                    <th:block th:if="${loggedUser.role == 'ROLE_ADMIN'}">
+                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <li>
-                            <a href="dashboard" class="btn btn-link text-success d-block">Dashboard</a>
+                            <a href="/dashboard" class="btn btn-link text-success d-block">Dashboard</a>
                         </li>
                     </th:block>
                     <li>

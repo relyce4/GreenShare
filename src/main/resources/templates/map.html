@@ -170,6 +170,7 @@
 
                     setInterval(function () {
                         $(userVehicleLI).find(".currentPrice").html(`
+                        Prezzo attuale: 
                         ${(userOngoingRent.vehicle.pricePerMinute * dayjs().diff(dayjs(userOngoingRent.startTime), 'minute')).toFixed(2)}€`);
                     }, 30000);
 
